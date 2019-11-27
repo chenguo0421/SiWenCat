@@ -1,0 +1,13 @@
+package %Path.presenter
+
+import %Path.contract.%NameContract
+import %Path.model.%NameModel
+
+class %NamePresenter : %NameContract.IPresenter<%NameContract.IView>() {
+
+    private var mModel:%NameModel? = null
+
+    init {
+        mModel = %NameModel()
+    }
+}

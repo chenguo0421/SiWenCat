@@ -1,0 +1,7 @@
+package %Path.model
+
+import %Path.contract.%NameContract
+
+class %NameModel: %NameContract.IModel() {
+
+}

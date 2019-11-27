@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <FrameLayout
+            android:id="@+id/fm1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+    </FrameLayout>
+    <Button
+            android:id="@+id/showBtn1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="显示第一个Fragmernt"/>
+
+    <FrameLayout
+            android:id="@+id/fm2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+    </FrameLayout>
+
+    <Button
+            android:id="@+id/showBtn2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="显示第二个Fragmernt"/>
+
+    <Button
+            android:id="@+id/showBtn3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="修改第一个Fragmernt显示的值为：我是第一个对象"/>
+
+    <Button
+            android:id="@+id/showBtn4"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="修改第二个Fragmernt显示的值为：我是第二个对象"/>
+
+</LinearLayout>

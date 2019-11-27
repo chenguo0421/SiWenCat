@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="这是第一个页面"
+            android:gravity="center"/>
+
+    <Button
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="跳转到第二个页面"/>
+
+
+    <Button
+            android:id="@+id/btn2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="测试Fragment"/>
+
+
+
+    <TextView
+            android:id="@+id/back_tv"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="返回值："
+            android:gravity="center"/>
+
+    <ImageView
+            android:id="@+id/img"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="100dp"
+            android:background="@color/t1_colorAccent"
+            android:transitionName="shareimage"/>
+</LinearLayout>

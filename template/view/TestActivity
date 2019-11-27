@@ -1,0 +1,37 @@
+package %Path.view
+
+import android.content.Context
+import cn.com.cg.base.BaseActivity
+import %Path.contract.%NameContract
+import %Path.presenter.%NamePresenter
+
+class %NameActivity : %NameContract.IView, BaseActivity<%NameContract.IView, %NameContract.IPresenter<%NameContract.IView>>() {
+
+    private lateinit var mPresenter: %NameContract.IPresenter<%NameContract.IView>
+
+    override fun createPresenter(): %NameContract.IPresenter<%NameContract.IView> {
+        mPresenter = %NamePresenter()
+        return mPresenter
+    }
+
+    override fun createView(): %NameContract.IView {
+        return this
+    }
+
+    override fun getBaseActivity(): Context {
+        return this
+    }
+
+    override fun initLayoutId(): Int {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun initData() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun initListener() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+}
