@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.fm_activity.*
 @CRouter("TestFMActivity")
 class TestFMActivity :TestFMContract.IView, BaseActivity<TestFMContract.IView,TestFMContract.IPresenter<TestFMContract.IView>>(), View.OnClickListener {
     override fun initListener() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     var fm1: BaseFragment<*,*>? = null

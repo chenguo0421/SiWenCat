@@ -23,7 +23,6 @@ import kotlinx.android.synthetic.main.t1_activity.*
 @CRouter(path = "Test1Activity")
 class Test1Activity :Test1Contract.IView, BaseActivity<Test1Contract.IView,Test1Contract.IPresenter<Test1Contract.IView>>(), View.OnClickListener, RouterCallBack {
     override fun initListener() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private lateinit var mPresenter: Test1Contract.IPresenter<Test1Contract.IView>

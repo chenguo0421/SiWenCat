@@ -2,6 +2,7 @@ package cn.com.cg.mvp.base
 
 import android.content.Context
 import cn.com.cg.cnet.retrofit.base.BaseApi
+import cn.com.cg.cnet.retrofit.base.intf.BaseService
 import cn.com.cg.cnet.retrofit.observelistener.ObserveResponseListener
 import cn.com.cg.cnet.retrofit.observelistener.ProgressObserver
 import cn.com.cg.cnet.retrofit.utils.RetrofitHelper
@@ -18,9 +19,9 @@ import io.reactivex.schedulers.Schedulers
  */
 abstract class BaseModel {
 
-    open var service:BaseApi.Companion? = null
+    open var service:BaseService? = null
     init {
-        service = RetrofitHelper.apiSafeService(BaseApi.javaClass)
+        service = RetrofitHelper.apiSafeService(BaseService::class.java)
     }
 
 

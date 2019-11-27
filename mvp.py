@@ -238,8 +238,8 @@ def get_module_class_path(list,rootPath):
 # 通过脚本方式，自动创建MVP的View，Presenter，Model，Contract以及关联关系，并初始化一些方法
 
 
-# 配置项目根路径 D:\Project\BaseWorkspace\CBase_Kotlin
-_rootPath = 'D:\\Project\\BaseWorkspace\\CBase_Kotlin'
+# 配置项目根路径 F:\Project\BusinessProject\siwen\android\github_code\SiWenCat
+_rootPath = 'F:\\Project\\BusinessProject\\siwen\\android\\github_code\\SiWenCat'
 
 # 获取命令行入参
 # mvp所在包路径

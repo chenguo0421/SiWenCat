@@ -8,7 +8,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "cn.com.cg.base"
+        applicationId "cn.com.cg.base.siwencat"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -37,8 +37,8 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    api project(':c-common')
-
+    implementation project(':c-common')
+    implementation project(':c-portal')
     implementation project(':testmodule1')
     implementation project(':testmodule2')
 
@@ -47,7 +47,7 @@ dependencies {
 
 task scanProjectByPython(type: Exec) {
     workingDir './'
-    commandLine "python","../pythondemo.py","D:\\Project\\BaseWorkspace\\CBase_Kotlin"
+    commandLine "python","../pythondemo.py","F:\\Project\\BusinessProject\\siwen\\android\\github_code\\SiWenCat"
 }
 
 afterEvaluate {

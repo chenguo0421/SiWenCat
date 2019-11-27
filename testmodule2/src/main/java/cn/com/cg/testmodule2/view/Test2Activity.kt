@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.t2_activity.*
 @CRouter("Test2Activity")
 class Test2Activity :Test2Contract.IView, BaseActivity<Test2Contract.IView,Test2Contract.IPresenter<Test2Contract.IView>>(){
     override fun initListener() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private lateinit var mPresenter: Test2Contract.IPresenter<Test2Contract.IView>

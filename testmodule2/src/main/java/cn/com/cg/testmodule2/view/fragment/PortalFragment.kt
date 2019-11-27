@@ -15,11 +15,9 @@ import cn.com.cg.testmodule2.presenter.PortalFMPresenter
 @CRouter("PortalFragment")
 class PortalFragment :PortalFMContract.IView, BaseFragment<PortalFMContract.IView,PortalFMContract.IPresenter<PortalFMContract.IView>>(){
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initListener() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 
