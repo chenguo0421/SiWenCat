@@ -1,2 +1,0 @@
-# SiWenCat
-a busseness project
