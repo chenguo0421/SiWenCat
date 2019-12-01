@@ -1,5 +1,6 @@
 package cn.com.cg.base
 
+import cn.com.cg.ccommon.crash.CrashHandler
 import cn.com.cg.clog.CLog
 
 
@@ -13,5 +14,6 @@ class MyApplication : CRouterApplication() {
         super.onCreate()
 //        Logger.init(this)
         CLog.init(this)
+        CrashHandler.instance.init(this, BuildConfig.DEBUG)
     }
 }

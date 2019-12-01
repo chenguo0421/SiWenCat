@@ -8,6 +8,7 @@ import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
 import cn.com.cg.base.BaseActivity
+import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.base.BaseFragment
 import cn.com.cg.clog.CLog
 import cn.com.cg.router.manager.callback.RouterCallBackManager
@@ -31,16 +32,16 @@ class RouterManager private constructor(){
      */
     companion object {
 
-        private @Volatile var instance: SoftReference<RouterManager>? = null
+        private @Volatile var instance: RouterManager? = null
         fun getInstance(): RouterManager{
             if (instance == null) {
                 synchronized(this) {
                     if (instance == null) {
-                        instance = SoftReference(RouterManager())
+                        instance = RouterManager()
                     }
                 }
             }
-            return instance!!.get()!!
+            return instance!!
         }
     }
 
@@ -163,6 +164,12 @@ class RouterManager private constructor(){
             } else if (cls is BaseFragment<*, *>) {
                 val instance = cls.getInstance()
                 instance.fragmentTag = RouterParamsManager.getInstance().getFragmentTag()
+                clearCatchData()
+                return instance
+            } else if (cls is BaseDialogFragment<*,*>){
+                val instance = cls.getInstance()
+                instance.fragmentTag = RouterParamsManager.getInstance().getFragmentTag()
+                clearCatchData()
                 return instance
             }
         }

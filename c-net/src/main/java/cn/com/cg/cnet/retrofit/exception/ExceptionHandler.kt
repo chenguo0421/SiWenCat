@@ -68,9 +68,13 @@ class ExceptionHandler {
 
     }
 
-    inner class ServerException : RuntimeException() {
+    class ServerException(code:Int,msg:String?) : RuntimeException() {
         var code = 0
         override var message: String? = null
+        init {
+            this.code = code
+            this.message = msg
+        }
     }
 
     enum class Error private constructor(val description: String, val type: Int) {

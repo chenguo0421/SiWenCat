@@ -1,6 +1,8 @@
 package cn.com.cg.router.manager.path
 
+import androidx.fragment.app.Fragment
 import cn.com.cg.base.BaseActivity
+import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.base.BaseFragment
 import java.lang.ref.SoftReference
 
@@ -24,7 +26,7 @@ class RouterBeanManager{
     /**
      * Fragment实例
      */
-    private var fmMap:HashMap<String,SoftReference<BaseFragment<*,*>>>? = null
+    private var fmMap:HashMap<String,SoftReference<Fragment>>? = null
 
     /**
      * tag用于区分Fragment的不同实例
@@ -43,15 +45,25 @@ class RouterBeanManager{
         }
     }
 
-    fun registerFM(obj: BaseFragment<*,*>) {
+    fun registerFM(obj: Fragment) {
         if (RouterPathManager.getInstance().isAnnotationClass(obj::class.qualifiedName!!)){
-            fmMap?.put(obj::class.qualifiedName!! + obj.fragmentTag,SoftReference(obj))
-            var list = fmTagsMap?.get(obj::class.qualifiedName)
-            if (list == null) {
-                list = ArrayList()
+            if (obj is BaseFragment<*,*>){
+                fmMap?.put(obj::class.qualifiedName!! + obj.fragmentTag,SoftReference(obj))
+                var list = fmTagsMap?.get(obj::class.qualifiedName)
+                if (list == null) {
+                    list = ArrayList()
+                }
+                obj.fragmentTag?.let { list!!.add(it) }
+                fmTagsMap?.put(obj::class.qualifiedName!!,list)
+            }else if (obj is BaseDialogFragment<*,*>){
+                fmMap?.put(obj::class.qualifiedName!! + obj.fragmentTag,SoftReference(obj))
+                var list = fmTagsMap?.get(obj::class.qualifiedName)
+                if (list == null) {
+                    list = ArrayList()
+                }
+                obj.fragmentTag?.let { list!!.add(it) }
+                fmTagsMap?.put(obj::class.qualifiedName!!,list)
             }
-            obj.fragmentTag?.let { list.add(it) }
-            fmTagsMap?.put(obj::class.qualifiedName!!,list)
         }
     }
 
@@ -59,8 +71,12 @@ class RouterBeanManager{
         actMap?.remove(obj::class.qualifiedName!!)
     }
 
-    fun unRegisterFM(obj: BaseFragment<*,*>) {
-        fmMap?.remove(obj::class.qualifiedName!! + obj.fragmentTag)
+    fun unRegisterFM(obj: Fragment) {
+        if (obj is BaseFragment<*,*>){
+            fmMap?.remove(obj::class.qualifiedName!! + obj.fragmentTag)
+        }else if (obj is BaseDialogFragment<*,*>){
+            fmMap?.remove(obj::class.qualifiedName!! + obj.fragmentTag)
+        }
         fmTagsMap?.remove(obj::class.qualifiedName!!)
     }
 
@@ -68,7 +84,7 @@ class RouterBeanManager{
         return actMap!![clsPath]?.get()
     }
 
-    fun getFMBean(clsPath:String):BaseFragment<*,*>?{
+    fun getFMBean(clsPath:String):Fragment?{
         return fmMap!![clsPath]?.get()
     }
 

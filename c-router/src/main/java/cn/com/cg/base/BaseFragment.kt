@@ -42,6 +42,7 @@ open abstract class BaseFragment<V: BaseView,P: BasePresenter<BaseView>> : RxFra
         super.onViewCreated(view, savedInstanceState)
         RouterBeanManager.getInstance().registerFM(this)
         initData()
+        initListener()
     }
 
 

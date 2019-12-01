@@ -1,6 +1,7 @@
 package cn.com.cg.cnet.retrofit.utils
 
 import cn.com.cg.cnet.retrofit.base.BaseApi
+import cn.com.cg.cnet.retrofit.interceptor.CommonInterceptor
 import cn.com.cg.cnet.retrofit.interceptor.LogInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -8,6 +9,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
+import java.util.concurrent.TimeUnit
 import javax.net.ssl.*
 import javax.security.cert.CertificateException
 
@@ -18,6 +20,10 @@ class RetrofitHelper {
             var client = OkHttpClient.Builder()
                 //自定义拦截器用于日志输出
                 .addInterceptor(LogInterceptor())
+                .addInterceptor(CommonInterceptor())
+                .connectTimeout(10,TimeUnit.SECONDS)
+                .readTimeout(10,TimeUnit.SECONDS)
+                .writeTimeout(10,TimeUnit.SECONDS)
                 .build()
 
             val retrofit = Retrofit.Builder().baseUrl(baseUrl)
@@ -72,9 +78,9 @@ class RetrofitHelper {
                 var sFactory = sc.socketFactory
 
                 var builder = OkHttpClient.Builder()
-                builder.sslSocketFactory(sFactory, trustAllCerts[0])
-                builder.hostnameVerifier(allHostsValid)
-
+                    .sslSocketFactory(sFactory, trustAllCerts[0])
+                    .hostnameVerifier(allHostsValid)
+                    .addInterceptor(CommonInterceptor())
                 return builder.build()
 
             }catch (e:Exception){

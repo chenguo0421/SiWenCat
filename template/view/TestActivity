@@ -5,6 +5,11 @@ import cn.com.cg.base.BaseActivity
 import %Path.contract.%NameContract
 import %Path.presenter.%NamePresenter
 
+/**
+ *  author : %User
+ *  date : %Time
+ *  description : { 请添加该类的描述 }
+ */
 class %NameActivity : %NameContract.IView, BaseActivity<%NameContract.IView, %NameContract.IPresenter<%NameContract.IView>>() {
 
     private lateinit var mPresenter: %NameContract.IPresenter<%NameContract.IView>

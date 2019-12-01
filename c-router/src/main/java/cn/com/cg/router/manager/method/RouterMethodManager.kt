@@ -1,6 +1,7 @@
 package cn.com.cg.router.manager.method
 
 import cn.com.cg.base.BaseActivity
+import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.base.BaseFragment
 import cn.com.cg.router.annotation.CMethod
 import cn.com.cg.router.manager.path.RouterBeanManager
@@ -23,6 +24,15 @@ class RouterMethodManager {
                 return invokeMethod(getInvokeActivityMaps(clzPath), RouterBeanManager.getInstance().getActBean(clzPath!!), action, params)
             }
         }else if(instance is BaseFragment<*,*>){
+            val realClsPath = RouterPathManager.getInstance().findRealPathByTag(clzPath,tag)
+            val bean = RouterBeanManager.getInstance().getFMBean(realClsPath!!)
+            if (bean != null) {
+                if(getInvokeFragmentMaps(clzPath).size > 0){
+                    return invokeMethod(getInvokeFragmentMaps(clzPath), bean, action, params)
+                }
+            }
+
+        }else if(instance is BaseDialogFragment<*,*>){
             val realClsPath = RouterPathManager.getInstance().findRealPathByTag(clzPath,tag)
             val bean = RouterBeanManager.getInstance().getFMBean(realClsPath!!)
             if (bean != null) {

@@ -32,4 +32,32 @@
 			<RouterPath>Test2Activity</RouterPath>
 			<ClassPath>cn.com.cg.testmodule2.view.Test2Activity</ClassPath>
 		</CRouter>
+		<CRouter>
+			<RouterPath>LoginFragment</RouterPath>
+			<ClassPath>com.cg.xqkj.cportal.login.view.fragment.LoginFragment</ClassPath>
+		</CRouter>
+		<CRouter>
+			<RouterPath>CatholeFragment</RouterPath>
+			<ClassPath>com.cg.xqkj.cportal.main.view.fragment.CatholeFragment</ClassPath>
+		</CRouter>
+		<CRouter>
+			<RouterPath>GiftFragment</RouterPath>
+			<ClassPath>com.cg.xqkj.cportal.main.view.fragment.GiftFragment</ClassPath>
+		</CRouter>
+		<CRouter>
+			<RouterPath>HomeFragment</RouterPath>
+			<ClassPath>com.cg.xqkj.cportal.main.view.fragment.HomeFragment</ClassPath>
+		</CRouter>
+		<CRouter>
+			<RouterPath>MyFragment</RouterPath>
+			<ClassPath>com.cg.xqkj.cportal.main.view.fragment.MyFragment</ClassPath>
+		</CRouter>
+		<CRouter>
+			<RouterPath>StoreFragment</RouterPath>
+			<ClassPath>com.cg.xqkj.cportal.main.view.fragment.StoreFragment</ClassPath>
+		</CRouter>
+		<CRouter>
+			<RouterPath>PortalActivity</RouterPath>
+			<ClassPath>com.cg.xqkj.cportal.main.view.PortalActivity</ClassPath>
+		</CRouter>
 	</CRouters>

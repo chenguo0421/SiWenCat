@@ -1,4 +1,10 @@
 package cn.com.cg.cnet.retrofit.interceptor
 
-class CommonInterceptor {
+import okhttp3.Interceptor
+import okhttp3.Response
+
+class CommonInterceptor : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): Response {
+        return chain.proceed(chain.request())
+    }
 }

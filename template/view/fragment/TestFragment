@@ -1,11 +1,16 @@
 package %Path.view.fragment
 
 import android.content.Context
-import cn.com.cg.base.BaseFragment
+import cn.com.cg.base.%BaseTypeFragment
 import %Path.contract.%NameFMContract
 import %Path.presenter.%NameFMPresenter
 
-class %NameFragment :%NameFMContract.IView, BaseFragment<%NameFMContract.IView, %NameFMContract.IPresenter<%NameFMContract.IView>>() {
+/**
+ *  author : %User
+ *  date : %Time
+ *  description : { 请添加该类的描述 }
+ */
+class %NameFragment :%NameFMContract.IView, %BaseTypeFragment<%NameFMContract.IView, %NameFMContract.IPresenter<%NameFMContract.IView>>() {
 
     private lateinit var mPresenter: %NameFMContract.IPresenter<%NameFMContract.IView>
 
@@ -14,7 +19,7 @@ class %NameFragment :%NameFMContract.IView, BaseFragment<%NameFMContract.IView, 
         return mPresenter
     }
 
-    override fun getInstance(): BaseFragment<%NameFMContract.IView, %NameFMContract.IPresenter<%NameFMContract.IView>> {
+    override fun getInstance(): %BaseTypeFragment<%NameFMContract.IView, %NameFMContract.IPresenter<%NameFMContract.IView>> {
         synchronized(%NameFragment::class){
             return %NameFragment()
         }
@@ -28,7 +33,7 @@ class %NameFragment :%NameFMContract.IView, BaseFragment<%NameFMContract.IView, 
         return this
     }
 
-    override fun initListener() {
+    override fun initLayoutId(): Int {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -36,8 +41,7 @@ class %NameFragment :%NameFMContract.IView, BaseFragment<%NameFMContract.IView, 
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun initLayoutId(): Int {
+    override fun initListener() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
 }

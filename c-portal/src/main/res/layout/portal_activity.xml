@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:id="@+id/index_rl_contain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <FrameLayout
+                android:id="@+id/portal_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/index_fl_bottom_bar">
+
+        </FrameLayout>
+
+
+        <FrameLayout
+                android:id="@+id/index_fl_bottom_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/portal_tab_fm_bg_color">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/common_tab_bg_dbdbdb"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                <!-- 商城 -->
+
+                <LinearLayout
+                        android:id="@+id/index_bottom_bar_store"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/index_bottom_bar_store_image"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="top|center"
+                            android:scaleType="centerInside"
+                            android:src="@mipmap/store_gray" />
+
+                    <TextView
+                            android:id="@+id/store_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/portal_store"
+                            android:textColor="@color/common_text_color_cdcdcd"
+                            android:textSize="10sp" />
+
+                </LinearLayout>
+
+                <!-- 猫屋 -->
+
+                <LinearLayout
+                        android:id="@+id/index_bottom_bar_cathole"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/index_bottom_bar_cathole_image"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="top|center"
+                            android:scaleType="centerInside"
+                            android:src="@mipmap/gathole_gray" />
+
+                    <TextView
+                            android:id="@+id/cathole_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/portal_gathole"
+                            android:textColor="@color/common_text_color_cdcdcd"
+                            android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- 留白 -->
+
+                <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="1">
+                    <TextView
+                            android:id="@+id/home_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/portal_home"
+                            android:textColor="@color/common_text_color_cdcdcd"
+                            android:textSize="10sp" />
+                </FrameLayout>
+
+                <!-- 礼品 -->
+
+                <LinearLayout
+                        android:id="@+id/index_bottom_bar_gift"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/index_bottom_bar_gift_image"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="top|center"
+                            android:scaleType="centerInside"
+                            android:src="@mipmap/gift_gray" />
+
+                    <TextView
+                            android:id="@+id/gift_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/portal_gift"
+                            android:textColor="@color/common_text_color_cdcdcd"
+                            android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- 我的 -->
+
+                <LinearLayout
+                        android:id="@+id/index_bottom_bar_my"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/index_bottom_bar_my_image"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="top|center"
+                            android:scaleType="centerInside"
+                            android:src="@mipmap/my_gray" />
+
+                    <TextView
+                            android:id="@+id/my_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/portal_my"
+                            android:textColor="@color/common_text_color_cdcdcd"
+                            android:textSize="10sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <ImageView
+                android:id="@+id/index_bottom_bar_home"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="10dp"
+                android:src="@mipmap/siwencat_red" />
+
+    </RelativeLayout>
+</LinearLayout>

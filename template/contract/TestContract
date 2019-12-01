@@ -4,6 +4,11 @@ import cn.com.cg.mvp.base.BaseModel
 import cn.com.cg.mvp.base.BasePresenter
 import cn.com.cg.mvp.base.intf.BaseView
 
+/**
+ *  author : %User
+ *  date : %Time
+ *  description : { 请添加该类的描述 }
+ */
 class %NameContract {
 
     public interface IView:BaseView{

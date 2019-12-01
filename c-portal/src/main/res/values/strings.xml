@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">cportal</string>
+
+    <string name="portal_store">商城</string>
+    <string name="portal_home">Home</string>
+    <string name="portal_gift">礼品</string>
+    <string name="portal_my">我的</string>
+    <string name="portal_gathole">猫屋</string>
 </resources>

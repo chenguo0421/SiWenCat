@@ -3,6 +3,7 @@
 import sys
 import os
 import re
+import time
 import xml.dom.minidom as Dom
 
 
@@ -147,6 +148,12 @@ def reWrite(_parentPath,_file,_packagePath,_baseName,type):
                 lin = lin.replace("%Path", _packagePath)
              if "%Name" in lin:
                 lin = lin.replace("%Name", _baseName)
+             if "%User" in lin:
+                lin = lin.replace("%User", _user)
+             if "%Time" in lin:
+                lin = lin.replace("%Time", _time)
+             if "%BaseType" in lin:
+                lin = lin.replace("%BaseType", _baseType)
              f2.write(lin)
          f1.close()
          f2.close()
@@ -240,6 +247,10 @@ def get_module_class_path(list,rootPath):
 
 # 配置项目根路径 F:\Project\BusinessProject\siwen\android\github_code\SiWenCat
 _rootPath = 'F:\\Project\\BusinessProject\\siwen\\android\\github_code\\SiWenCat'
+_user = 'ChenGuo'
+_time = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+_baseType = "Base"
+
 
 # 获取命令行入参
 # mvp所在包路径
@@ -265,7 +276,12 @@ if not os.path.exists(_templateFilePath):
 
 # 处理mvp服务类型，activity或fragment，若不是此两种，则直接停止脚本
 _type = _type.lower()
-if 'activity' == _type or 'fragment' == _type:
+if 'activity' == _type or 'fragment' == _type or 'dialogfragment' == _type:
+    if 'dialogfragment' == _type:
+        _baseType = "BaseDialog"
+    else:
+        _baseType = "Base"
+    print("BaseType is %s" % _baseType)
     doNext(_rootPath,_templateFilePath,_packagePath,_baseName,_type)
 else:
    print("not support other type, please use 'activity' or 'fragment' as the type")

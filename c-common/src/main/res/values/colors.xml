@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="common_text_color_cdcdcd">#FF707070</color>
+    <color name="common_text_color_red">#FFFF0000</color>
+
+
+    <color name="common_header_text_color">#FF3d3d3d</color>
+
+
+    <color name="common_tab_bg_dbdbdb">#33DBDBDB</color>
+
+
+    <color name="common_red">#FFFF0000</color>
+    <color name="common_red_transparent">#44ff0000</color>
+    <color name="common_gray">#FF707070</color>
+    <color name="common_white">#FFFFFFFF</color>
+</resources>
