@@ -6,8 +6,12 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
 import cn.com.cg.base.BaseDialogFragment
+import cn.com.cg.ccommon.utils.Constants
+import cn.com.cg.ccommon.utils.SharepreferenceUtils
+import cn.com.cg.mvp.base.intf.BaseView
 import cn.com.cg.router.annotation.CRouter
 import com.cg.xqkj.cportal.R
+import com.cg.xqkj.cportal.login.bean.ResponseLoginBean
 import com.cg.xqkj.cportal.login.contract.LoginFMContract
 import com.cg.xqkj.cportal.login.presenter.LoginFMPresenter
 import kotlinx.android.synthetic.main.login_fragment.*
@@ -17,10 +21,10 @@ import kotlinx.android.synthetic.main.login_fragment.*
 /**
  *  author : ChenGuo
  *  date : 2019-11-30 19:47:35
- *  description : { 请添加该类的描述 }
+ *  description : { 登陆页 }
  */
 @CRouter(path = "LoginFragment")
-class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.IView, LoginFMContract.IPresenter<LoginFMContract.IView>>(),
+class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.IView,LoginFMContract.IPresenter<LoginFMContract.IView>>(),
     View.OnClickListener {
 
     var isUserNameEmpty:Boolean? = true
@@ -67,7 +71,7 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
         return mPresenter
     }
 
-    override fun getInstance(): BaseDialogFragment<LoginFMContract.IView, LoginFMContract.IPresenter<LoginFMContract.IView>> {
+    override fun getInstance(): BaseDialogFragment<LoginFMContract.IView,LoginFMContract.IPresenter<LoginFMContract.IView>> {
         synchronized(LoginFragment::class){
             return LoginFragment()
         }
@@ -123,6 +127,13 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
             login_tv.setBackgroundResource(R.drawable.circle_border_red)
         }else{
             login_tv.setBackgroundResource(R.drawable.circle_border_red_transparent)
+        }
+    }
+
+    override fun onLoginSuccess(data: ResponseLoginBean) {
+        SharepreferenceUtils.put(activity!!,Constants.REMEMBER_USERNAME,psw_et.text.toString().trim())
+        if (checkbox.isChecked){
+            SharepreferenceUtils.put(activity!!,Constants.IS_REMEMBER_PSW,psw_et.text.toString().trim())
         }
     }
 }

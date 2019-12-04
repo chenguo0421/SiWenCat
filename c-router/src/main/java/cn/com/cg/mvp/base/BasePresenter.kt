@@ -5,14 +5,14 @@ package cn.com.cg.mvp.base
  * author  chenguo7
  * Date  2019/11/25 15:05
  */
-abstract class BasePresenter<BaseView> {
-    private var mView: BaseView? = null
+abstract class BasePresenter<V> {
+    private var mView: V? = null
 
-    fun getView(): BaseView? {
+    fun getView(): V? {
         return mView
     }
 
-    fun attachView(view: BaseView) {
+    fun attachView(view: V) {
         mView = view
     }
 

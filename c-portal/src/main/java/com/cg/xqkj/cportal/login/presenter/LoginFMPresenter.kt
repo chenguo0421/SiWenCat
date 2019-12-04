@@ -1,7 +1,9 @@
 package com.cg.xqkj.cportal.login.presenter
 
 import android.content.Context
+import cn.com.cg.clog.CLog
 import cn.com.cg.cnet.retrofit.base.response.BaseResponse
+import cn.com.cg.cnet.retrofit.observelistener.ProgressObserver
 import com.cg.xqkj.cportal.login.bean.RequestLoginBean
 import com.cg.xqkj.cportal.login.bean.ResponseLoginBean
 import com.cg.xqkj.cportal.login.contract.LoginFMContract
@@ -34,7 +36,15 @@ class LoginFMPresenter : LoginFMContract.IPresenter<LoginFMContract.IView>() {
         var params = RequestLoginBean()
         params.userName = userName
         params.psw = psw
-        mModel?.login(context,params,bindToLifecycle)
+        mModel?.login(context,params,bindToLifecycle,object : ProgressObserver<ResponseLoginBean>(context){
+            override fun success(data: ResponseLoginBean) {
+                getView()?.onLoginSuccess(data)
+            }
+
+            override fun failure(code: Int, msg: String) {
+
+            }
+        })
     }
 
 }

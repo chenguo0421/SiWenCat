@@ -1,7 +1,7 @@
 package com.cg.xqkj.cportal.login.contract
 
 import android.content.Context
-import cn.com.cg.cnet.retrofit.base.response.BaseResponse
+import cn.com.cg.cnet.retrofit.observelistener.ProgressObserver
 import cn.com.cg.mvp.base.BaseModel
 import cn.com.cg.mvp.base.BasePresenter
 import cn.com.cg.mvp.base.intf.BaseView
@@ -17,11 +17,11 @@ import com.trello.rxlifecycle2.LifecycleTransformer
 class LoginFMContract {
 
     public interface IView:BaseView{
-
+        fun onLoginSuccess(data: ResponseLoginBean)
     }
 
 
-    public abstract class IPresenter<T> : BasePresenter<BaseView>() {
+    public abstract class IPresenter<T> : BasePresenter<T>() {
         abstract fun login(
             context: Context,
             trim: String,
@@ -35,7 +35,8 @@ class LoginFMContract {
         abstract fun login(
             context: Context,
             params: RequestLoginBean,
-            bindToLifecycle: LifecycleTransformer<Any>
+            bindToLifecycle: LifecycleTransformer<Any>,
+            observer: ProgressObserver<ResponseLoginBean>
         )
 
     }

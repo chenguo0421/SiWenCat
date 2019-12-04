@@ -14,7 +14,7 @@ import com.trello.rxlifecycle2.components.support.RxFragment
  * author  chenguo7
  * Date  2019/8/27 20:41
  */
-open abstract class BaseFragment<V: BaseView,P: BasePresenter<BaseView>> : RxFragment(){
+open abstract class BaseFragment<V: BaseView,P: BasePresenter<V>> : RxFragment(){
 
     open var fragmentTag:String? = ""
     private var mView: V? = null

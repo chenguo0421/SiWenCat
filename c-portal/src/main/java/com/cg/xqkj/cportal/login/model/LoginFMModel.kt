@@ -31,36 +31,14 @@ class LoginFMModel: LoginFMContract.IModel() {
     override fun login(
         context: Context,
         params: RequestLoginBean,
-        transformer: LifecycleTransformer<Any>
+        transformer: LifecycleTransformer<Any>,
+        observer: ProgressObserver<ResponseLoginBean>
     ) {
         service!!.login(params)
             .compose(transformer)
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe(object : Observer<Any>{
-//                override fun onComplete() {
-//                }
-//
-//                override fun onSubscribe(d: Disposable) {
-//                }
-//
-//                override fun onNext(t:Any) {
-//
-//                }
-//
-//                override fun onError(e: Throwable) {
-//                }
-//
-//            })
-            .subscribe(object : ProgressObserver<ResponseLoginBean>(context){
-                override fun success(data: ResponseLoginBean) {
-                    CLog.e("data = " + data)
-                }
-
-                override fun failure(code: Int, msg: String) {
-
-                }
-            })
+            .subscribe(observer)
 
     }
 

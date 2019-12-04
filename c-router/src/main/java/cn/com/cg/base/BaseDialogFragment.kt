@@ -18,7 +18,7 @@ import android.view.animation.TranslateAnimation
  *  date : 2019/11/30 18:58
  *  description : { 请添加该类的描述 }
  */
-abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<BaseView>> : RxDialogFragment() {
+abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFragment() {
     open var fragmentTag:String? = ""
     private var mView: V? = null
     private var mPresenter: P? = null

@@ -16,7 +16,7 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
  * author  chenguo7
  * Date  2019/8/27 20:22
  */
-open abstract class BaseActivity<V:BaseView,P: BasePresenter<BaseView>> : RxAppCompatActivity() {
+open abstract class BaseActivity<V:BaseView,P: BasePresenter<V>> : RxAppCompatActivity() {
 
     open var callBackMethodID: String? = null
     private var mView: V? = null
