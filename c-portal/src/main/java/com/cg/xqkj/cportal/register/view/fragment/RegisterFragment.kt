@@ -3,6 +3,8 @@ package com.cg.xqkj.cportal.register.view.fragment
 import android.content.Context
 import android.view.View
 import cn.com.cg.base.BaseDialogFragment
+import cn.com.cg.ccommon.utils.RegexUtils
+import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.router.annotation.CRouter
 import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
@@ -23,6 +25,14 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
             R.id.privacy_tv -> {
                 val privacyFragment = RouterManager.getInstance().with(activity!!).fragmentTag("ptivacyFragment1").action("PtivacyFragment").navigation() as BaseDialogFragment<*,*>?
                 privacyFragment?.show(activity!!.supportFragmentManager,"ptivacyFragment1")
+            }
+
+            R.id.verification_get_tv -> {
+                if (phone_et.text != null && "" != phone_et.text.toString().trim() && RegexUtils.checkPhoneNum(phone_et.text.toString().trim())) {
+
+                }else{
+                    ToastUtils.show(R.string.portal_register_warr_edit_phone_first)
+                }
             }
         }
     }
@@ -58,5 +68,6 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
 
     override fun initListener() {
         privacy_tv.setOnClickListener(this)
+        verification_get_tv.setOnClickListener(this)
     }
 }

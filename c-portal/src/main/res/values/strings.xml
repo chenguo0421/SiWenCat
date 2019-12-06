@@ -22,6 +22,7 @@
 
     <!-- 注册 -->
     <string name="portal_register_title">注册</string>
+    <string name="portal_register_warr_edit_phone_first">请先正确填写手机号码</string>
 
     <!-- 隐私用户协议 -->
     <string name="portal_privacy_title">隐私协议</string>

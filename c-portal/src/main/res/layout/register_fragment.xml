@@ -68,6 +68,7 @@
                 android:textColorHint="@color/common_text_color_cdcdcd"
                 android:textColor="@color/common_text_color_3d3d3d"
                 android:textSize="14sp"
+                android:inputType="phone"
                 android:hint="请输入手机号"
                 android:background="@null"/>
 
@@ -92,7 +93,8 @@
                 android:layout_height="match_parent"
                 android:textColorHint="@color/common_text_color_cdcdcd"
                 android:textColor="@color/common_text_color_3d3d3d"
-                android:inputType="textPassword"
+                android:inputType="number"
+                android:maxLength="6"
                 android:textSize="14sp"
                 android:hint="请输入验证码"
                 android:background="@null"/>
