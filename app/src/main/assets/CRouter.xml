@@ -60,4 +60,12 @@
 			<RouterPath>PortalActivity</RouterPath>
 			<ClassPath>com.cg.xqkj.cportal.main.view.PortalActivity</ClassPath>
 		</CRouter>
+		<CRouter>
+			<RouterPath>PtivacyFragment</RouterPath>
+			<ClassPath>com.cg.xqkj.cportal.register.view.fragment.PtivacyFragment</ClassPath>
+		</CRouter>
+		<CRouter>
+			<RouterPath>RegisterFragment</RouterPath>
+			<ClassPath>com.cg.xqkj.cportal.register.view.fragment.RegisterFragment</ClassPath>
+		</CRouter>
 	</CRouters>

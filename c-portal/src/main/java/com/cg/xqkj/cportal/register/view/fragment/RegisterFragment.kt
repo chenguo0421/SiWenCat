@@ -1,16 +1,31 @@
 package com.cg.xqkj.cportal.register.view.fragment
 
 import android.content.Context
+import android.view.View
 import cn.com.cg.base.BaseDialogFragment
+import cn.com.cg.router.annotation.CRouter
+import cn.com.cg.router.manager.RouterManager
+import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.register.contract.RegisterFMContract
 import com.cg.xqkj.cportal.register.presenter.RegisterFMPresenter
+import kotlinx.android.synthetic.main.register_fragment.*
 
 /**
  *  author : ChenGuo
  *  date : 2019-11-30 19:47:08
  *  description : { 请添加该类的描述 }
  */
-class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMContract.IView, RegisterFMContract.IPresenter<RegisterFMContract.IView>>() {
+@CRouter(path = "RegisterFragment")
+class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMContract.IView, RegisterFMContract.IPresenter<RegisterFMContract.IView>>(),
+    View.OnClickListener {
+    override fun onClick(v: View?) {
+        when(v!!.id){
+            R.id.privacy_tv -> {
+                val privacyFragment = RouterManager.getInstance().with(activity!!).fragmentTag("ptivacyFragment1").action("PtivacyFragment").navigation() as BaseDialogFragment<*,*>?
+                privacyFragment?.show(activity!!.supportFragmentManager,"ptivacyFragment1")
+            }
+        }
+    }
 
     private lateinit var mPresenter: RegisterFMContract.IPresenter<RegisterFMContract.IView>
 
@@ -34,14 +49,14 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
     }
 
     override fun initLayoutId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return R.layout.register_fragment
     }
 
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        setHeaderTitle(activity!!.resources.getString(R.string.portal_register_title))
     }
 
     override fun initListener() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        privacy_tv.setOnClickListener(this)
     }
 }

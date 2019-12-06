@@ -1,15 +1,20 @@
 package cn.com.cg.base
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import cn.com.cg.mvp.base.BasePresenter
 import cn.com.cg.mvp.base.intf.BaseView
+import cn.com.cg.router.R
 import cn.com.cg.router.manager.params.RouterParamsManager
 import cn.com.cg.router.manager.path.RouterBeanManager
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import kotlinx.android.synthetic.main.include_base_header.*
 
 /**
  * Discription  {}
@@ -24,7 +29,8 @@ open abstract class BaseActivity<V:BaseView,P: BasePresenter<V>> : RxAppCompatAc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(initLayoutId())
+        val view = LayoutInflater.from(this).inflate(initLayoutId(),null)
+        setContentView(view)
 
         RouterBeanManager.getInstance().registerAct(this)
         callBackMethodID = intent.getStringExtra(RouterParamsManager.METHODCALLBACKID)
@@ -39,8 +45,21 @@ open abstract class BaseActivity<V:BaseView,P: BasePresenter<V>> : RxAppCompatAc
 
         mPresenter?.attachView(mView!!)
 
+        initHeaderView(view)
+
         initData()
         initListener()
+    }
+
+    private fun initHeaderView(view: View) {
+        val back_img = view.findViewById<ImageView>(R.id.back_img)
+        back_img?.setOnClickListener(View.OnClickListener {
+            finish()
+        })
+    }
+
+    public fun setHeaderTitle(title:String){
+        title_tv?.text = title
     }
 
 

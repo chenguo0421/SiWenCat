@@ -19,7 +19,8 @@ import cn.com.cg.cnet.R
  *  date : 2019/12/3 20:17
  *  description : { 自定义网络加载框 }
  */
-class RotateLoading : View {
+class RotateLoading constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int):
+    View(context, attrs, defStyleAttr) {
     private val DEFAULT_WIDTH = 6
     private val DEFAULT_SHADOW_POSITION = 2
     private val DEFAULT_SPEED_OF_DEGREE = 10
@@ -49,11 +50,10 @@ class RotateLoading : View {
     private var speedOfArc: Float = 0.toFloat()
 
 
-    constructor(context: Context) : this(context, null)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    init {
         initView(context, attrs)
     }
+
 
     private fun initView(context: Context, attrs: AttributeSet?) {
         color = Color.WHITE

@@ -16,7 +16,7 @@ class RegisterFMContract {
     }
 
 
-    public abstract class IPresenter<T> : BasePresenter<BaseView>() {
+    public abstract class IPresenter<T> : BasePresenter<T>() {
 
     }
 

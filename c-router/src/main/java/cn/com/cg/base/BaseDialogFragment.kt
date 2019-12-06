@@ -10,7 +10,9 @@ import cn.com.cg.router.manager.path.RouterBeanManager
 import com.trello.rxlifecycle2.components.support.RxDialogFragment
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
-
+import android.widget.ImageView
+import cn.com.cg.router.R
+import kotlinx.android.synthetic.main.include_base_header.*
 
 
 /**
@@ -73,9 +75,23 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        var v = inflater.inflate(initLayoutId(), container, false)
+        val v = inflater.inflate(initLayoutId(), container,false)
+        initHeaderView(v)
         slideToUp(v)
         return v
+    }
+
+    private fun initHeaderView(view:View) {
+        val back_img = view.findViewById<ImageView>(R.id.back_img)
+        back_img?.setOnClickListener(View.OnClickListener {
+            if (dialog!!.isShowing){
+                dismiss()
+            }
+        })
+    }
+
+    public fun setHeaderTitle(title:String){
+        title_tv?.text = title
     }
 
 

@@ -10,6 +10,7 @@ import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.SharepreferenceUtils
 import cn.com.cg.mvp.base.intf.BaseView
 import cn.com.cg.router.annotation.CRouter
+import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.login.bean.ResponseLoginBean
 import com.cg.xqkj.cportal.login.contract.LoginFMContract
@@ -50,6 +51,11 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
                if(checkLoginParamsOK()){
                    mPresenter.login(activity!!,user_et.text.toString().trim(),psw_et.text.toString().trim(),bindToLifecycle<Any>())
                }
+           }
+
+           register_tv -> {
+               val registerFragment = RouterManager.getInstance().with(activity!!).fragmentTag("registerFragment1").action("RegisterFragment").navigation() as BaseDialogFragment<*,*>?
+               registerFragment?.show(activity!!.supportFragmentManager,"registerFragment1")
            }
        }
     }
@@ -98,6 +104,7 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
     override fun initListener() {
         show_hidden_psw_img.setOnClickListener(this)
         login_tv.setOnClickListener(this)
+        register_tv.setOnClickListener(this)
         user_et.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
