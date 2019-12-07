@@ -61,10 +61,10 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
     }
 
     private fun checkLoginParamsOK(): Boolean {
-        if("" == user_et.text.toString().trim()){
+        if (isUserNameEmpty!!) {
             return false
         }
-        if ("" == psw_et.text.toString().trim()){
+        if (isPSWEmpty!!) {
             return false
         }
         return true

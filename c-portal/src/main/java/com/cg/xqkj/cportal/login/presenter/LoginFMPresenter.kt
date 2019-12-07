@@ -36,7 +36,7 @@ class LoginFMPresenter : LoginFMContract.IPresenter<LoginFMContract.IView>() {
         var params = RequestLoginBean()
         params.userName = userName
         params.psw = psw
-        mModel?.login(context,params,bindToLifecycle,object : ProgressObserver<ResponseLoginBean>(context){
+        mModel?.login(params,bindToLifecycle,object : ProgressObserver<ResponseLoginBean>(context){
             override fun success(data: ResponseLoginBean) {
                 getView()?.onLoginSuccess(data)
             }

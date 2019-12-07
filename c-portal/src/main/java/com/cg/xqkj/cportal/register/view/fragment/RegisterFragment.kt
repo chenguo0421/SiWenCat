@@ -1,6 +1,8 @@
 package com.cg.xqkj.cportal.register.view.fragment
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.ccommon.utils.RegexUtils
@@ -20,6 +22,10 @@ import kotlinx.android.synthetic.main.register_fragment.*
 @CRouter(path = "RegisterFragment")
 class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMContract.IView, RegisterFMContract.IPresenter<RegisterFMContract.IView>>(),
     View.OnClickListener {
+
+    var isPhoneEmpty:Boolean? = true
+    var isAuthCodeEmpty:Boolean? = true
+
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.privacy_tv -> {
@@ -34,7 +40,23 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
                     ToastUtils.show(R.string.portal_register_warr_edit_phone_first)
                 }
             }
+
+            R.id.register_tv -> {
+                if(checkParamsOK()){
+                    mPresenter.register(activity!!,phone_et.text.toString().trim(),auth_code_et.text.toString().trim(),bindToLifecycle<Any>())
+                }
+            }
         }
+    }
+
+    private fun checkParamsOK(): Boolean {
+        if(isPhoneEmpty!!){
+            return false
+        }
+        if (isAuthCodeEmpty!!){
+            return false
+        }
+        return true
     }
 
     private lateinit var mPresenter: RegisterFMContract.IPresenter<RegisterFMContract.IView>
@@ -64,10 +86,43 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
 
     override fun initData() {
         setHeaderTitle(activity!!.resources.getString(R.string.portal_register_title))
+        isPhoneEmpty = true
+        isAuthCodeEmpty = true
     }
 
     override fun initListener() {
         privacy_tv.setOnClickListener(this)
         verification_get_tv.setOnClickListener(this)
+        register_tv.setOnClickListener(this)
+
+        phone_et.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                isPhoneEmpty = (!s?.isNotEmpty()!!) || !(RegexUtils.checkPhoneNum(s.toString().trim()))
+                changeRegisterTVBackground()
+            }
+        })
+        auth_code_et.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                isAuthCodeEmpty = !s?.isNotEmpty()!! || (s.length != 6)
+                changeRegisterTVBackground()
+            }
+        })
+    }
+
+    fun changeRegisterTVBackground(){
+        if (!isPhoneEmpty!! && !isAuthCodeEmpty!!) {
+            register_tv.setBackgroundResource(R.drawable.circle_border_red)
+        }else{
+            register_tv.setBackgroundResource(R.drawable.circle_border_red_transparent)
+        }
     }
 }

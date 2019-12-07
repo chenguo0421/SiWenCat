@@ -26,16 +26,15 @@ class LoginFMContract {
             context: Context,
             trim: String,
             trim1: String,
-            bindToLifecycle: LifecycleTransformer<Any>
+            transformer: LifecycleTransformer<Any>
         )
     }
 
 
     public abstract class IModel:BaseModel(){
         abstract fun login(
-            context: Context,
             params: RequestLoginBean,
-            bindToLifecycle: LifecycleTransformer<Any>,
+            transformer: LifecycleTransformer<Any>,
             observer: ProgressObserver<ResponseLoginBean>
         )
 

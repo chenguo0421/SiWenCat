@@ -3,6 +3,8 @@ package com.cg.xqkj.cportal.service
 import cn.com.cg.cnet.retrofit.base.response.BaseResponse
 import com.cg.xqkj.cportal.login.bean.RequestLoginBean
 import com.cg.xqkj.cportal.login.bean.ResponseLoginBean
+import com.cg.xqkj.cportal.register.bean.RequestRegisterBean
+import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
 import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -15,6 +17,10 @@ import retrofit2.http.POST
 interface PortalService {
 
     @POST("/siwen/login")
-    fun login(@Body request:RequestLoginBean): Observable<BaseResponse<ResponseLoginBean>> //括号中请求头可为空
+    fun login(@Body request:RequestLoginBean): Observable<BaseResponse<ResponseLoginBean>>
+
+
+    @POST("/siwen/register")
+    fun register(@Body request:RequestRegisterBean): Observable<BaseResponse<ResponseRegisterBean>>
 
 }

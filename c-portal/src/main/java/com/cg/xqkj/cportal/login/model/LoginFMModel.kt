@@ -29,7 +29,6 @@ class LoginFMModel: LoginFMContract.IModel() {
 
 
     override fun login(
-        context: Context,
         params: RequestLoginBean,
         transformer: LifecycleTransformer<Any>,
         observer: ProgressObserver<ResponseLoginBean>

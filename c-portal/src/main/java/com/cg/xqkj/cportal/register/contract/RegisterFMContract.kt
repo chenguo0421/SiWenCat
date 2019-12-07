@@ -1,8 +1,13 @@
 package com.cg.xqkj.cportal.register.contract
 
+import android.content.Context
+import cn.com.cg.cnet.retrofit.observelistener.ProgressObserver
 import cn.com.cg.mvp.base.BaseModel
 import cn.com.cg.mvp.base.BasePresenter
 import cn.com.cg.mvp.base.intf.BaseView
+import com.cg.xqkj.cportal.register.bean.RequestRegisterBean
+import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
+import com.trello.rxlifecycle2.LifecycleTransformer
 
 /**
  *  author : ChenGuo
@@ -17,11 +22,20 @@ class RegisterFMContract {
 
 
     public abstract class IPresenter<T> : BasePresenter<T>() {
-
+        abstract fun register(
+            context: Context,
+            phone: String,
+            authCode: String,
+            transformer: LifecycleTransformer<Any>
+        )
     }
 
 
     public abstract class IModel:BaseModel(){
-
+        abstract fun register(
+            params: RequestRegisterBean,
+            transformer: LifecycleTransformer<Any>,
+            observer: ProgressObserver<ResponseRegisterBean>
+        )
     }
 }
