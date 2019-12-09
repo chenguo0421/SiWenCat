@@ -32,7 +32,7 @@ class SplashActivity : SplashContract.IView, BaseActivity<SplashContract.IView, 
     }
 
     override fun initLayoutId(): Int {
-        return R.layout.splash_activity
+        return R.layout.portal_activity_splash
     }
 
     override fun initData() {

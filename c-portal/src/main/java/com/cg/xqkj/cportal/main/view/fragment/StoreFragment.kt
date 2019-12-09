@@ -37,7 +37,7 @@ class StoreFragment :StoreFMContract.IView, BaseFragment<StoreFMContract.IView, 
     }
 
     override fun initLayoutId(): Int {
-        return R.layout.store_fragment
+        return R.layout.portal_fragment_store
     }
 
     override fun initListener() {

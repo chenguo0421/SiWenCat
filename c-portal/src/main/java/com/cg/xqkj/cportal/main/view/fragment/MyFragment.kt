@@ -37,7 +37,7 @@ class MyFragment :MyFMContract.IView, BaseFragment<MyFMContract.IView, MyFMContr
     }
 
     override fun initLayoutId(): Int {
-        return R.layout.my_fragment
+        return R.layout.portal_fragment_my
     }
 
     override fun initListener() {

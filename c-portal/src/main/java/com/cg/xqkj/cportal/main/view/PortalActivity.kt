@@ -1,10 +1,7 @@
 package com.cg.xqkj.cportal.main.view
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.SharedPreferences
 import android.view.View
-import android.widget.TabHost
 import cn.com.cg.base.BaseActivity
 import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.base.BaseFragment
@@ -15,8 +12,7 @@ import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.main.contract.PortalContract
 import com.cg.xqkj.cportal.main.presenter.PortalPresenter
-import com.cg.xqkj.cportal.main.view.fragment.HomeFragment
-import kotlinx.android.synthetic.main.portal_activity.*
+import kotlinx.android.synthetic.main.portal_main_activity.*
 
 /**
  *  author : ChenGuo
@@ -52,7 +48,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
     }
 
     override fun initLayoutId(): Int {
-        return R.layout.portal_activity
+        return R.layout.portal_main_activity
     }
 
     override fun initData() {

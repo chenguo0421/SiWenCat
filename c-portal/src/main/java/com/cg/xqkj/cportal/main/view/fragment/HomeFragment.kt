@@ -37,7 +37,7 @@ class HomeFragment :HomeFMContract.IView, BaseFragment<HomeFMContract.IView, Hom
     }
 
     override fun initLayoutId(): Int {
-        return R.layout.home_fragment
+        return R.layout.portal_fragment_home
     }
 
     override fun initListener() {

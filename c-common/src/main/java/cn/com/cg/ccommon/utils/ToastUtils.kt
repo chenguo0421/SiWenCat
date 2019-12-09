@@ -44,6 +44,15 @@ public class ToastUtils{
             showToast(context, context!!.getString(resId), Toast.LENGTH_SHORT)
         }
 
+        /**
+         * 发送Toast,默认LENGTH_SHORT
+         *
+         * @param msg
+         */
+        fun show(msg: String) {
+            showToast(context, msg, Toast.LENGTH_SHORT)
+        }
+
         private fun showToast(context: Context?, massage: String, duration: Int) {
             // 设置显示文字的颜色
             val spannableString = SpannableString(massage)

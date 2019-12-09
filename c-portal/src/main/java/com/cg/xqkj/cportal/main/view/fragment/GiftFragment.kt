@@ -37,7 +37,7 @@ class GiftFragment :GiftFMContract.IView, BaseFragment<GiftFMContract.IView, Gif
     }
 
     override fun initLayoutId(): Int {
-        return R.layout.gift_fragment
+        return R.layout.portal_fragment_gift
     }
 
     override fun initListener() {

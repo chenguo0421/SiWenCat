@@ -1,9 +1,11 @@
 package com.cg.xqkj.cportal.login.presenter
 
 import android.content.Context
+import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.clog.CLog
 import cn.com.cg.cnet.retrofit.base.response.BaseResponse
 import cn.com.cg.cnet.retrofit.observelistener.ProgressObserver
+import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.login.bean.RequestLoginBean
 import com.cg.xqkj.cportal.login.bean.ResponseLoginBean
 import com.cg.xqkj.cportal.login.contract.LoginFMContract
@@ -42,7 +44,7 @@ class LoginFMPresenter : LoginFMContract.IPresenter<LoginFMContract.IView>() {
             }
 
             override fun failure(code: Int, msg: String) {
-
+                ToastUtils.show(String.format(getView()?.getBaseActivity()!!.getString(R.string.portal_login_error),msg))
             }
         })
     }

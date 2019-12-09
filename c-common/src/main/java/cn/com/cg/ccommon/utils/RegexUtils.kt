@@ -20,5 +20,16 @@ class RegexUtils {
             return m.matches()
         }
 
+
+        /***
+         * 8位密码，包含字母数字
+         */
+        fun checkPSW(psw: String): Boolean{
+            val regExp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+            val p = Pattern.compile(regExp)
+            val m = p.matcher(psw)
+            return m.matches()
+        }
+
     }
 }

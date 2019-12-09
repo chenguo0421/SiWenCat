@@ -8,14 +8,13 @@ import android.view.View
 import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.SharepreferenceUtils
-import cn.com.cg.mvp.base.intf.BaseView
 import cn.com.cg.router.annotation.CRouter
 import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.login.bean.ResponseLoginBean
 import com.cg.xqkj.cportal.login.contract.LoginFMContract
 import com.cg.xqkj.cportal.login.presenter.LoginFMPresenter
-import kotlinx.android.synthetic.main.login_fragment.*
+import kotlinx.android.synthetic.main.portal_fragment_login.*
 
 
 
@@ -30,46 +29,6 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
 
     var isUserNameEmpty:Boolean? = true
     var isPSWEmpty:Boolean? = true
-
-    override fun onClick(v: View?) {
-       when(v){
-           show_hidden_psw_img -> {
-               if (show_hidden_psw_img.tag is Boolean){
-                   if(show_hidden_psw_img.tag as Boolean){
-                       show_hidden_psw_img.setImageResource(R.mipmap.portal_eye_close_icon)
-                       psw_et.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-                       show_hidden_psw_img.tag = false
-                   }else{
-                       show_hidden_psw_img.setImageResource(R.mipmap.portal_eye_open_icon)
-                       psw_et.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-                       show_hidden_psw_img.tag = true
-                   }
-               }
-           }
-
-           login_tv -> {
-               if(checkLoginParamsOK()){
-                   mPresenter.login(activity!!,user_et.text.toString().trim(),psw_et.text.toString().trim(),bindToLifecycle<Any>())
-               }
-           }
-
-           register_tv -> {
-               val registerFragment = RouterManager.getInstance().with(activity!!).fragmentTag("registerFragment1").action("RegisterFragment").navigation() as BaseDialogFragment<*,*>?
-               registerFragment?.show(activity!!.supportFragmentManager,"registerFragment1")
-           }
-       }
-    }
-
-    private fun checkLoginParamsOK(): Boolean {
-        if (isUserNameEmpty!!) {
-            return false
-        }
-        if (isPSWEmpty!!) {
-            return false
-        }
-        return true
-    }
-
     private lateinit var mPresenter: LoginFMContract.IPresenter<LoginFMContract.IView>
 
     override fun createPresenter(): LoginFMContract.IPresenter<LoginFMContract.IView> {
@@ -92,7 +51,7 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
     }
 
     override fun initLayoutId(): Int {
-        return R.layout.login_fragment
+        return R.layout.portal_fragment_login
     }
 
     override fun initData() {
@@ -126,6 +85,45 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
                 changeLoginTVBackground()
             }
         })
+    }
+
+    override fun onClick(v: View?) {
+        when(v){
+            show_hidden_psw_img -> {
+                if (show_hidden_psw_img.tag is Boolean){
+                    if(show_hidden_psw_img.tag as Boolean){
+                        show_hidden_psw_img.setImageResource(R.mipmap.portal_eye_close_icon)
+                        psw_et.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                        show_hidden_psw_img.tag = false
+                    }else{
+                        show_hidden_psw_img.setImageResource(R.mipmap.portal_eye_open_icon)
+                        psw_et.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                        show_hidden_psw_img.tag = true
+                    }
+                }
+            }
+
+            login_tv -> {
+                if(checkLoginParamsOK()){
+                    mPresenter.login(activity!!,user_et.text.toString().trim(),psw_et.text.toString().trim(),bindToLifecycle<Any>())
+                }
+            }
+
+            register_tv -> {
+                val registerFragment = RouterManager.getInstance().with(activity!!).fragmentTag("registerFragment1").action("RegisterFragment").navigation() as BaseDialogFragment<*,*>?
+                registerFragment?.show(activity!!.supportFragmentManager,"registerFragment1")
+            }
+        }
+    }
+
+    private fun checkLoginParamsOK(): Boolean {
+        if (isUserNameEmpty!!) {
+            return false
+        }
+        if (isPSWEmpty!!) {
+            return false
+        }
+        return true
     }
 
 

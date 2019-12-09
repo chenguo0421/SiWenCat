@@ -4,7 +4,9 @@ import cn.com.cg.cnet.retrofit.base.response.BaseResponse
 import com.cg.xqkj.cportal.login.bean.RequestLoginBean
 import com.cg.xqkj.cportal.login.bean.ResponseLoginBean
 import com.cg.xqkj.cportal.register.bean.RequestRegisterBean
+import com.cg.xqkj.cportal.register.bean.RequestRegisterPSWBean
 import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
+import com.cg.xqkj.cportal.register.bean.ResponseRegisterPSWBean
 import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -22,5 +24,10 @@ interface PortalService {
 
     @POST("/siwen/register")
     fun register(@Body request:RequestRegisterBean): Observable<BaseResponse<ResponseRegisterBean>>
+
+
+    @POST("/siwen/register")
+    fun submitPSW(@Body request: RequestRegisterPSWBean): Observable<BaseResponse<ResponseRegisterPSWBean>>
+
 
 }

@@ -5,38 +5,37 @@ import cn.com.cg.cnet.retrofit.observelistener.ProgressObserver
 import cn.com.cg.mvp.base.BaseModel
 import cn.com.cg.mvp.base.BasePresenter
 import cn.com.cg.mvp.base.intf.BaseView
-import com.cg.xqkj.cportal.register.bean.RequestRegisterBean
-import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
+import com.cg.xqkj.cportal.register.bean.RequestRegisterPSWBean
+import com.cg.xqkj.cportal.register.bean.ResponseRegisterPSWBean
 import com.trello.rxlifecycle2.LifecycleTransformer
 
 /**
  *  author : ChenGuo
- *  date : 2019-11-30 19:47:08
+ *  date : 2019-12-09 21:20:34
  *  description : { 请添加该类的描述 }
  */
-class RegisterFMContract {
+class RegisterpswFMContract {
 
     public interface IView:BaseView{
-        fun onPhoneNumSubOK(data: ResponseRegisterBean)
 
     }
 
 
     public abstract class IPresenter<T> : BasePresenter<T>() {
-        abstract fun register(
+        abstract fun submitPSW(
             context: Context,
-            phone: String,
-            authCode: String,
+            psw: String,
+            confirmPsw: String,
             transformer: LifecycleTransformer<Any>
         )
     }
 
 
     public abstract class IModel:BaseModel(){
-        abstract fun register(
-            params: RequestRegisterBean,
+        abstract fun submitPSW(
+            params: RequestRegisterPSWBean,
             transformer: LifecycleTransformer<Any>,
-            observer: ProgressObserver<ResponseRegisterBean>
+            observer: ProgressObserver<ResponseRegisterPSWBean>
         )
     }
 }

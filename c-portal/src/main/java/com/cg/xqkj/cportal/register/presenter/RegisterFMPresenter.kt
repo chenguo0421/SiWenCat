@@ -1,7 +1,9 @@
 package com.cg.xqkj.cportal.register.presenter
 
 import android.content.Context
+import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.cnet.retrofit.observelistener.ProgressObserver
+import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.register.bean.RequestRegisterBean
 import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
 import com.cg.xqkj.cportal.register.contract.RegisterFMContract
@@ -32,13 +34,12 @@ class RegisterFMPresenter : RegisterFMContract.IPresenter<RegisterFMContract.IVi
         params.authCode = authCode
         mModel?.register(params,transformer,object :  ProgressObserver<ResponseRegisterBean>(context){
             override fun success(data: ResponseRegisterBean) {
-
+                getView()?.onPhoneNumSubOK(data)
             }
 
             override fun failure(code: Int, msg: String) {
-
+                ToastUtils.show(String.format(getView()?.getBaseActivity()!!.getString(R.string.portal_register_phone_submit_error),msg))
             }
-
         })
     }
 }

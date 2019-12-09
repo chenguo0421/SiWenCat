@@ -6,12 +6,12 @@ import cn.com.cg.router.annotation.CRouter
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.register.contract.PtivacyFMContract
 import com.cg.xqkj.cportal.register.presenter.PtivacyFMPresenter
-import kotlinx.android.synthetic.main.privacy_fragment.*
+import kotlinx.android.synthetic.main.portal_fragment_privacy.*
 
 /**
  *  author : ChenGuo
  *  date : 2019-12-06 19:54:48
- *  description : { 请添加该类的描述 }
+ *  description : { 隐私协议页面 }
  */
 @CRouter(path = "PtivacyFragment")
 class PtivacyFragment :PtivacyFMContract.IView, BaseDialogFragment<PtivacyFMContract.IView, PtivacyFMContract.IPresenter<PtivacyFMContract.IView>>() {
@@ -38,7 +38,7 @@ class PtivacyFragment :PtivacyFMContract.IView, BaseDialogFragment<PtivacyFMCont
     }
 
     override fun initLayoutId(): Int {
-        return R.layout.privacy_fragment
+        return R.layout.portal_fragment_privacy
     }
 
     override fun initData() {

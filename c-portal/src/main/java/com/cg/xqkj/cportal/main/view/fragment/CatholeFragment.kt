@@ -37,7 +37,7 @@ class CatholeFragment :CatholeFMContract.IView, BaseFragment<CatholeFMContract.I
     }
 
     override fun initLayoutId(): Int {
-        return R.layout.gathole_fragment
+        return R.layout.portal_fragment_gathole
     }
 
     override fun initListener() {

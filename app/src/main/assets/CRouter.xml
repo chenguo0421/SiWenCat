@@ -68,4 +68,8 @@
 			<RouterPath>RegisterFragment</RouterPath>
 			<ClassPath>com.cg.xqkj.cportal.register.view.fragment.RegisterFragment</ClassPath>
 		</CRouter>
+		<CRouter>
+			<RouterPath>RegisterpswFragment</RouterPath>
+			<ClassPath>com.cg.xqkj.cportal.register.view.fragment.RegisterpswFragment</ClassPath>
+		</CRouter>
 	</CRouters>

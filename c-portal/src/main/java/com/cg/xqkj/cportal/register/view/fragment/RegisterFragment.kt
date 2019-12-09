@@ -10,14 +10,15 @@ import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.router.annotation.CRouter
 import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
+import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
 import com.cg.xqkj.cportal.register.contract.RegisterFMContract
 import com.cg.xqkj.cportal.register.presenter.RegisterFMPresenter
-import kotlinx.android.synthetic.main.register_fragment.*
+import kotlinx.android.synthetic.main.portal_fragment_register.*
 
 /**
  *  author : ChenGuo
  *  date : 2019-11-30 19:47:08
- *  description : { 请添加该类的描述 }
+ *  description : { 注册-验证手机号 }
  */
 @CRouter(path = "RegisterFragment")
 class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMContract.IView, RegisterFMContract.IPresenter<RegisterFMContract.IView>>(),
@@ -25,40 +26,6 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
 
     var isPhoneEmpty:Boolean? = true
     var isAuthCodeEmpty:Boolean? = true
-
-    override fun onClick(v: View?) {
-        when(v!!.id){
-            R.id.privacy_tv -> {
-                val privacyFragment = RouterManager.getInstance().with(activity!!).fragmentTag("ptivacyFragment1").action("PtivacyFragment").navigation() as BaseDialogFragment<*,*>?
-                privacyFragment?.show(activity!!.supportFragmentManager,"ptivacyFragment1")
-            }
-
-            R.id.verification_get_tv -> {
-                if (phone_et.text != null && "" != phone_et.text.toString().trim() && RegexUtils.checkPhoneNum(phone_et.text.toString().trim())) {
-
-                }else{
-                    ToastUtils.show(R.string.portal_register_warr_edit_phone_first)
-                }
-            }
-
-            R.id.register_tv -> {
-                if(checkParamsOK()){
-                    mPresenter.register(activity!!,phone_et.text.toString().trim(),auth_code_et.text.toString().trim(),bindToLifecycle<Any>())
-                }
-            }
-        }
-    }
-
-    private fun checkParamsOK(): Boolean {
-        if(isPhoneEmpty!!){
-            return false
-        }
-        if (isAuthCodeEmpty!!){
-            return false
-        }
-        return true
-    }
-
     private lateinit var mPresenter: RegisterFMContract.IPresenter<RegisterFMContract.IView>
 
     override fun createPresenter(): RegisterFMContract.IPresenter<RegisterFMContract.IView> {
@@ -81,7 +48,7 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
     }
 
     override fun initLayoutId(): Int {
-        return R.layout.register_fragment
+        return R.layout.portal_fragment_register
     }
 
     override fun initData() {
@@ -118,11 +85,50 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
         })
     }
 
+    override fun onClick(v: View?) {
+        when(v!!.id){
+            R.id.privacy_tv -> {
+                val privacyFragment = RouterManager.getInstance().with(activity!!).fragmentTag("ptivacyFragment1").action("PtivacyFragment").navigation() as BaseDialogFragment<*,*>?
+                privacyFragment?.show(activity!!.supportFragmentManager,"ptivacyFragment1")
+            }
+
+            R.id.verification_get_tv -> {
+                if (phone_et.text != null && "" != phone_et.text.toString().trim() && RegexUtils.checkPhoneNum(phone_et.text.toString().trim())) {
+
+                }else{
+                    ToastUtils.show(R.string.portal_register_warr_edit_phone_first)
+                }
+            }
+
+            R.id.register_tv -> {
+                if(checkParamsOK()){
+                    mPresenter.register(activity!!,phone_et.text.toString().trim(),auth_code_et.text.toString().trim(),bindToLifecycle<Any>())
+                }
+            }
+        }
+    }
+
+    private fun checkParamsOK(): Boolean {
+        if(isPhoneEmpty!!){
+            return false
+        }
+        if (isAuthCodeEmpty!!){
+            return false
+        }
+        return true
+    }
+
+
     fun changeRegisterTVBackground(){
         if (!isPhoneEmpty!! && !isAuthCodeEmpty!!) {
             register_tv.setBackgroundResource(R.drawable.circle_border_red)
         }else{
             register_tv.setBackgroundResource(R.drawable.circle_border_red_transparent)
         }
+    }
+
+    override fun onPhoneNumSubOK(data: ResponseRegisterBean) {
+        val registerpswFragment = RouterManager.getInstance().with(activity!!).fragmentTag("registerpswFragment1").action("RegisterpswFragment").navigation() as BaseDialogFragment<*,*>?
+        registerpswFragment?.show(activity!!.supportFragmentManager,"registerpswFragment1")
     }
 }
