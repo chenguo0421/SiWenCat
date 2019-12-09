@@ -11,6 +11,7 @@ import com.trello.rxlifecycle2.components.support.RxDialogFragment
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.ImageView
+import androidx.fragment.app.FragmentManager
 import cn.com.cg.router.R
 import kotlinx.android.synthetic.main.include_base_header.*
 
@@ -108,6 +109,19 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
         dialog?.window?.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
     }
 
+    override fun show(manager: FragmentManager, tag: String?) {
+        if(isAdded){
+            return
+        }
+        super.show(manager, tag)
+    }
+
+    override fun showNow(manager: FragmentManager, tag: String?) {
+        if(isAdded){
+            return
+        }
+        super.showNow(manager, tag)
+    }
 
     abstract fun createPresenter(): P
     abstract fun createView(): V
