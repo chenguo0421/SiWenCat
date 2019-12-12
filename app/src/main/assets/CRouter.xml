@@ -33,6 +33,15 @@
 			<ClassPath>cn.com.cg.testmodule2.view.Test2Activity</ClassPath>
 		</CRouter>
 		<CRouter>
+			<ClassPath>cn.com.cg.ccommon.utils.AnimUtils</ClassPath>
+			<MethodPath>
+				<MethodPathItem>/AnimUtils/slideToUp</MethodPathItem>
+				<MethodPathItem>/AnimUtils/upToSlide</MethodPathItem>
+				<MethodPathItem>/AnimUtils/rightToLeft</MethodPathItem>
+				<MethodPathItem>/AnimUtils/leftToRight</MethodPathItem>
+			</MethodPath>
+		</CRouter>
+		<CRouter>
 			<RouterPath>LoginFragment</RouterPath>
 			<ClassPath>com.cg.xqkj.cportal.login.view.fragment.LoginFragment</ClassPath>
 		</CRouter>

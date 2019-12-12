@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import cn.com.cg.base.BaseDialogFragment
+import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.ccommon.utils.RegexUtils
 import cn.com.cg.router.annotation.CRouter
 import com.cg.xqkj.cportal.R
@@ -34,6 +35,10 @@ class RegisterpswFragment :RegisterpswFMContract.IView, BaseDialogFragment<Regis
         synchronized(RegisterpswFragment::class){
             return RegisterpswFragment()
         }
+    }
+
+    override fun isEnterAnimSlideToUp(): EnterAnimType {
+        return EnterAnimType.RIGHT_TO_LEFT
     }
 
     override fun getBaseActivity(): Context {

@@ -8,11 +8,11 @@ import cn.com.cg.mvp.base.BasePresenter
 import cn.com.cg.mvp.base.intf.BaseView
 import cn.com.cg.router.manager.path.RouterBeanManager
 import com.trello.rxlifecycle2.components.support.RxDialogFragment
-import android.view.animation.Animation
-import android.view.animation.TranslateAnimation
 import android.widget.ImageView
 import androidx.fragment.app.FragmentManager
+import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.router.R
+import cn.com.cg.router.manager.RouterManager
 import kotlinx.android.synthetic.main.include_base_header.*
 
 
@@ -25,6 +25,8 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
     open var fragmentTag:String? = ""
     private var mView: V? = null
     private var mPresenter: P? = null
+    private var statusBarView: View? = null
+    private var orientation:EnterAnimType? = EnterAnimType.RIGHT_TO_LEFT
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,48 +40,38 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
         }
 
         mPresenter?.attachView(mView!!)
+
+        orientation = isEnterAnimSlideToUp()
     }
 
-    private fun slideToUp(view: View) {
-        val slide = TranslateAnimation(
-            Animation.RELATIVE_TO_SELF, 0.0f,
-            Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
-            1.0f, Animation.RELATIVE_TO_SELF, 0.0f
-        )
-        slide.duration = 400
-        slide.fillAfter = true
-        slide.isFillEnabled = true
-        view.startAnimation(slide)
-        slide.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation) {}
-            override fun onAnimationEnd(animation: Animation) {}
-            override fun onAnimationRepeat(animation: Animation) {}
-        })
-    }
-
-    fun dropToDown(view: View) {
-        val slide = TranslateAnimation(
-            Animation.RELATIVE_TO_SELF, 0.0f,
-            Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
-            0f, Animation.RELATIVE_TO_SELF, 1.0f
-        )
-        slide.duration = 400
-        slide.fillAfter = true
-        slide.isFillEnabled = true
-        view.startAnimation(slide)
-        slide.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation) {}
-            override fun onAnimationEnd(animation: Animation) {}
-            override fun onAnimationRepeat(animation: Animation) {}
-        })
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val v = inflater.inflate(initLayoutId(), container,false)
         initHeaderView(v)
-        slideToUp(v)
+        animByOrientation(v)
         return v
+    }
+
+    private fun animByOrientation(v:View) {
+        when (orientation) {
+            EnterAnimType.RIGHT_TO_LEFT -> RouterManager.getInstance()
+                .with(activity!!)
+                .action("/AnimUtils/rightToLeft")
+                .callMethod(v)
+            EnterAnimType.LEFT_TO_RIGHT -> RouterManager.getInstance()
+                .with(activity!!)
+                .action("/AnimUtils/leftToRight")
+                .callMethod(v)
+            EnterAnimType.SLIDE_TO_UP -> RouterManager.getInstance()
+                .with(activity!!)
+                .action("/AnimUtils/slideToUp")
+                .callMethod(v)
+            EnterAnimType.UP_TO_SLIDE -> RouterManager.getInstance()
+                .with(activity!!)
+                .action("/AnimUtils/upToSlide")
+                .callMethod(v)
+        }
     }
 
     private fun initHeaderView(view:View) {
@@ -129,6 +121,7 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
     abstract fun initData()
     abstract fun initListener()
     abstract fun getInstance():BaseDialogFragment<V,P>
+    abstract fun isEnterAnimSlideToUp(): EnterAnimType
 
 
     override fun onDestroy() {

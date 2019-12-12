@@ -154,6 +154,11 @@ def reWrite(_parentPath,_file,_packagePath,_baseName,type):
                 lin = lin.replace("%Time", _time)
              if "%BaseType" in lin:
                 lin = lin.replace("%BaseType", _baseType)
+             if "%DialogAnim" in lin:
+                if 'dialogfragment' != _type:
+                   continue
+                else:
+                   lin = lin.replace("%DialogAnim", "")
              f2.write(lin)
          f1.close()
          f2.close()

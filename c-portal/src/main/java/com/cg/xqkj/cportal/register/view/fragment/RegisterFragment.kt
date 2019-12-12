@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import cn.com.cg.base.BaseDialogFragment
+import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.ccommon.utils.RegexUtils
 import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.router.annotation.CRouter
@@ -37,6 +38,10 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
         synchronized(RegisterFragment::class){
             return RegisterFragment()
         }
+    }
+
+    override fun isEnterAnimSlideToUp(): EnterAnimType {
+        return EnterAnimType.SLIDE_TO_UP
     }
 
     override fun getBaseActivity(): Context {

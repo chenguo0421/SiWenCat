@@ -43,8 +43,7 @@ class RouterMethodManager {
 
         }else {
             if (getInvokeOthersMaps(clzPath).size > 0) {
-                return invokeMethod(getInvokeOthersMaps(clzPath), RouterBeanManager.getInstance().getOtherBean(clzPath!!), action, params
-                )
+                return invokeMethod(getInvokeOthersMaps(clzPath), RouterBeanManager.getInstance().getOtherBean(clzPath!!), action, params)
             }
         }
         return null
