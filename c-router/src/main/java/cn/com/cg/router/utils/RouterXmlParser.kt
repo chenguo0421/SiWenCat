@@ -80,9 +80,9 @@ open class RouterXmlParser{
                         XmlPullParser.END_TAG       //结束标签
                         -> {
                             if ("CRouter" == parser.name && router != null) {
-                                router.methodIDs = cMethodIds!!
+                                router.methodIDs = cMethodIds
                                 try {
-                                    map!![router.routerPath] = router
+                                    map!![router.routerPath!!] = router
                                 }catch (e:Exception){}
                                 router = null
                             }
