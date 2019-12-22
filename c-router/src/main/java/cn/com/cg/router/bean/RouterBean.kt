@@ -7,7 +7,7 @@ package cn.com.cg.router.bean
  * Date  2019/8/29 19:36
  */
 class RouterBean {
-    lateinit var routerPath:String
-    lateinit var classPaths:String
-    lateinit var methodIDs:ArrayList<String>
+    var routerPath: String? = null
+    var classPaths: String? = null
+    var methodIDs: ArrayList<String>? = null
 }

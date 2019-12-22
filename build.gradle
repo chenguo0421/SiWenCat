@@ -37,6 +37,8 @@ ext{
     appcompat = '1.1.0'
     supportV7Version = '29.0.1'
 
+    blockcanary_version = '1.5.0'
+
     rxjavaVersion = '2.1.8'
     rxandroidVersion = '2.0.1'
     okhttpVersion = '3.9.1'

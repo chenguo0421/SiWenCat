@@ -1,1 +1,1 @@
-include ':app', ':c-router', ':testmodule1', ':testmodule2', ':c-log', ':c-common', ':c-net', ':c-portal'
+include ':app', ':c-router', ':c-log', ':c-common', ':c-net', ':c-portal'

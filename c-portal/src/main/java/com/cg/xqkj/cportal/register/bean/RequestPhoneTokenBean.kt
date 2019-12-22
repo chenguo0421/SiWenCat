@@ -2,11 +2,10 @@ package com.cg.xqkj.cportal.register.bean
 
 /**
  *  author : chenguo
- *  date : 2019/12/9 22:22
+ *  date : 2019/12/22 13:42
  *  description : { 请添加该类的描述 }
  */
-class RequestRegisterPSWBean {
+class RequestPhoneTokenBean {
     lateinit var phone:String
-    lateinit var psw:String
-    lateinit var confirmPsw:String
+    lateinit var imei:String
 }

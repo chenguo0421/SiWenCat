@@ -11,7 +11,7 @@ import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.router.annotation.CRouter
 import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
-import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
+import com.cg.xqkj.cportal.register.bean.ResponsePhoneTokenBean
 import com.cg.xqkj.cportal.register.contract.RegisterFMContract
 import com.cg.xqkj.cportal.register.presenter.RegisterFMPresenter
 import kotlinx.android.synthetic.main.portal_fragment_register.*
@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.portal_fragment_register.*
 @CRouter(path = "RegisterFragment")
 class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMContract.IView, RegisterFMContract.IPresenter<RegisterFMContract.IView>>(),
     View.OnClickListener {
+
 
     var isPhoneEmpty:Boolean? = true
     var isAuthCodeEmpty:Boolean? = true
@@ -99,7 +100,7 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
 
             R.id.verification_get_tv -> {
                 if (phone_et.text != null && "" != phone_et.text.toString().trim() && RegexUtils.checkPhoneNum(phone_et.text.toString().trim())) {
-
+                    mPresenter.getPhoneToken(activity!!,phone_et.text.toString().trim(),bindToLifecycle<Any>())
                 }else{
                     ToastUtils.show(R.string.portal_register_warr_edit_phone_first)
                 }
@@ -132,8 +133,15 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
         }
     }
 
-    override fun onPhoneNumSubOK(data: ResponseRegisterBean) {
+    override fun onPhoneNumSubOK(data: Any) {
+        ToastUtils.show(activity!!.getString(R.string.portal_register_phone_submit_success))
         val registerpswFragment = RouterManager.getInstance().with(activity!!).fragmentTag("registerpswFragment1").action("RegisterpswFragment").navigation() as BaseDialogFragment<*,*>?
         registerpswFragment?.show(activity!!.supportFragmentManager,"registerpswFragment1")
+    }
+
+    override fun onPhoneTokenOK(data: ResponsePhoneTokenBean) {
+        var code = data.authCode
+        ToastUtils.show(String.format(resources.getString(R.string.portal_register_getphonetoken_ok),code))
+        auth_code_et.setText(code)
     }
 }

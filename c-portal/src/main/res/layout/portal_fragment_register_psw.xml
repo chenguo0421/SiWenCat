@@ -24,7 +24,7 @@
                 android:textColorHint="@color/common_text_color_cdcdcd"
                 android:textColor="@color/common_text_color_3d3d3d"
                 android:textSize="14sp"
-                android:inputType="phone"
+                android:maxLength="16"
                 android:hint="请输入登陆密码"
                 android:background="@null"/>
 
@@ -49,9 +49,8 @@
                 android:layout_height="match_parent"
                 android:textColorHint="@color/common_text_color_cdcdcd"
                 android:textColor="@color/common_text_color_3d3d3d"
-                android:inputType="number"
-                android:maxLength="6"
                 android:textSize="14sp"
+                android:maxLength="16"
                 android:hint="请确认登陆密码"
                 android:background="@null"/>
 
@@ -77,6 +76,26 @@
             android:text="提交"/>
 
 
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="14sp"
+            android:textColor="@color/common_cyan"
+            android:gravity="center_vertical"
+            android:text="温馨提示:"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="12sp"
+            android:textColor="@color/common_gray"
+            android:gravity="center_vertical"
+            android:text="有效密码格式为8-16为字母数字。"/>
 
 
 </LinearLayout>

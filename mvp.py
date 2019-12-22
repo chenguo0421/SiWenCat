@@ -11,7 +11,7 @@ def doNext(_rootPath,_templateFilePath,_packagePath,_baseName,_type):
     print("start create mvp file, please wait...")
 
     # 处理mvp所在包路径，假如传入的路径是D:\Project\BaseWorkspace\CBase_Kotlin\app\src\main\java\cn\com\cg\testmvp
-    # 则处理成"cn\com\cg\testmvp"
+    # 则处理成"cn.com.cg.testmvp"
     _packagePath = disposePath(_packagePath)
     print("dispose packagePath as %s" % _packagePath)
 
@@ -67,9 +67,9 @@ def disposePath(_packagePath):
     length = len(listPath)
     if len(listPath) > 1:
        path = listPath[len(listPath) - 1]
-       return path.replace(".","\\")
+       return path.replace(".","\\").replace("@_@",".")
     else:
-       return tempPath.replace(".","\\")
+       return tempPath.replace(".","\\").replace("@_@",".")
 
 
 # 驼峰式命名，首字母大写
@@ -168,6 +168,7 @@ def reWrite(_parentPath,_file,_packagePath,_baseName,type):
 
 # 将文件路径的分隔符替换为点号
 def changePathConnectorType(path):
+    _tempPath = path.replace(".","@_@")
     #将路径处理为以.连接
     _tempPath = path.replace("/",".")
     _tempPath = _tempPath.replace("\\",".")
@@ -251,7 +252,7 @@ def get_module_class_path(list,rootPath):
 
 
 # 配置项目根路径 F:\Project\BusinessProject\siwen\android\github_code\SiWenCat
-_rootPath = 'F:\\Project\\BusinessProject\\siwen\\android\\github_code\\SiWenCat'
+_rootPath = 'F:\Project\BusinessProject\siwen\android\github_code\SiWenCat'
 _user = 'ChenGuo'
 _time = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
 _baseType = "Base"
@@ -291,14 +292,3 @@ if 'activity' == _type or 'fragment' == _type or 'dialogfragment' == _type:
 else:
    print("not support other type, please use 'activity' or 'fragment' as the type")
    quit()
-
-
-
-
-
-
-
-
-
-
-

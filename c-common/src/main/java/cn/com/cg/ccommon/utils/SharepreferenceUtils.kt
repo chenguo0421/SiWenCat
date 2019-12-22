@@ -9,8 +9,10 @@ import androidx.core.content.SharedPreferencesCompat
  * author  chenguo7
  * Date  2019/11/25 16:28
  */
+@Suppress("UNCHECKED_CAST")
 class SharepreferenceUtils {
     companion object{
+
         /**
          * 获取首选项
          *
@@ -152,19 +154,15 @@ class SharepreferenceUtils {
             val sp = getSP(context)
             val editor = sp.edit()
 
-            if (value is String) {
-                editor.putString(key, value)
-            } else if (value is Boolean) {
-                editor.putBoolean(key, value)
-            } else if (value is Int) {
-                editor.putInt(key, value)
-            } else if (value is Long) {
-                editor.putLong(key, value)
-            } else if (value is Float) {
-                editor.putFloat(key, value)
+            when (value) {
+                is String -> editor.putString(key, value)
+                is Boolean -> editor.putBoolean(key, value)
+                is Int -> editor.putInt(key, value)
+                is Long -> editor.putLong(key, value)
+                is Float -> editor.putFloat(key, value)
             }
 
-            editor.commit()
+            editor.apply()
         }
 
         /**

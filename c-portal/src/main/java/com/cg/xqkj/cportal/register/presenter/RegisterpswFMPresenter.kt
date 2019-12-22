@@ -21,10 +21,11 @@ class RegisterpswFMPresenter : RegisterpswFMContract.IPresenter<RegisterpswFMCon
         mModel = RegisterpswFMModel()
     }
 
-    override fun submitPSW(context: Context, psw: String, confirmPsw: String, transformer: LifecycleTransformer<Any>) {
+    override fun submitPSW(context: Context,phone:String, psw: String, confirmPsw: String, transformer: LifecycleTransformer<Any>) {
         var params = RequestRegisterPSWBean()
         params.psw = psw
         params.confirmPsw = confirmPsw
+        params.phone = phone
         mModel?.submitPSW(params, transformer, object : ProgressObserver<ResponseRegisterPSWBean>(context) {
             override fun success(data: ResponseRegisterPSWBean) {
             }

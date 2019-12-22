@@ -15,4 +15,5 @@
     <color name="common_gray">#FF707070</color>
     <color name="common_white">#FFFFFFFF</color>
     <color name="common_cyan">#FF00FFFF</color>
+    <color name="common_yellow">#FFFFFF00</color>
 </resources>

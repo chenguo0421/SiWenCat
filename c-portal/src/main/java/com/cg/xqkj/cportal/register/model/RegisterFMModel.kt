@@ -2,8 +2,9 @@ package com.cg.xqkj.cportal.register.model
 
 import cn.com.cg.cnet.retrofit.observelistener.ProgressObserver
 import cn.com.cg.cnet.retrofit.utils.RetrofitHelper
+import com.cg.xqkj.cportal.register.bean.RequestPhoneTokenBean
 import com.cg.xqkj.cportal.register.bean.RequestRegisterBean
-import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
+import com.cg.xqkj.cportal.register.bean.ResponsePhoneTokenBean
 import com.cg.xqkj.cportal.register.contract.RegisterFMContract
 import com.cg.xqkj.cportal.service.PortalService
 import com.trello.rxlifecycle2.LifecycleTransformer
@@ -17,6 +18,7 @@ import io.reactivex.schedulers.Schedulers
  */
 class RegisterFMModel: RegisterFMContract.IModel() {
 
+
     open var service: PortalService? = null
     init {
         service = RetrofitHelper.apiSafeService(PortalService::class.java)
@@ -25,9 +27,22 @@ class RegisterFMModel: RegisterFMContract.IModel() {
     override fun register(
         params: RequestRegisterBean,
         transformer: LifecycleTransformer<Any>,
-        observer: ProgressObserver<ResponseRegisterBean>
+        observer: ProgressObserver<Any>
     ) {
         service!!.register(params)
+            .compose(transformer)
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(observer)
+    }
+
+
+    override fun phoneToken(
+        params: RequestPhoneTokenBean,
+        transformer: LifecycleTransformer<Any>,
+        observer: ProgressObserver<ResponsePhoneTokenBean>
+    ) {
+        service!!.phoneToken(params)
             .compose(transformer)
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())

@@ -6,7 +6,6 @@ import android.view.View
 import cn.com.cg.router.manager.callback.RouterCallBackManager
 import cn.com.cg.router.manager.intf.CRouterInterceptor
 import cn.com.cg.router.manager.intf.RouterCallBack
-import java.lang.ref.SoftReference
 
 /**
  * Discription  {}
@@ -21,8 +20,8 @@ open class RouterParamsManager {
     private var clsName: String? = null
     private var tag: String? = null
     private var animArr: IntArray? = null
-    private var view: SoftReference<View>? = null
-    private var context: SoftReference<Context>? = null
+    private var view: View? = null
+    private var context: Context? = null
     private var interceptor: CRouterInterceptor? = null
 
 
@@ -57,11 +56,11 @@ open class RouterParamsManager {
 
 
     fun setSharedElement(view: View) {
-        getInstance().view = SoftReference(view)
+        getInstance().view = view
     }
 
     fun getSharedElement():View?{
-        return getInstance().view?.get()
+        return getInstance().view
     }
 
     fun setAnim(enterAnim: Int, outerAnim: Int) {
@@ -75,11 +74,11 @@ open class RouterParamsManager {
     }
 
     fun setContext(context: Context) {
-        getInstance().context = SoftReference(context)
+        getInstance().context = context
     }
 
     fun getContext():Context? {
-        return getInstance().context?.get()
+        return getInstance().context
     }
 
     fun setIntent(intent: Intent) {

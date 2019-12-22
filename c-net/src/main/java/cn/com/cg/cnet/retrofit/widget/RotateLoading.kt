@@ -19,8 +19,8 @@ import cn.com.cg.cnet.R
  *  date : 2019/12/3 20:17
  *  description : { 自定义网络加载框 }
  */
-class RotateLoading constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int):
-    View(context, attrs, defStyleAttr) {
+class RotateLoading constructor(context: Context, attrs: AttributeSet):
+    View(context, attrs) {
     private val DEFAULT_WIDTH = 6
     private val DEFAULT_SHADOW_POSITION = 2
     private val DEFAULT_SPEED_OF_DEGREE = 10

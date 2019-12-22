@@ -471,7 +471,7 @@ public class CLog(context: Context) : FrameLayout(context),Thread.UncaughtExcept
         @SuppressLint("StaticFieldLeak")
         private var instance: CLog? = null
         private const val logScout:Int = 8
-        private const val debuggable = true //正式环境(false)不打印日志，也不能唤起app的debug界面
+        private const val debuggable = false //正式环境(false)不打印日志，也不能唤起app的debug界面
         private var isAutoScroll = false
         private var logType = LogType.d
 

@@ -4,7 +4,6 @@ import androidx.fragment.app.Fragment
 import cn.com.cg.base.BaseActivity
 import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.base.BaseFragment
-import java.lang.ref.SoftReference
 
 /**
  * Discription  {}
@@ -16,7 +15,7 @@ class RouterBeanManager{
     /**
      * Activity实例
      */
-    private var actMap:HashMap<String,SoftReference<BaseActivity<*,*>>>? = null
+    private var actMap:HashMap<String,BaseActivity<*,*>>? = null
 
     /**
      * tag用于区分Activity的不同实例
@@ -26,7 +25,7 @@ class RouterBeanManager{
     /**
      * Fragment实例
      */
-    private var fmMap:HashMap<String,SoftReference<Fragment>>? = null
+    private var fmMap:HashMap<String,Fragment>? = null
 
     /**
      * tag用于区分Fragment的不同实例
@@ -36,19 +35,19 @@ class RouterBeanManager{
     /**
      * 其他工具类实例
      */
-    private var utilMap: HashMap<String, SoftReference<Any?>>? = null
+    private var utilMap: HashMap<String, Any?>? = null
 
 
     fun registerAct(obj: BaseActivity<*,*>) {
         if (RouterPathManager.getInstance().isAnnotationClass(obj::class.qualifiedName!!)){
-            actMap?.put(obj::class.qualifiedName!!,SoftReference(obj))
+            actMap?.put(obj::class.qualifiedName!!,obj)
         }
     }
 
     fun registerFM(obj: Fragment) {
         if (RouterPathManager.getInstance().isAnnotationClass(obj::class.qualifiedName!!)){
             if (obj is BaseFragment<*,*>){
-                fmMap?.put(obj::class.qualifiedName!! + obj.fragmentTag,SoftReference(obj))
+                fmMap?.put(obj::class.qualifiedName!! + obj.fragmentTag,obj)
                 var list = fmTagsMap?.get(obj::class.qualifiedName)
                 if (list == null) {
                     list = ArrayList()
@@ -56,7 +55,7 @@ class RouterBeanManager{
                 obj.fragmentTag?.let { list!!.add(it) }
                 fmTagsMap?.put(obj::class.qualifiedName!!,list)
             }else if (obj is BaseDialogFragment<*,*>){
-                fmMap?.put(obj::class.qualifiedName!! + obj.fragmentTag,SoftReference(obj))
+                fmMap?.put(obj::class.qualifiedName!! + obj.fragmentTag,obj)
                 var list = fmTagsMap?.get(obj::class.qualifiedName)
                 if (list == null) {
                     list = ArrayList()
@@ -81,18 +80,18 @@ class RouterBeanManager{
     }
 
     fun getActBean(clsPath:String):BaseActivity<*,*>?{
-        return actMap!![clsPath]?.get()
+        return actMap!![clsPath]
     }
 
     fun getFMBean(clsPath:String):Fragment?{
-        return fmMap!![clsPath]?.get()
+        return fmMap!![clsPath]
     }
 
     fun getOtherBean(clzPath: String): Any? {
         if (utilMap!![clzPath]==null){
-            utilMap!![clzPath] = SoftReference(Class.forName(clzPath).newInstance())
+            utilMap!![clzPath] = Class.forName(clzPath).newInstance()
         }
-        return utilMap!![clzPath]?.get()
+        return utilMap!![clzPath]
     }
 
     fun getFragmentTagsByClassPath(clsPaht:String):ArrayList<String>?{

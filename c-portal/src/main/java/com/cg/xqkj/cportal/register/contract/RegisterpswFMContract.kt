@@ -24,6 +24,7 @@ class RegisterpswFMContract {
     public abstract class IPresenter<T> : BasePresenter<T>() {
         abstract fun submitPSW(
             context: Context,
+            phone:String,
             psw: String,
             confirmPsw: String,
             transformer: LifecycleTransformer<Any>

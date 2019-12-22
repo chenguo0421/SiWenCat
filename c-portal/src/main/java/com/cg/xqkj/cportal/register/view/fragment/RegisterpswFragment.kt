@@ -24,6 +24,7 @@ class RegisterpswFragment :RegisterpswFMContract.IView, BaseDialogFragment<Regis
 
     private var isPSWEmpty: Boolean = true
     private var isConfirmPSWEmpty: Boolean = true
+    private var phone: String = "15555555555"
     private lateinit var mPresenter: RegisterpswFMContract.IPresenter<RegisterpswFMContract.IView>
 
     override fun createPresenter(): RegisterpswFMContract.IPresenter<RegisterpswFMContract.IView> {
@@ -63,39 +64,56 @@ class RegisterpswFragment :RegisterpswFMContract.IView, BaseDialogFragment<Regis
         submit_tv.setOnClickListener(this)
         psw_et.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
+                if (confirm_psw_et.text.toString().trim() == psw_et.text.toString().trim() && !isPSWEmpty){
+                    changeSubmitTVBackground()
+                }
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 isPSWEmpty = (!s?.isNotEmpty()!!) || !(RegexUtils.checkPSW(s.toString().trim()))
-                changeSubmitTVBackground()
+
             }
         })
         confirm_psw_et.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
+                if (confirm_psw_et.text.toString().trim() == psw_et.text.toString().trim() && !isConfirmPSWEmpty){
+                    changeSubmitTVBackground()
+                }
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                isConfirmPSWEmpty = (!s?.isNotEmpty()!!) || !(RegexUtils.checkPSW(s.toString().trim()) || s.toString().trim() != psw_et.text.toString().trim())
-                changeSubmitTVBackground()
+                isConfirmPSWEmpty = (!s?.isNotEmpty()!!) || !(RegexUtils.checkPSW(s.toString().trim()))
             }
         })
     }
 
     private fun changeSubmitTVBackground() {
-        if (!isPSWEmpty!! && !isConfirmPSWEmpty!!) {
+        if (!isPSWEmpty && !isConfirmPSWEmpty) {
             submit_tv.setBackgroundResource(R.drawable.circle_border_red)
         }else{
             submit_tv.setBackgroundResource(R.drawable.circle_border_red_transparent)
         }
     }
 
+    private fun checkParamsOK(): Boolean {
+        if(isPSWEmpty){
+            return false
+        }
+        if (isConfirmPSWEmpty){
+            return false
+        }
+        return true
+    }
+
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.submit_tv -> {
-                mPresenter.submitPSW(activity!!,psw_et.text.toString().trim(),confirm_psw_et.text.toString().trim(),bindToLifecycle<Any>())
+                if (checkParamsOK()){
+                    mPresenter.submitPSW(activity!!,phone,psw_et.text.toString().trim(),confirm_psw_et.text.toString().trim(),bindToLifecycle<Any>())
+                }
             }
         }
     }

@@ -2,6 +2,7 @@ package cn.com.cg.cnet.retrofit.utils
 
 import cn.com.cg.cnet.retrofit.base.BaseApi
 import cn.com.cg.cnet.retrofit.interceptor.CommonInterceptor
+import cn.com.cg.cnet.retrofit.interceptor.CookieInterceptor
 import cn.com.cg.cnet.retrofit.interceptor.LogInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -21,9 +22,10 @@ class RetrofitHelper {
                 //自定义拦截器用于日志输出
                 .addInterceptor(LogInterceptor())
                 .addInterceptor(CommonInterceptor())
-                .connectTimeout(10,TimeUnit.SECONDS)
-                .readTimeout(10,TimeUnit.SECONDS)
-                .writeTimeout(10,TimeUnit.SECONDS)
+                .addInterceptor(CookieInterceptor())
+                .connectTimeout(60,TimeUnit.SECONDS)
+                .readTimeout(60,TimeUnit.SECONDS)
+                .writeTimeout(60,TimeUnit.SECONDS)
                 .build()
 
             val retrofit = Retrofit.Builder().baseUrl(baseUrl)
@@ -80,7 +82,11 @@ class RetrofitHelper {
                 var builder = OkHttpClient.Builder()
                     .sslSocketFactory(sFactory, trustAllCerts[0])
                     .hostnameVerifier(allHostsValid)
+                    .connectTimeout(60,TimeUnit.SECONDS)
+                    .readTimeout(60,TimeUnit.SECONDS)
+                    .writeTimeout(60,TimeUnit.SECONDS)
                     .addInterceptor(CommonInterceptor())
+                    .addInterceptor(CookieInterceptor())
                 return builder.build()
 
             }catch (e:Exception){

@@ -4,8 +4,9 @@ import android.content.Context
 import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.cnet.retrofit.observelistener.ProgressObserver
 import com.cg.xqkj.cportal.R
+import com.cg.xqkj.cportal.register.bean.RequestPhoneTokenBean
 import com.cg.xqkj.cportal.register.bean.RequestRegisterBean
-import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
+import com.cg.xqkj.cportal.register.bean.ResponsePhoneTokenBean
 import com.cg.xqkj.cportal.register.contract.RegisterFMContract
 import com.cg.xqkj.cportal.register.model.RegisterFMModel
 import com.trello.rxlifecycle2.LifecycleTransformer
@@ -32,8 +33,9 @@ class RegisterFMPresenter : RegisterFMContract.IPresenter<RegisterFMContract.IVi
         var params = RequestRegisterBean()
         params.phone = phone
         params.authCode = authCode
-        mModel?.register(params,transformer,object :  ProgressObserver<ResponseRegisterBean>(context){
-            override fun success(data: ResponseRegisterBean) {
+        params.imei = ""
+        mModel?.register(params,transformer,object :  ProgressObserver<Any>(context){
+            override fun success(data: Any) {
                 getView()?.onPhoneNumSubOK(data)
             }
 
@@ -42,4 +44,20 @@ class RegisterFMPresenter : RegisterFMContract.IPresenter<RegisterFMContract.IVi
             }
         })
     }
+
+    override fun getPhoneToken(context: Context, phone: String, transformer: LifecycleTransformer<Any>) {
+        var params = RequestPhoneTokenBean()
+        params.phone = phone
+        params.imei = ""
+        mModel?.phoneToken(params,transformer,object :  ProgressObserver<ResponsePhoneTokenBean>(context){
+            override fun success(data: ResponsePhoneTokenBean) {
+                getView()?.onPhoneTokenOK(data)
+            }
+
+            override fun failure(code: Int, msg: String) {
+                ToastUtils.show(String.format(getView()?.getBaseActivity()!!.getString(R.string.portal_register_phone_submit_error),msg))
+            }
+        })
+    }
+
 }

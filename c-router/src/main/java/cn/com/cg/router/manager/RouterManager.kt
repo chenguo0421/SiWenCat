@@ -17,7 +17,6 @@ import cn.com.cg.router.manager.intf.RouterCallBack
 import cn.com.cg.router.manager.method.RouterMethodManager
 import cn.com.cg.router.manager.params.RouterParamsManager
 import cn.com.cg.router.manager.path.RouterPathManager
-import java.lang.ref.SoftReference
 
 /**
  * Discription  {}

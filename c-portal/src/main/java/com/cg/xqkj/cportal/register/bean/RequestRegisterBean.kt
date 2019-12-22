@@ -8,4 +8,5 @@ package com.cg.xqkj.cportal.register.bean
 class RequestRegisterBean {
     lateinit var phone:String
     lateinit var authCode:String
+    lateinit var imei:String
 }

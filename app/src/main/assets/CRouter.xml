@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 	<CRouters>
 		<CRouter>
-			<ClassPath>cn.com.cg.testmodule1.utils.MyUtils</ClassPath>
-			<MethodPath>
-				<MethodPathItem>/MyUtils/testCallUtilsMethod</MethodPathItem>
-			</MethodPath>
-		</CRouter>
-		<CRouter>
-			<RouterPath>Test1Activity</RouterPath>
-			<ClassPath>cn.com.cg.testmodule1.view.Test1Activity</ClassPath>
-			<MethodPath>
-				<MethodPathItem>/Test1Activity/onT2CallBack</MethodPathItem>
-			</MethodPath>
-		</CRouter>
-		<CRouter>
-			<RouterPath>TestFMActivity</RouterPath>
-			<ClassPath>cn.com.cg.testmodule1.view.TestFMActivity</ClassPath>
-		</CRouter>
-		<CRouter>
-			<RouterPath>MyFragment</RouterPath>
-			<ClassPath>cn.com.cg.testmodule2.view.fragment.MyFragment</ClassPath>
-			<MethodPath>
-				<MethodPathItem>/MyFragment/changeText</MethodPathItem>
-			</MethodPath>
-		</CRouter>
-		<CRouter>
-			<RouterPath>PortalFragment</RouterPath>
-			<ClassPath>cn.com.cg.testmodule2.view.fragment.PortalFragment</ClassPath>
-		</CRouter>
-		<CRouter>
-			<RouterPath>Test2Activity</RouterPath>
-			<ClassPath>cn.com.cg.testmodule2.view.Test2Activity</ClassPath>
-		</CRouter>
-		<CRouter>
 			<ClassPath>cn.com.cg.ccommon.utils.AnimUtils</ClassPath>
 			<MethodPath>
 				<MethodPathItem>/AnimUtils/slideToUp</MethodPathItem>
