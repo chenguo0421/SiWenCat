@@ -14,8 +14,6 @@
             <option value="$PROJECT_DIR$/c-net" />
             <option value="$PROJECT_DIR$/c-portal" />
             <option value="$PROJECT_DIR$/c-router" />
-            <option value="$PROJECT_DIR$/testmodule1" />
-            <option value="$PROJECT_DIR$/testmodule2" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

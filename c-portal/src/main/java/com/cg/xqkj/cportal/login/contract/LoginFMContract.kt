@@ -24,8 +24,8 @@ class LoginFMContract {
     public abstract class IPresenter<T> : BasePresenter<T>() {
         abstract fun login(
             context: Context,
-            trim: String,
-            trim1: String,
+            userName: String,
+            psw: String,
             transformer: LifecycleTransformer<Any>
         )
     }

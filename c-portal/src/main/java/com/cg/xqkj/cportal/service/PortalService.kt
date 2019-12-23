@@ -24,7 +24,7 @@ interface PortalService {
 
 
     @POST("/siwen/register/checkPhone")
-    fun register(@Body request:RequestRegisterBean): Observable<BaseResponse<Any>>
+    fun register(@Body request:RequestRegisterBean): Observable<BaseResponse<ResponseRegisterBean>>
 
 
     @POST("/siwen/register/psw")

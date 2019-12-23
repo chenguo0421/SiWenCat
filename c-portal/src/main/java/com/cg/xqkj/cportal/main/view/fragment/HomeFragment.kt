@@ -1,6 +1,7 @@
 package com.cg.xqkj.cportal.main.view.fragment
 
 import android.content.Context
+import android.os.Bundle
 import cn.com.cg.base.BaseFragment
 import cn.com.cg.router.annotation.CRouter
 import com.cg.xqkj.cportal.R
@@ -14,7 +15,7 @@ import com.cg.xqkj.cportal.main.presenter.HomeFMPresenter
  */
 @CRouter(path = "HomeFragment")
 class HomeFragment :HomeFMContract.IView, BaseFragment<HomeFMContract.IView, HomeFMContract.IPresenter<HomeFMContract.IView>>() {
-
+    private lateinit var bundle:Bundle
     private lateinit var mPresenter: HomeFMContract.IPresenter<HomeFMContract.IView>
 
     override fun createPresenter(): HomeFMContract.IPresenter<HomeFMContract.IView> {
@@ -30,6 +31,10 @@ class HomeFragment :HomeFMContract.IView, BaseFragment<HomeFMContract.IView, Hom
 
     override fun getBaseActivity(): Context {
         return activity!!
+    }
+
+    override fun setBundleExtra(bundle: Bundle) {
+        this.bundle = bundle
     }
 
     override fun createView(): HomeFMContract.IView {

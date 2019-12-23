@@ -28,6 +28,7 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
     private var statusBarView: View? = null
     private var orientation:EnterAnimType? = EnterAnimType.RIGHT_TO_LEFT
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -122,6 +123,7 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
     abstract fun initListener()
     abstract fun getInstance():BaseDialogFragment<V,P>
     abstract fun isEnterAnimSlideToUp(): EnterAnimType
+    abstract fun setBundleExtra(bundle: Bundle)
 
 
     override fun onDestroy() {

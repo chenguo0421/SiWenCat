@@ -33,12 +33,13 @@ class LoginFMPresenter : LoginFMContract.IPresenter<LoginFMContract.IView>() {
         context: Context,
         userName: String,
         psw: String,
-        bindToLifecycle: LifecycleTransformer<Any>
+        transformer: LifecycleTransformer<Any>
     ) {
         var params = RequestLoginBean()
         params.userName = userName
         params.psw = psw
-        mModel?.login(params,bindToLifecycle,object : ProgressObserver<ResponseLoginBean>(context){
+        params.imei = ""
+        mModel?.login(params,transformer,object : ProgressObserver<ResponseLoginBean>(context){
             override fun success(data: ResponseLoginBean) {
                 getView()?.onLoginSuccess(data)
             }

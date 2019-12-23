@@ -103,7 +103,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
                 replaceFragment(giftFragment!!,R.id.portal_content)
             }
             4 -> {
-                if (!SharepreferenceUtils.getBoolean(this,Constants.IS_LOGIN,false)){
+                if (!SharepreferenceUtils.getBoolean(this,Constants.PortalConstant.IS_LOGIN,false)){
                     if (loginFragment == null) {
                         loginFragment = RouterManager.getInstance().with(this).fragmentTag("loginFragment1").action("LoginFragment").navigation() as BaseDialogFragment<*, *>?
                     }

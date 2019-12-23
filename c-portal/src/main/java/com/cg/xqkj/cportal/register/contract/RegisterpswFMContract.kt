@@ -17,7 +17,7 @@ import com.trello.rxlifecycle2.LifecycleTransformer
 class RegisterpswFMContract {
 
     public interface IView:BaseView{
-
+        abstract fun onRegisterSuccess(data: ResponseRegisterPSWBean)
     }
 
 
@@ -25,6 +25,7 @@ class RegisterpswFMContract {
         abstract fun submitPSW(
             context: Context,
             phone:String,
+            randomkey:String,
             psw: String,
             confirmPsw: String,
             transformer: LifecycleTransformer<Any>

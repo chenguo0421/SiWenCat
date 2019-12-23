@@ -36,7 +36,7 @@ class SplashActivity : SplashContract.IView, BaseActivity<SplashContract.IView, 
     }
 
     override fun initData() {
-        SharepreferenceUtils.put(this, Constants.IS_LOGIN,false)
+        SharepreferenceUtils.put(this, Constants.PortalConstant.IS_LOGIN,false)
         gotoPortalActivity()
     }
 

@@ -6,4 +6,5 @@ package com.cg.xqkj.cportal.register.bean
  *  description : { 请添加该类的描述 }
  */
 class ResponseRegisterPSWBean {
+    lateinit var userName:String
 }

@@ -1,6 +1,7 @@
 package com.cg.xqkj.cportal.register.view.fragment
 
 import android.content.Context
+import android.os.Bundle
 import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.router.annotation.CRouter
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.portal_fragment_privacy.*
  */
 @CRouter(path = "PtivacyFragment")
 class PtivacyFragment :PtivacyFMContract.IView, BaseDialogFragment<PtivacyFMContract.IView, PtivacyFMContract.IPresenter<PtivacyFMContract.IView>>() {
-
+    private lateinit var bundle:Bundle
     private lateinit var mPresenter: PtivacyFMContract.IPresenter<PtivacyFMContract.IView>
 
     override fun createPresenter(): PtivacyFMContract.IPresenter<PtivacyFMContract.IView> {
@@ -36,6 +37,10 @@ class PtivacyFragment :PtivacyFMContract.IView, BaseDialogFragment<PtivacyFMCont
 
     override fun getBaseActivity(): Context {
         return activity!!
+    }
+
+    override fun setBundleExtra(bundle: Bundle) {
+        this.bundle = bundle
     }
 
     override fun createView(): PtivacyFMContract.IView {

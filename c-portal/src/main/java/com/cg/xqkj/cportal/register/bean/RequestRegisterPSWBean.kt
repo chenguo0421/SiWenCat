@@ -7,6 +7,8 @@ package com.cg.xqkj.cportal.register.bean
  */
 class RequestRegisterPSWBean {
     lateinit var phone:String
+    lateinit var imei:String
+    lateinit var randomKey:String
     lateinit var psw:String
     lateinit var confirmPsw:String
 }

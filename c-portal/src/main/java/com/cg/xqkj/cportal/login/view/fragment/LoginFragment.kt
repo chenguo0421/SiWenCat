@@ -1,6 +1,7 @@
 package com.cg.xqkj.cportal.login.view.fragment
 
 import android.content.Context
+import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
@@ -9,6 +10,7 @@ import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.SharepreferenceUtils
+import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.router.annotation.CRouter
 import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
@@ -27,7 +29,7 @@ import kotlinx.android.synthetic.main.portal_fragment_login.*
 @CRouter(path = "LoginFragment")
 class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.IView,LoginFMContract.IPresenter<LoginFMContract.IView>>(),
     View.OnClickListener {
-
+    private lateinit var bundle: Bundle
     var isUserNameEmpty:Boolean? = true
     var isPSWEmpty:Boolean? = true
     private lateinit var mPresenter: LoginFMContract.IPresenter<LoginFMContract.IView>
@@ -51,6 +53,10 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
         return activity!!
     }
 
+    override fun setBundleExtra(bundle: Bundle) {
+        this.bundle = bundle
+    }
+
     override fun createView(): LoginFMContract.IView {
         return this
     }
@@ -63,6 +69,20 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
         show_hidden_psw_img.tag = false
         isUserNameEmpty = true
         isPSWEmpty = true
+        initRemerberDataIfNeed()
+    }
+
+    private fun initRemerberDataIfNeed() {
+        if (SharepreferenceUtils.getBoolean(activity!!,Constants.PortalConstant.IS_REMEMBER_PSW,false)){
+            checkbox.isChecked = true
+            var username = SharepreferenceUtils.getString(activity!!,Constants.PortalConstant.REMEMBER_USERNAME,user_et.text.toString().trim())
+            var psw = SharepreferenceUtils.getString(activity!!,Constants.PortalConstant.REMEMBER_PSW,psw_et.text.toString().trim())
+            user_et.setText(username)
+            psw_et.setText(psw)
+            isUserNameEmpty = false
+            isPSWEmpty = false
+            changeLoginTVBackground()
+        }
     }
 
     override fun initListener() {
@@ -141,9 +161,15 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
     }
 
     override fun onLoginSuccess(data: ResponseLoginBean) {
-        SharepreferenceUtils.put(activity!!,Constants.REMEMBER_USERNAME,psw_et.text.toString().trim())
+        ToastUtils.show(activity!!.resources.getString(R.string.portal_login_success))
+        SharepreferenceUtils.put(activity!!,Constants.PortalConstant.REMEMBER_USERNAME,user_et.text.toString().trim())
         if (checkbox.isChecked){
-            SharepreferenceUtils.put(activity!!,Constants.IS_REMEMBER_PSW,psw_et.text.toString().trim())
+            SharepreferenceUtils.put(activity!!,Constants.PortalConstant.IS_REMEMBER_PSW,true)
+            SharepreferenceUtils.put(activity!!,Constants.PortalConstant.REMEMBER_PSW,psw_et.text.toString().trim())
+        }else{
+            SharepreferenceUtils.put(activity!!,Constants.PortalConstant.IS_REMEMBER_PSW,false)
         }
+        SharepreferenceUtils.put(activity!!,Constants.PortalConstant.IS_LOGIN,true)
+        dismiss()
     }
 }

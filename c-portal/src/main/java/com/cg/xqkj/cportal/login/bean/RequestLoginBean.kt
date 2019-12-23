@@ -8,4 +8,5 @@ package com.cg.xqkj.cportal.login.bean
 class RequestLoginBean {
     lateinit var userName:String
     lateinit var psw:String
+    lateinit var imei:String
 }

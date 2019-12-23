@@ -1,17 +1,25 @@
 package com.cg.xqkj.cportal.register.view.fragment
 
 import android.content.Context
+import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.fragment.app.DialogFragment
 import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.base.intf.EnterAnimType
+import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.RegexUtils
+import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.router.annotation.CRouter
+import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
+import com.cg.xqkj.cportal.register.bean.ResponseRegisterPSWBean
 import com.cg.xqkj.cportal.register.contract.RegisterpswFMContract
 import com.cg.xqkj.cportal.register.presenter.RegisterpswFMPresenter
 import kotlinx.android.synthetic.main.portal_fragment_register_psw.*
+
+
 
 /**
  *  author : ChenGuo
@@ -22,9 +30,12 @@ import kotlinx.android.synthetic.main.portal_fragment_register_psw.*
 class RegisterpswFragment :RegisterpswFMContract.IView, BaseDialogFragment<RegisterpswFMContract.IView, RegisterpswFMContract.IPresenter<RegisterpswFMContract.IView>>(),
     View.OnClickListener {
 
+
+    private lateinit var randomkey:String
+    private lateinit var phone:String
+    private lateinit var bundle: Bundle
     private var isPSWEmpty: Boolean = true
     private var isConfirmPSWEmpty: Boolean = true
-    private var phone: String = "15555555555"
     private lateinit var mPresenter: RegisterpswFMContract.IPresenter<RegisterpswFMContract.IView>
 
     override fun createPresenter(): RegisterpswFMContract.IPresenter<RegisterpswFMContract.IView> {
@@ -44,6 +55,12 @@ class RegisterpswFragment :RegisterpswFMContract.IView, BaseDialogFragment<Regis
 
     override fun getBaseActivity(): Context {
         return activity!!
+    }
+
+    override fun setBundleExtra(bundle: Bundle) {
+        this.bundle = bundle
+        this.phone = bundle.getString(Constants.PortalConstant.REGISTER_PHONE,"")
+        this.randomkey = bundle.getString(Constants.PortalConstant.REGISTER_RANDOM_KEY,"")
     }
 
     override fun createView(): RegisterpswFMContract.IView {
@@ -105,6 +122,14 @@ class RegisterpswFragment :RegisterpswFMContract.IView, BaseDialogFragment<Regis
         if (isConfirmPSWEmpty){
             return false
         }
+
+        if (phone.isEmpty()){
+            return false
+        }
+
+        if (randomkey.isEmpty()){
+            return false
+        }
         return true
     }
 
@@ -112,10 +137,18 @@ class RegisterpswFragment :RegisterpswFMContract.IView, BaseDialogFragment<Regis
         when(v!!.id){
             R.id.submit_tv -> {
                 if (checkParamsOK()){
-                    mPresenter.submitPSW(activity!!,phone,psw_et.text.toString().trim(),confirm_psw_et.text.toString().trim(),bindToLifecycle<Any>())
+                    mPresenter.submitPSW(activity!!,phone,randomkey,psw_et.text.toString().trim(),confirm_psw_et.text.toString().trim(),bindToLifecycle<Any>())
                 }
             }
         }
     }
 
+    override fun onRegisterSuccess(data: ResponseRegisterPSWBean) {
+        ToastUtils.show(activity!!.resources.getString(R.string.portal_register_psw_submit_success))
+        val prev =  activity!!.supportFragmentManager.findFragmentByTag("registerFragment1")
+        if (prev is DialogFragment) {
+            prev.dismiss()
+        }
+        dismiss()
+    }
 }

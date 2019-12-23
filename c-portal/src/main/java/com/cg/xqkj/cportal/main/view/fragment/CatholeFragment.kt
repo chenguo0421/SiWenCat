@@ -1,6 +1,7 @@
 package com.cg.xqkj.cportal.main.view.fragment
 
 import android.content.Context
+import android.os.Bundle
 import cn.com.cg.base.BaseFragment
 import cn.com.cg.router.annotation.CRouter
 import com.cg.xqkj.cportal.R
@@ -14,7 +15,7 @@ import com.cg.xqkj.cportal.main.presenter.CatholeFMPresenter
  */
 @CRouter(path = "CatholeFragment")
 class CatholeFragment :CatholeFMContract.IView, BaseFragment<CatholeFMContract.IView, CatholeFMContract.IPresenter<CatholeFMContract.IView>>() {
-
+    private lateinit var bundle: Bundle
     private lateinit var mPresenter: CatholeFMContract.IPresenter<CatholeFMContract.IView>
 
     override fun createPresenter(): CatholeFMContract.IPresenter<CatholeFMContract.IView> {
@@ -30,6 +31,10 @@ class CatholeFragment :CatholeFMContract.IView, BaseFragment<CatholeFMContract.I
 
     override fun getBaseActivity(): Context {
         return activity!!
+    }
+
+    override fun setBundleExtra(bundle: Bundle) {
+        this.bundle = bundle
     }
 
     override fun createView(): CatholeFMContract.IView {

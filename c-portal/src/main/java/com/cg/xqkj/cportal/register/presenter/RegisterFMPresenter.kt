@@ -7,6 +7,7 @@ import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.register.bean.RequestPhoneTokenBean
 import com.cg.xqkj.cportal.register.bean.RequestRegisterBean
 import com.cg.xqkj.cportal.register.bean.ResponsePhoneTokenBean
+import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
 import com.cg.xqkj.cportal.register.contract.RegisterFMContract
 import com.cg.xqkj.cportal.register.model.RegisterFMModel
 import com.trello.rxlifecycle2.LifecycleTransformer
@@ -34,8 +35,8 @@ class RegisterFMPresenter : RegisterFMContract.IPresenter<RegisterFMContract.IVi
         params.phone = phone
         params.authCode = authCode
         params.imei = ""
-        mModel?.register(params,transformer,object :  ProgressObserver<Any>(context){
-            override fun success(data: Any) {
+        mModel?.register(params,transformer,object :  ProgressObserver<ResponseRegisterBean>(context){
+            override fun success(data: ResponseRegisterBean) {
                 getView()?.onPhoneNumSubOK(data)
             }
 

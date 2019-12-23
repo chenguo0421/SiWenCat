@@ -8,6 +8,7 @@ import cn.com.cg.mvp.base.intf.BaseView
 import com.cg.xqkj.cportal.register.bean.RequestPhoneTokenBean
 import com.cg.xqkj.cportal.register.bean.RequestRegisterBean
 import com.cg.xqkj.cportal.register.bean.ResponsePhoneTokenBean
+import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
 import com.trello.rxlifecycle2.LifecycleTransformer
 
 /**
@@ -18,7 +19,7 @@ import com.trello.rxlifecycle2.LifecycleTransformer
 class RegisterFMContract {
 
     public interface IView:BaseView{
-        fun onPhoneNumSubOK(data: Any)
+        fun onPhoneNumSubOK(data: ResponseRegisterBean)
         abstract fun onPhoneTokenOK(data: ResponsePhoneTokenBean)
 
     }
@@ -43,7 +44,7 @@ class RegisterFMContract {
         abstract fun register(
             params: RequestRegisterBean,
             transformer: LifecycleTransformer<Any>,
-            observer: ProgressObserver<Any>
+            observer: ProgressObserver<ResponseRegisterBean>
         )
 
         abstract fun phoneToken(

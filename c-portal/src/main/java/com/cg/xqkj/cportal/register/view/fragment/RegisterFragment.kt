@@ -1,17 +1,21 @@
 package com.cg.xqkj.cportal.register.view.fragment
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.base.intf.EnterAnimType
+import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.RegexUtils
 import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.router.annotation.CRouter
 import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.register.bean.ResponsePhoneTokenBean
+import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
 import com.cg.xqkj.cportal.register.contract.RegisterFMContract
 import com.cg.xqkj.cportal.register.presenter.RegisterFMPresenter
 import kotlinx.android.synthetic.main.portal_fragment_register.*
@@ -24,7 +28,7 @@ import kotlinx.android.synthetic.main.portal_fragment_register.*
 @CRouter(path = "RegisterFragment")
 class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMContract.IView, RegisterFMContract.IPresenter<RegisterFMContract.IView>>(),
     View.OnClickListener {
-
+    private lateinit var bundle:Bundle
 
     var isPhoneEmpty:Boolean? = true
     var isAuthCodeEmpty:Boolean? = true
@@ -47,6 +51,10 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
 
     override fun getBaseActivity(): Context {
         return activity!!
+    }
+
+    override fun setBundleExtra(bundle: Bundle) {
+        this.bundle = bundle
     }
 
     override fun createView(): RegisterFMContract.IView {
@@ -133,9 +141,17 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
         }
     }
 
-    override fun onPhoneNumSubOK(data: Any) {
+    override fun onPhoneNumSubOK(data: ResponseRegisterBean) {
         ToastUtils.show(activity!!.getString(R.string.portal_register_phone_submit_success))
-        val registerpswFragment = RouterManager.getInstance().with(activity!!).fragmentTag("registerpswFragment1").action("RegisterpswFragment").navigation() as BaseDialogFragment<*,*>?
+        var registerpswFragment = RouterManager.getInstance()
+            .with(activity!!)
+            .fragmentTag("registerpswFragment1")
+            .action("RegisterpswFragment")
+            .navigation() as BaseDialogFragment<*,*>?
+        var bundle = Bundle()
+        bundle.putString(Constants.PortalConstant.REGISTER_PHONE,phone_et.text.toString().trim())
+        bundle.putString(Constants.PortalConstant.REGISTER_RANDOM_KEY,data.randomKey)
+        registerpswFragment?.setBundleExtra(bundle)
         registerpswFragment?.show(activity!!.supportFragmentManager,"registerpswFragment1")
     }
 

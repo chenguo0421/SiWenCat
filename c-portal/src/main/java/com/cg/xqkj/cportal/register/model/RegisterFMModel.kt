@@ -5,6 +5,7 @@ import cn.com.cg.cnet.retrofit.utils.RetrofitHelper
 import com.cg.xqkj.cportal.register.bean.RequestPhoneTokenBean
 import com.cg.xqkj.cportal.register.bean.RequestRegisterBean
 import com.cg.xqkj.cportal.register.bean.ResponsePhoneTokenBean
+import com.cg.xqkj.cportal.register.bean.ResponseRegisterBean
 import com.cg.xqkj.cportal.register.contract.RegisterFMContract
 import com.cg.xqkj.cportal.service.PortalService
 import com.trello.rxlifecycle2.LifecycleTransformer
@@ -27,7 +28,7 @@ class RegisterFMModel: RegisterFMContract.IModel() {
     override fun register(
         params: RequestRegisterBean,
         transformer: LifecycleTransformer<Any>,
-        observer: ProgressObserver<Any>
+        observer: ProgressObserver<ResponseRegisterBean>
     ) {
         service!!.register(params)
             .compose(transformer)

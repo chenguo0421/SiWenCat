@@ -1,12 +1,13 @@
 package cn.com.cg.base.testmvp.view.fragment
 
 import android.content.Context
+import android.os.Bundle
 import cn.com.cg.base.BaseFragment
 import cn.com.cg.base.testmvp.contract.LoginFMContract
 import cn.com.cg.base.testmvp.presenter.LoginFMPresenter
 
 class LoginFragment :LoginFMContract.IView, BaseFragment<LoginFMContract.IView, LoginFMContract.IPresenter<LoginFMContract.IView>>() {
-
+    private lateinit var bundle: Bundle
     private lateinit var mPresenter: LoginFMContract.IPresenter<LoginFMContract.IView>
 
     override fun createPresenter(): LoginFMContract.IPresenter<LoginFMContract.IView> {
@@ -22,6 +23,10 @@ class LoginFragment :LoginFMContract.IView, BaseFragment<LoginFMContract.IView, 
 
     override fun getBaseActivity(): Context {
         return activity!!
+    }
+
+    override fun setBundleExtra(bundle: Bundle) {
+        this.bundle = bundle
     }
 
     override fun createView(): LoginFMContract.IView {
