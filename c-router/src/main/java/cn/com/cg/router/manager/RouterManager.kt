@@ -154,22 +154,26 @@ class RouterManager private constructor(){
         if (RouterParamsManager.getInstance().getAction() != null && RouterParamsManager.getInstance().getContext() != null) {
             val cls = RouterPathManager.getInstance()
                 .findClassFromRouterPath(RouterParamsManager.getInstance().getContext()!!, RouterParamsManager.getInstance().getAction()!!)!!.newInstance()
-            if (cls is BaseActivity<*, *>) {
-                val intent = createIntent()
-                jumpActivity(RouterParamsManager.getInstance().getContext()!!, intent)
-                //发生一次请求，清除脏数据
-                clearCatchData()
-                return null
-            } else if (cls is BaseFragment<*, *>) {
-                val instance = cls.getInstance()
-                instance.fragmentTag = RouterParamsManager.getInstance().getFragmentTag()
-                clearCatchData()
-                return instance
-            } else if (cls is BaseDialogFragment<*,*>){
-                val instance = cls.getInstance()
-                instance.fragmentTag = RouterParamsManager.getInstance().getFragmentTag()
-                clearCatchData()
-                return instance
+            when (cls) {
+                is BaseActivity<*, *> -> {
+                    val intent = createIntent()
+                    jumpActivity(RouterParamsManager.getInstance().getContext()!!, intent)
+                    //发生一次请求，清除脏数据
+                    clearCatchData()
+                    return null
+                }
+                is BaseFragment<*, *> -> {
+                    val instance = cls.getInstance()
+                    instance.fragmentTag = RouterParamsManager.getInstance().getFragmentTag()
+                    clearCatchData()
+                    return instance
+                }
+                is BaseDialogFragment<*,*> -> {
+                    val instance = cls.getInstance()
+                    instance.fragmentTag = RouterParamsManager.getInstance().getFragmentTag()
+                    clearCatchData()
+                    return instance
+                }
             }
         }
         return null

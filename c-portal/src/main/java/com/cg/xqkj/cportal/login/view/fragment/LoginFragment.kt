@@ -10,7 +10,9 @@ import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.SharepreferenceUtils
+import cn.com.cg.ccommon.utils.StringUtils
 import cn.com.cg.ccommon.utils.ToastUtils
+import cn.com.cg.router.annotation.CMethod
 import cn.com.cg.router.annotation.CRouter
 import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
@@ -72,15 +74,40 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
         initRemerberDataIfNeed()
     }
 
+
+    @CMethod(path = "/LoginFragment/onRegisterSuccess")
+    fun onRegisterSuccess(vararg params: Any){
+        if (activity != null && user_et != null && user_et.text != null) {
+            val username = SharepreferenceUtils.getString(
+                activity!!,
+                Constants.PortalConstant.REMEMBER_USERNAME,
+                user_et.text.toString().trim()
+            )
+            user_et.setText(username)
+
+            if (!StringUtils.isEmpty(username)){
+                isUserNameEmpty = false
+            }
+        }
+    }
+
+
+
     private fun initRemerberDataIfNeed() {
         if (SharepreferenceUtils.getBoolean(activity!!,Constants.PortalConstant.IS_REMEMBER_PSW,false)){
             checkbox.isChecked = true
-            var username = SharepreferenceUtils.getString(activity!!,Constants.PortalConstant.REMEMBER_USERNAME,user_et.text.toString().trim())
-            var psw = SharepreferenceUtils.getString(activity!!,Constants.PortalConstant.REMEMBER_PSW,psw_et.text.toString().trim())
+            val username = SharepreferenceUtils.getString(activity!!,Constants.PortalConstant.REMEMBER_USERNAME,user_et.text.toString().trim())
+            val psw = SharepreferenceUtils.getString(activity!!,Constants.PortalConstant.REMEMBER_PSW,psw_et.text.toString().trim())
             user_et.setText(username)
             psw_et.setText(psw)
-            isUserNameEmpty = false
-            isPSWEmpty = false
+
+            if (!StringUtils.isEmpty(username)){
+                isUserNameEmpty = false
+            }
+
+            if (!StringUtils.isEmpty(psw)){
+                isPSWEmpty = false
+            }
             changeLoginTVBackground()
         }
     }

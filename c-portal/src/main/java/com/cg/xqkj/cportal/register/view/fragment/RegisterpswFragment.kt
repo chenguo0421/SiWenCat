@@ -10,6 +10,7 @@ import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.RegexUtils
+import cn.com.cg.ccommon.utils.SharepreferenceUtils
 import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.router.annotation.CRouter
 import cn.com.cg.router.manager.RouterManager
@@ -145,6 +146,17 @@ class RegisterpswFragment :RegisterpswFMContract.IView, BaseDialogFragment<Regis
 
     override fun onRegisterSuccess(data: ResponseRegisterPSWBean) {
         ToastUtils.show(activity!!.resources.getString(R.string.portal_register_psw_submit_success))
+        SharepreferenceUtils.put(activity!!, Constants.PortalConstant.REMEMBER_USERNAME,data.userName)//记住当前用户名
+        SharepreferenceUtils.put(activity!!,Constants.PortalConstant.REMEMBER_PSW,"")//若之前有缓存密码，则清除，否则用户名和密码将会匹配错误
+        SharepreferenceUtils.put(activity!!,Constants.PortalConstant.IS_REMEMBER_PSW,false)//关闭记住密码状态
+
+        //调用指定fragment的指定action方法，这里注册完成后，刷新登录页的自动填充用户名
+        RouterManager.getInstance()
+            .with(activity!!)
+            .fragmentTag("loginFragment1")
+            .action("/LoginFragment/onRegisterSuccess")
+            .callMethod()
+
         val prev =  activity!!.supportFragmentManager.findFragmentByTag("registerFragment1")
         if (prev is DialogFragment) {
             prev.dismiss()

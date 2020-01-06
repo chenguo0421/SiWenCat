@@ -12,6 +12,9 @@
 		<CRouter>
 			<RouterPath>LoginFragment</RouterPath>
 			<ClassPath>com.cg.xqkj.cportal.login.view.fragment.LoginFragment</ClassPath>
+			<MethodPath>
+				<MethodPathItem>/LoginFragment/onRegisterSuccess</MethodPathItem>
+			</MethodPath>
 		</CRouter>
 		<CRouter>
 			<RouterPath>CatholeFragment</RouterPath>
