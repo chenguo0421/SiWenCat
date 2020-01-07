@@ -7,7 +7,6 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
 import cn.com.cg.base.BaseDialogFragment
-import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.SharepreferenceUtils
 import cn.com.cg.ccommon.utils.StringUtils
@@ -47,8 +46,8 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
         }
     }
 
-    override fun isEnterAnimSlideToUp(): EnterAnimType {
-        return EnterAnimType.RIGHT_TO_LEFT
+    override fun fragmentIOAnimation(): Int {
+        return R.style.BottomAnimation
     }
 
     override fun getBaseActivity(): Context {

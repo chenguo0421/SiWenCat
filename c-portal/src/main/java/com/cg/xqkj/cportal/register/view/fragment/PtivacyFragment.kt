@@ -3,7 +3,6 @@ package com.cg.xqkj.cportal.register.view.fragment
 import android.content.Context
 import android.os.Bundle
 import cn.com.cg.base.BaseDialogFragment
-import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.router.annotation.CRouter
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.register.contract.PtivacyFMContract
@@ -31,8 +30,8 @@ class PtivacyFragment :PtivacyFMContract.IView, BaseDialogFragment<PtivacyFMCont
         }
     }
 
-    override fun isEnterAnimSlideToUp(): EnterAnimType {
-        return EnterAnimType.SLIDE_TO_UP
+    override fun fragmentIOAnimation(): Int {
+        return R.style.BottomAnimation
     }
 
     override fun getBaseActivity(): Context {

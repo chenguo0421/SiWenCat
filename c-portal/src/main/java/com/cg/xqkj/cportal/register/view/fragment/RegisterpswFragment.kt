@@ -7,7 +7,6 @@ import android.text.TextWatcher
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import cn.com.cg.base.BaseDialogFragment
-import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.RegexUtils
 import cn.com.cg.ccommon.utils.SharepreferenceUtils
@@ -50,8 +49,8 @@ class RegisterpswFragment :RegisterpswFMContract.IView, BaseDialogFragment<Regis
         }
     }
 
-    override fun isEnterAnimSlideToUp(): EnterAnimType {
-        return EnterAnimType.RIGHT_TO_LEFT
+    override fun fragmentIOAnimation(): Int {
+        return R.style.RightAnimation
     }
 
     override fun getBaseActivity(): Context {

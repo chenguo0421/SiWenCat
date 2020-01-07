@@ -10,9 +10,7 @@ import cn.com.cg.router.manager.path.RouterBeanManager
 import com.trello.rxlifecycle2.components.support.RxDialogFragment
 import android.widget.ImageView
 import androidx.fragment.app.FragmentManager
-import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.router.R
-import cn.com.cg.router.manager.RouterManager
 import kotlinx.android.synthetic.main.include_base_header.*
 
 
@@ -22,11 +20,12 @@ import kotlinx.android.synthetic.main.include_base_header.*
  *  description : { 请添加该类的描述 }
  */
 abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFragment() {
+    private var v: View? = null
     open var fragmentTag:String? = ""
     private var mView: V? = null
     private var mPresenter: P? = null
     private var statusBarView: View? = null
-    private var orientation:EnterAnimType? = EnterAnimType.RIGHT_TO_LEFT
+    private var orientation:Int = R.style.RightAnimation
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,42 +41,21 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
 
         mPresenter?.attachView(mView!!)
 
-        orientation = isEnterAnimSlideToUp()
+        orientation = fragmentIOAnimation()
     }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val v = inflater.inflate(initLayoutId(), container,false)
-        initHeaderView(v)
-        animByOrientation(v)
+        dialog?.window?.setWindowAnimations(orientation)
+        v = inflater.inflate(initLayoutId(), container,false)
+        initHeaderView(v!!)
         return v
     }
 
-    private fun animByOrientation(v:View) {
-        when (orientation) {
-            EnterAnimType.RIGHT_TO_LEFT -> RouterManager.getInstance()
-                .with(activity!!)
-                .action("/AnimUtils/rightToLeft")
-                .callMethod(v)
-            EnterAnimType.LEFT_TO_RIGHT -> RouterManager.getInstance()
-                .with(activity!!)
-                .action("/AnimUtils/leftToRight")
-                .callMethod(v)
-            EnterAnimType.SLIDE_TO_UP -> RouterManager.getInstance()
-                .with(activity!!)
-                .action("/AnimUtils/slideToUp")
-                .callMethod(v)
-            EnterAnimType.UP_TO_SLIDE -> RouterManager.getInstance()
-                .with(activity!!)
-                .action("/AnimUtils/upToSlide")
-                .callMethod(v)
-        }
-    }
-
     private fun initHeaderView(view:View) {
-        val back_img = view.findViewById<ImageView>(R.id.back_img)
-        back_img?.setOnClickListener(View.OnClickListener {
+        val backImg1 = view.findViewById<ImageView>(R.id.back_img)
+        backImg1?.setOnClickListener(View.OnClickListener {
             if (dialog!!.isShowing){
                 dismiss()
             }
@@ -116,13 +94,14 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
         super.showNow(manager, tag)
     }
 
+
     abstract fun createPresenter(): P
     abstract fun createView(): V
     protected abstract fun initLayoutId(): Int
     abstract fun initData()
     abstract fun initListener()
     abstract fun getInstance():BaseDialogFragment<V,P>
-    abstract fun isEnterAnimSlideToUp(): EnterAnimType
+    abstract fun fragmentIOAnimation(): Int
     abstract fun setBundleExtra(bundle: Bundle)
 
 

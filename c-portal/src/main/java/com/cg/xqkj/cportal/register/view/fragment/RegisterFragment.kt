@@ -1,13 +1,11 @@
 package com.cg.xqkj.cportal.register.view.fragment
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import cn.com.cg.base.BaseDialogFragment
-import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.RegexUtils
 import cn.com.cg.ccommon.utils.ToastUtils
@@ -28,6 +26,7 @@ import kotlinx.android.synthetic.main.portal_fragment_register.*
 @CRouter(path = "RegisterFragment")
 class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMContract.IView, RegisterFMContract.IPresenter<RegisterFMContract.IView>>(),
     View.OnClickListener {
+    private var privacyFragment: BaseDialogFragment<*, *>? = null
     private lateinit var bundle:Bundle
 
     var isPhoneEmpty:Boolean? = true
@@ -45,8 +44,8 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
         }
     }
 
-    override fun isEnterAnimSlideToUp(): EnterAnimType {
-        return EnterAnimType.SLIDE_TO_UP
+    override fun fragmentIOAnimation(): Int {
+        return R.style.RightAnimation
     }
 
     override fun getBaseActivity(): Context {
@@ -69,6 +68,8 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
         setHeaderTitle(activity!!.resources.getString(R.string.portal_register_title))
         isPhoneEmpty = true
         isAuthCodeEmpty = true
+
+        privacyFragment = RouterManager.getInstance().with(activity!!).fragmentTag("ptivacyFragment1").action("PtivacyFragment").navigation() as BaseDialogFragment<*,*>?
     }
 
     override fun initListener() {
@@ -102,7 +103,9 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.privacy_tv -> {
-                val privacyFragment = RouterManager.getInstance().with(activity!!).fragmentTag("ptivacyFragment1").action("PtivacyFragment").navigation() as BaseDialogFragment<*,*>?
+                if (privacyFragment == null) {
+                    privacyFragment = RouterManager.getInstance().with(activity!!).fragmentTag("ptivacyFragment1").action("PtivacyFragment").navigation() as BaseDialogFragment<*,*>?
+                }
                 privacyFragment?.show(activity!!.supportFragmentManager,"ptivacyFragment1")
             }
 

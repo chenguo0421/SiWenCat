@@ -2,7 +2,6 @@ package %Path.view.fragment
 
 import android.os.Bundle
 import android.content.Context
-import cn.com.cg.base.intf.EnterAnimType
 import cn.com.cg.base.%BaseTypeFragment
 import %Path.contract.%NameFMContract
 import %Path.presenter.%NameFMPresenter
@@ -28,8 +27,8 @@ class %NameFragment :%NameFMContract.IView, %BaseTypeFragment<%NameFMContract.IV
         }
     }
 
-    override fun isEnterAnimSlideToUp(): EnterAnimType {%DialogAnim
-        return EnterAnimType.RIGHT_TO_LEFT%DialogAnim
+    override fun fragmentIOAnimation(): Int {%DialogAnim
+        return R.style.RightAnimation%DialogAnim
     }%DialogAnim
 
     override fun getBaseActivity(): Context {
