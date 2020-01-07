@@ -4,22 +4,27 @@ crouter是一款依赖于python和kotlin来设计的android路由框架，主要
 
 ### 主要特色
 
-  由于使用了python在编译时来处理一些过程问题，因此更大化的减少了配置上的步骤。
-  新增MVP模板，可通过脚本命令快速创建MVP模板
+  将Python应用在Android的编译期，帮助完成一些自动化工作。
 
 
-    ## 例如 在指定包下新增一个Activity或Fragment
+    ## 例如
+        通过Python在编译时解析注解相关内容，无需再运行时再对注解进行解析。
+        通过Python在命令行自动生成MVP模板，无需创建多个文件夹及文件，只需要一行命令，即可完成MVP所有相关文件夹及文件创建。
+
+
+    ## 例如 在指定包下新增一个Activity或Fragment或DialogFragment
          你可以使用如下命令：
 
-    ##   cmd：         python mvp.py com.cg.xqkj.cportal.main Portal Activity
-    ##   cmd:          python mvp.py com.cg.xqkj.cportal.main Home Fragment
+    ##   cmd：         python mvp.py cn.com.cg.base.test Portal Activity
+    ##   cmd:          python mvp.py cn.com.cg.base.test Home Fragment
+    ##   cmd:          python mvp.py cn.com.cg.base.test Register DialogFragment
 
 
-    ## 命令执行过后，你将可以看到你的MainActivity和HomeFragment被创建完成，并附带创建了m层和p层，以及contract
+    ## 命令执行过后，你将可以看到你的MainActivity和HomeFragment以及RegisterFragment被创建完成，并附带创建了m层和p层，以及contract
    ![](mvpPhoto.png)
 
 
-### 设计思路
+### 路由寻址
   
   在编译时，使用python处理所有的注解类，生成相关路由表。在运行时，读取路由表，获得对应类的路由，通过反射机制与相应的类进行通信。
 
