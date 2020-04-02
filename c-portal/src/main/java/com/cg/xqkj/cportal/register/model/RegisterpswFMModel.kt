@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers
  */
 class RegisterpswFMModel: RegisterpswFMContract.IModel() {
 
-    open var service: PortalService? = null
+    var service: PortalService? = null
     init {
         service = RetrofitHelper.apiSafeService(PortalService::class.java)
     }

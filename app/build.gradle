@@ -11,8 +11,8 @@ android {
         applicationId "cn.com.cg.base.siwencat"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
 
@@ -46,7 +46,7 @@ dependencies {
 
 task scanProjectByPython(type: Exec) {
     workingDir './'
-    commandLine "python","../pythondemo.py","F:\\Project\\BusinessProject\\siwen\\android\\github_code\\SiWenCat"
+    commandLine "python","../pythondemo.py","D:\\workspace\\business_workspace\\siwencat\\client\\SiWenCat"
 }
 
 afterEvaluate {

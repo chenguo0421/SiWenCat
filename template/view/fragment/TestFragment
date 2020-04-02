@@ -2,6 +2,8 @@ package %Path.view.fragment
 
 import android.os.Bundle
 import android.content.Context
+import android.view.Gravity%DialogAttribute
+import android.view.ViewGroup%DialogAttribute
 import cn.com.cg.base.%BaseTypeFragment
 import %Path.contract.%NameFMContract
 import %Path.presenter.%NameFMPresenter
@@ -38,6 +40,22 @@ class %NameFragment :%NameFMContract.IView, %BaseTypeFragment<%NameFMContract.IV
     override fun setBundleExtra(bundle: Bundle) {
         this.bundle = bundle
     }
+
+    override fun setDialogWidth(): Int {%DialogAttribute
+        return ViewGroup.LayoutParams.MATCH_PARENT%DialogAttribute
+    }%DialogAttribute
+
+    override fun setDialogHeight(): Int {%DialogAttribute
+        return ViewGroup.LayoutParams.MATCH_PARENT%DialogAttribute
+    }%DialogAttribute
+
+    override fun setOutSideAlpha(): Float? {%DialogAttribute
+        return 1f%DialogAttribute
+    }%DialogAttribute
+
+    override fun setGravity(): Int {%DialogAttribute
+        return Gravity.CENTER%DialogAttribute
+    }%DialogAttribute
 
     override fun createView(): %NameFMContract.IView {
         return this

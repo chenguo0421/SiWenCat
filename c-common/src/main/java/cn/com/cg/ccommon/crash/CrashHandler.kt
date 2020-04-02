@@ -187,8 +187,8 @@ private constructor() : Thread.UncaughtExceptionHandler {
             if (pi != null) {
                 val versionName = if (pi.versionName == null) "null" else pi.versionName
                 val versionCode = pi.versionCode.toString() + ""
-                infos.put("versionName", versionName)
-                infos.put("versionCode", versionCode)
+                infos["versionName"] = versionName
+                infos["versionCode"] = versionCode
             }
         } catch (e: PackageManager.NameNotFoundException) {
             Log.e(TAG, "collectDeviceInfo() an error occured when collect package info NameNotFoundException:")
@@ -198,7 +198,7 @@ private constructor() : Thread.UncaughtExceptionHandler {
         for (field in fields) {
             try {
                 field.isAccessible = true
-                infos.put(field.name, field.get(null).toString())
+                infos[field.name] = field.get(null).toString()
                 Log.i(TAG, field.name + " : " + field.get(null))
             } catch (e: Exception) {
                 Log.e(TAG, "collectDeviceInfo() an error occured when collect crash info Exception:")
@@ -262,7 +262,7 @@ private constructor() : Thread.UncaughtExceptionHandler {
         }
         var fis: FileInputStream? = null
         var reader: BufferedReader? = null
-        var s: String? = null
+        var s: String?
         try {
             fis = FileInputStream(fileName)
             reader = BufferedReader(InputStreamReader(fis, "GBK"))

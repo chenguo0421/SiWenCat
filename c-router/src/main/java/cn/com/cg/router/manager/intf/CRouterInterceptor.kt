@@ -8,5 +8,5 @@ import cn.com.cg.router.manager.params.RouterParamsManager
  * Date  2019/9/21 10:36
  */
 interface CRouterInterceptor {
-    open fun onInterceptor(paramsManager: RouterParamsManager)
+    fun onInterceptor(paramsManager: RouterParamsManager)
 }

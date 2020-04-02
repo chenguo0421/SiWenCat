@@ -15,8 +15,8 @@ class CheckLeak {
 
     private var mList: MutableList<Int> = Collections.synchronizedList(ArrayList())
     private var mMap = WeakHashMap<Activity, Int>()
-    private var mQueue = ReferenceQueue<Object>()
-    private var mPhantomReference = WeakReference(Object(), mQueue)
+    private var mQueue = ReferenceQueue<Any>()
+    private var mPhantomReference = WeakReference(Any(), mQueue)
 
     internal fun add(activity: Activity) {
         val code = activity.hashCode()

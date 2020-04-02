@@ -2,7 +2,9 @@ package com.cg.xqkj.cportal.register.view.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.view.Gravity
 import cn.com.cg.base.BaseDialogFragment
+import cn.com.cg.ccommon.utils.DeviceUtils
 import cn.com.cg.router.annotation.CRouter
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.register.contract.PtivacyFMContract
@@ -40,6 +42,22 @@ class PtivacyFragment :PtivacyFMContract.IView, BaseDialogFragment<PtivacyFMCont
 
     override fun setBundleExtra(bundle: Bundle) {
         this.bundle = bundle
+    }
+
+    override fun setDialogWidth(): Int {
+        return DeviceUtils.getScreenWidth(activity!!)
+    }
+
+    override fun setDialogHeight(): Int {
+        return DeviceUtils.getScreenHeight(activity!!)
+    }
+
+    override fun setOutSideAlpha(): Float? {
+        return 1f
+    }
+
+    override fun setGravity(): Int {
+        return Gravity.CENTER
     }
 
     override fun createView(): PtivacyFMContract.IView {

@@ -4,13 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Gravity
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import cn.com.cg.base.BaseDialogFragment
-import cn.com.cg.ccommon.utils.Constants
-import cn.com.cg.ccommon.utils.RegexUtils
-import cn.com.cg.ccommon.utils.SharepreferenceUtils
-import cn.com.cg.ccommon.utils.ToastUtils
+import cn.com.cg.ccommon.utils.*
 import cn.com.cg.router.annotation.CRouter
 import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
@@ -61,6 +59,22 @@ class RegisterpswFragment :RegisterpswFMContract.IView, BaseDialogFragment<Regis
         this.bundle = bundle
         this.phone = bundle.getString(Constants.PortalConstant.REGISTER_PHONE,"")
         this.randomkey = bundle.getString(Constants.PortalConstant.REGISTER_RANDOM_KEY,"")
+    }
+
+    override fun setDialogWidth(): Int {
+        return DeviceUtils.getScreenWidth(activity!!)
+    }
+
+    override fun setDialogHeight(): Int {
+        return DeviceUtils.getScreenHeight(activity!!)
+    }
+
+    override fun setOutSideAlpha(): Float? {
+        return 1f
+    }
+
+    override fun setGravity(): Int {
+        return Gravity.CENTER
     }
 
     override fun createView(): RegisterpswFMContract.IView {

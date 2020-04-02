@@ -60,7 +60,7 @@ class RouterBeanManager{
                 if (list == null) {
                     list = ArrayList()
                 }
-                obj.fragmentTag?.let { list!!.add(it) }
+                obj.fragmentTag?.let { list.add(it) }
                 fmTagsMap?.put(obj::class.qualifiedName!!,list)
             }
         }

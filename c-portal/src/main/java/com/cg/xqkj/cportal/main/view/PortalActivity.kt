@@ -68,7 +68,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
         when(index){
             0 -> {
                 resetView()
-                store_tv.setTextColor(resources.getColor(R.color.common_text_color_red))
+                store_tv.setTextColor(resources.getColor(R.color.common_text_color_red,resources.newTheme()))
                 index_bottom_bar_store_image.setImageResource(R.mipmap.store_red)
                 if (storeFragment == null) {
                     storeFragment = RouterManager.getInstance().with(this).fragmentTag("storeFragment1").action("StoreFragment").navigation() as BaseFragment<*, *>?
@@ -77,7 +77,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
             }
             1 -> {
                 resetView()
-                cathole_tv.setTextColor(resources.getColor(R.color.common_text_color_red))
+                cathole_tv.setTextColor(resources.getColor(R.color.common_text_color_red,resources.newTheme()))
                 index_bottom_bar_cathole_image.setImageResource(R.mipmap.gathole_red)
                 if (catholeFragment == null) {
                     catholeFragment = RouterManager.getInstance().with(this).fragmentTag("catholeFragment1").action("CatholeFragment").navigation() as BaseFragment<*, *>?
@@ -86,7 +86,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
             }
             2 -> {
                 resetView()
-                home_tv.setTextColor(resources.getColor(R.color.common_text_color_red))
+                home_tv.setTextColor(resources.getColor(R.color.common_text_color_red,resources.newTheme()))
                 index_bottom_bar_home.setImageResource(R.mipmap.siwencat_red)
                 if (homeFragment == null) {
                     homeFragment = RouterManager.getInstance().with(this).fragmentTag("homeFragment1").action("HomeFragment").navigation() as BaseFragment<*, *>?
@@ -95,7 +95,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
             }
             3 -> {
                 resetView()
-                gift_tv.setTextColor(resources.getColor(R.color.common_text_color_red))
+                gift_tv.setTextColor(resources.getColor(R.color.common_text_color_red,resources.newTheme()))
                 index_bottom_bar_gift_image.setImageResource(R.mipmap.gift_red)
                 if (giftFragment == null) {
                     giftFragment = RouterManager.getInstance().with(this).fragmentTag("giftFragment1").action("GiftFragment").navigation() as BaseFragment<*, *>?
@@ -111,7 +111,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
                     return
                 }
                 resetView()
-                my_tv.setTextColor(resources.getColor(R.color.common_text_color_red))
+                my_tv.setTextColor(resources.getColor(R.color.common_text_color_red,resources.newTheme()))
                 index_bottom_bar_my_image.setImageResource(R.mipmap.my_red)
                 if (myFragment == null) {
                     myFragment = RouterManager.getInstance().with(this).fragmentTag("myFragment1").action("MyFragment").navigation() as BaseFragment<*, *>?
@@ -137,11 +137,11 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
     }
 
     private fun  setAllTextColorGrat(){
-        store_tv.setTextColor(resources.getColor(R.color.common_text_color_cdcdcd))
-        cathole_tv.setTextColor(resources.getColor(R.color.common_text_color_cdcdcd))
-        home_tv.setTextColor(resources.getColor(R.color.common_text_color_cdcdcd))
-        gift_tv.setTextColor(resources.getColor(R.color.common_text_color_cdcdcd))
-        my_tv.setTextColor(resources.getColor(R.color.common_text_color_cdcdcd))
+        store_tv.setTextColor(resources.getColor(R.color.common_text_color_cdcdcd,resources.newTheme()))
+        cathole_tv.setTextColor(resources.getColor(R.color.common_text_color_cdcdcd,resources.newTheme()))
+        home_tv.setTextColor(resources.getColor(R.color.common_text_color_cdcdcd,resources.newTheme()))
+        gift_tv.setTextColor(resources.getColor(R.color.common_text_color_cdcdcd,resources.newTheme()))
+        my_tv.setTextColor(resources.getColor(R.color.common_text_color_cdcdcd,resources.newTheme()))
     }
 
     inner class TabOnClickListener(private val index: Int) : View.OnClickListener{

@@ -4,9 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Gravity
 import android.view.View
 import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.ccommon.utils.Constants
+import cn.com.cg.ccommon.utils.DeviceUtils
 import cn.com.cg.ccommon.utils.RegexUtils
 import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.router.annotation.CRouter
@@ -54,6 +56,22 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
 
     override fun setBundleExtra(bundle: Bundle) {
         this.bundle = bundle
+    }
+
+    override fun setDialogWidth(): Int {
+        return DeviceUtils.getScreenWidth(activity!!)
+    }
+
+    override fun setDialogHeight(): Int {
+        return DeviceUtils.getScreenHeight(activity!!)
+    }
+
+    override fun setOutSideAlpha(): Float? {
+        return 1f
+    }
+
+    override fun setGravity(): Int {
+        return Gravity.CENTER
     }
 
     override fun createView(): RegisterFMContract.IView {

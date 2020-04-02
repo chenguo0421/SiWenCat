@@ -46,11 +46,11 @@ class RegisterFMPresenter : RegisterFMContract.IPresenter<RegisterFMContract.IVi
         })
     }
 
-    override fun getPhoneToken(context: Context, phone: String, transformer: LifecycleTransformer<Any>) {
-        var params = RequestPhoneTokenBean()
+    override fun getPhoneToken(context: Context, phone: String, bindToLifecycle: LifecycleTransformer<Any>) {
+        val params = RequestPhoneTokenBean()
         params.phone = phone
         params.imei = ""
-        mModel?.phoneToken(params,transformer,object :  ProgressObserver<ResponsePhoneTokenBean>(context){
+        mModel?.phoneToken(params,bindToLifecycle,object :  ProgressObserver<ResponsePhoneTokenBean>(context){
             override fun success(data: ResponsePhoneTokenBean) {
                 getView()?.onPhoneTokenOK(data)
             }

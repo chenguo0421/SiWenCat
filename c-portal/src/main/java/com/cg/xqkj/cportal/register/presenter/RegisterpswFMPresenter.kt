@@ -23,11 +23,11 @@ class RegisterpswFMPresenter : RegisterpswFMContract.IPresenter<RegisterpswFMCon
         mModel = RegisterpswFMModel()
     }
 
-    override fun submitPSW(context: Context,phone:String,randomKey:String, psw: String, confirmPsw: String, transformer: LifecycleTransformer<Any>) {
+    override fun submitPSW(context: Context, phone:String, randomkey:String, psw: String, confirmPsw: String, transformer: LifecycleTransformer<Any>) {
         val params = RequestRegisterPSWBean()
         params.psw = psw
         params.phone = phone
-        params.randomKey = randomKey
+        params.randomKey = randomkey
         params.confirmPsw = confirmPsw
         params.phone = phone
         params.imei = ""

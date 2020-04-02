@@ -19,7 +19,7 @@ open class RouterXmlParser{
 
     companion object{
 
-        open fun parseRouterMap(context: Context,routerMap: HashMap<String, RouterBean>?,methodMap: HashMap<String, String>?,clsPathLists:ArrayList<String>?){
+        fun parseRouterMap(context: Context,routerMap: HashMap<String, RouterBean>?,methodMap: HashMap<String, String>?,clsPathLists:ArrayList<String>?){
             routerMap?.clear()
             methodMap?.clear()
             clsPathLists?.clear()
@@ -41,7 +41,7 @@ open class RouterXmlParser{
             var router: RouterBean? = null
             var cMethodIds:ArrayList<String>? = null
             var clsPath: String? = null
-            var methodPath: String? = null
+            var methodPath: String?
             var ins: InputStream? = null
             try {
                 ins = context.resources.assets.open(fileName)
@@ -61,10 +61,10 @@ open class RouterXmlParser{
 
                             if (router != null) {
                                 if ("RouterPath" == tag) {
-                                    router!!.routerPath = parser.nextText()
+                                    router.routerPath = parser.nextText()
                                 } else if ("ClassPath" == tag) {
                                     val path =  parser.nextText()
-                                    router!!.classPaths = path
+                                    router.classPaths = path
                                     clsPath = path
                                     clsPathLists?.add(path)
                                 } else if ("MethodPath" == tag){

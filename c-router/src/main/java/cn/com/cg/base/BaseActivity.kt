@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.include_base_header.*
  * author  chenguo7
  * Date  2019/8/27 20:22
  */
-open abstract class BaseActivity<V:BaseView,P: BasePresenter<V>> : RxAppCompatActivity() {
+abstract class BaseActivity<V:BaseView,P: BasePresenter<V>> : RxAppCompatActivity() {
 
     open var callBackMethodID: String? = null
     private var mView: V? = null

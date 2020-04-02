@@ -23,7 +23,7 @@ class AnnotationUtils{
 
         fun getClassAnnotation(obj: Activity): String?{
             Class.forName("").annotations
-            val anno = obj::class.java!!.getAnnotation(CRouter::class.java)
+            val anno = obj::class.java.getAnnotation(CRouter::class.java)
             if(anno != null){
                 Log.e(TAG,"path = " + anno.path)
                 return anno.path
@@ -32,7 +32,7 @@ class AnnotationUtils{
         }
 
         fun getClassAnnotation(obj: Fragment): String? {
-            val anno = obj::class.java!!.getAnnotation(CRouter::class.java)
+            val anno = obj::class.java.getAnnotation(CRouter::class.java)
             if(anno != null){
                 Log.e(TAG,"path = " + anno.path)
                 return anno.path

@@ -159,6 +159,11 @@ def reWrite(_parentPath,_file,_packagePath,_baseName,type):
                    continue
                 else:
                    lin = lin.replace("%DialogAnim", "")
+             if "%DialogAttribute" in lin:
+                if 'dialogfragment' != _type:
+                    continue
+                else:
+                    lin = lin.replace("%DialogAttribute", "")
              f2.write(lin)
          f1.close()
          f2.close()
@@ -252,8 +257,8 @@ def get_module_class_path(list,rootPath):
 
 
 
-# 配置项目根路径 F:\Project\BusinessProject\siwen\android\github_code\SiWenCat
-_rootPath = 'F:\Project\BusinessProject\siwen\android\github_code\SiWenCat'
+# 配置项目根路径 D:\workspace\business_workspace\siwencat\client\SiWenCat
+_rootPath = 'D:\\workspace\\business_workspace\\siwencat\\client\\SiWenCat'
 _user = 'ChenGuo'
 _time = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
 _baseType = "Base"
@@ -276,6 +281,7 @@ print("mvp type is %s" %  _type)
 
 # 判断模板是否存在，若不存在直接终止脚本
 _templateFilePath = os.path.join(_rootPath,"template")
+print("_templateFilePath %s" % _templateFilePath)
 if not os.path.exists(_templateFilePath):
    print("not find template int rootPath,sure has added template file")
    quit()

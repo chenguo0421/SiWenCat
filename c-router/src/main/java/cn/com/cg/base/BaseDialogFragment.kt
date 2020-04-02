@@ -9,6 +9,7 @@ import cn.com.cg.mvp.base.intf.BaseView
 import cn.com.cg.router.manager.path.RouterBeanManager
 import com.trello.rxlifecycle2.components.support.RxDialogFragment
 import android.widget.ImageView
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import cn.com.cg.router.R
 import kotlinx.android.synthetic.main.include_base_header.*
@@ -42,11 +43,14 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
         mPresenter?.attachView(mView!!)
 
         orientation = fragmentIOAnimation()
+
+        setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_DeviceDefault_Light_NoActionBar)
+
     }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+//        dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog?.window?.setWindowAnimations(orientation)
         v = inflater.inflate(initLayoutId(), container,false)
         initHeaderView(v!!)
@@ -62,7 +66,7 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
         })
     }
 
-    public fun setHeaderTitle(title:String){
+    protected fun setHeaderTitle(title:String){
         title_tv?.text = title
     }
 
@@ -76,9 +80,20 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#FFFFFFFF")))
-        dialog?.window?.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(activity?.resources?.getColor(R.color.common_white,resources.newTheme())!!))
+        setDialogAttribute()
     }
+
+    private fun setDialogAttribute() {
+        val attribute = dialog?.window?.attributes
+        attribute?.dimAmount = setOutSideAlpha()
+        attribute?.width = setDialogWidth()
+        attribute?.height = setDialogHeight()
+        attribute?.gravity = setGravity()
+        dialog?.window?.attributes = attribute
+    }
+
+
 
     override fun show(manager: FragmentManager, tag: String?) {
         if(isAdded){
@@ -95,14 +110,19 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
     }
 
 
-    abstract fun createPresenter(): P
-    abstract fun createView(): V
+    protected abstract fun createPresenter(): P
+    protected abstract fun createView(): V
     protected abstract fun initLayoutId(): Int
-    abstract fun initData()
-    abstract fun initListener()
+    protected abstract fun initData()
+    protected abstract fun initListener()
+    protected abstract fun fragmentIOAnimation(): Int
+    protected abstract fun setDialogWidth():Int
+    protected abstract fun setDialogHeight():Int
+    protected abstract fun setOutSideAlpha(): Float?
+    protected abstract fun setGravity():Int
     abstract fun getInstance():BaseDialogFragment<V,P>
-    abstract fun fragmentIOAnimation(): Int
     abstract fun setBundleExtra(bundle: Bundle)
+
 
 
     override fun onDestroy() {

@@ -8,5 +8,5 @@ import java.util.*
  * Date  2019/8/30 13:43
  */
 interface RouterCallBack {
-    open fun onCallBack(data:Any)
+    fun onCallBack(data:Any)
 }
