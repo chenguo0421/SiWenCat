@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="common_text_color_cdcdcd">#FF707070</color>
+    <color name="common_text_color_cdcdcd_50">#77707070</color>
     <color name="common_text_color_red">#FFFF0000</color>
+    <color name="common_text_color_333333">#FF333333</color>
+    <color name="common_text_color_666666">#FF666666</color>
 
 
     <color name="common_text_color_3d3d3d">#FF3d3d3d</color>
@@ -16,4 +19,9 @@
     <color name="common_white">#FFFFFFFF</color>
     <color name="common_cyan">#FF00FFFF</color>
     <color name="common_yellow">#FFFFFF00</color>
+    <color name="common_color_f2f2f2">#F2F2F2</color>
+
+
+
+    <color name="common_color_efeaea">#FFEFEAEA</color>
 </resources>

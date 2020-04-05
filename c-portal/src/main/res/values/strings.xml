@@ -10,6 +10,23 @@
     <string name="portal_gathole">猫屋</string>
 
 
+    <!--我的 -->
+    <string name="portal_my_cat_currency">猫币(g)</string>
+    <string name="portal_my_balance">余额(¥)</string>
+    <string name="portal_my_today_read_time">今日阅读(min)</string>
+    <string name="portal_my_tools">思文小工具</string>
+    <string name="portal_my_gift_convert">礼品兑换</string>
+    <string name="portal_my_account_recharge">账户充值</string>
+    <string name="portal_my_cat_currency_recharge">猫币充值</string>
+    <string name="portal_my_cat_currency_sale">猫币出售</string>
+    <string name="portal_my_sale">我的出售</string>
+    <string name="portal_my_cat_currency_convert">猫币兑换</string>
+    <string name="portal_my_release">我的发布</string>
+    <string name="portal_my_comment">我的评论</string>
+    <string name="portal_my_grade">我的修为</string>
+    <string name="portal_my_collect">我的藏品</string>
+    <string name="portal_my_gather_cat_currency">攒猫币</string>
+
     <!-- 登陆 -->
     <string name="portal_login_edit_username_hint">请输入用户名</string>
     <string name="portal_login_edit_psw_hint">请输入密码</string>

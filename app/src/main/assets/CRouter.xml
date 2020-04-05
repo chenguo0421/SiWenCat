@@ -39,6 +39,9 @@
 		<CRouter>
 			<RouterPath>PortalActivity</RouterPath>
 			<ClassPath>com.cg.xqkj.cportal.main.view.PortalActivity</ClassPath>
+			<MethodPath>
+				<MethodPathItem>/PortalActivity/changeTabByIndex</MethodPathItem>
+			</MethodPath>
 		</CRouter>
 		<CRouter>
 			<RouterPath>PtivacyFragment</RouterPath>

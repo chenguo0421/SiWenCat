@@ -33,6 +33,10 @@ dependencies {
     implementation "androidx.core:core-ktx:${rootProject.ext.corektxVersion}"
     implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat}"
     api "androidx.constraintlayout:constraintlayout:${rootProject.ext.constaintlayoutVersion}"
+    api "androidx.recyclerview:recyclerview:${rootProject.ext.recyclerviewVersion}"
+    api 'com.github.pdog18:dimension-extensions:1.0'
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

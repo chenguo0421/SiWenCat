@@ -1,10 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:orientation="vertical"
+        android:background="#fff"
+        >
 
-    <TextView
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="My" />
-</LinearLayout>
+            android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/common_color_f2f2f2"
+                >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/head_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_dp_48"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:background="@color/common_white">
+                <RelativeLayout
+                        android:layout_width="@dimen/common_dp_48"
+                        android:layout_height="@dimen/common_dp_48"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:layout_marginStart="@dimen/common_margin_dp_10">
+                    <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/common_dp_24"
+                            android:layout_height="@dimen/common_dp_24"
+                            android:layout_centerInParent="true"
+                            android:src="@mipmap/sw_my_icon_xiaoxi"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/set_rl"
+                        android:layout_width="@dimen/common_dp_48"
+                        android:layout_height="@dimen/common_dp_48"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_marginEnd="@dimen/common_margin_dp_10">
+                    <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/common_dp_24"
+                            android:layout_height="@dimen/common_dp_24"
+                            android:layout_centerInParent="true"
+                            android:src="@mipmap/sw_my_icon_shezhi"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:layout_width="@dimen/common_dp_48"
+                        android:layout_height="@dimen/common_dp_48"
+                        app:layout_constraintTop_toTopOf="@id/set_rl"
+                        app:layout_constraintRight_toLeftOf="@id/set_rl"
+                        android:layout_marginEnd="@dimen/common_margin_dp_10">
+                    <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/common_dp_24"
+                            android:layout_height="@dimen/common_dp_24"
+                            android:layout_centerInParent="true"
+                            android:src="@mipmap/sw_my_icon_yejian"/>
+                </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/account_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_dp_142"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:background="@color/common_white"
+                    app:layout_constraintTop_toBottomOf="@+id/head_cl">
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/title_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/common_dp_10"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:background="@drawable/shader_divider_gray"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/people_head_portait_img"
+                        android:layout_width="@dimen/common_dp_60"
+                        android:layout_height="@dimen/common_dp_60"
+                        app:layout_constraintTop_toBottomOf="@id/title_line"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:layout_marginStart="@dimen/common_margin_dp_10"
+                        android:src="@mipmap/sw_my_people_face"
+                        />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@+id/people_head_portait_img"
+                        app:layout_constraintBottom_toBottomOf="@+id/people_head_portait_img"
+                        app:layout_constraintLeft_toRightOf="@+id/people_head_portait_img"
+                        android:textSize="@dimen/common_sp_18"
+                        android:textColor="@color/common_text_color_333333"
+                        android:layout_marginStart="@dimen/common_margin_dp_10"
+                        android:text="东方玄清"/>
+
+                <TextView
+                        android:id="@+id/cat_currency_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/people_head_portait_img"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:textSize="@dimen/common_sp_22"
+                        android:textColor="@color/common_text_color_333333"
+                        android:layout_marginStart="@dimen/common_margin_dp_32"
+                        android:layout_marginTop="@dimen/common_margin_dp_8"
+                        android:text="99.99"/>
+
+                <TextView
+                        android:id="@+id/time_count_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/people_head_portait_img"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:textSize="@dimen/common_sp_22"
+                        android:textColor="@color/common_text_color_333333"
+                        android:layout_marginEnd="@dimen/common_margin_dp_32"
+                        android:layout_marginTop="@dimen/common_margin_dp_8"
+                        android:text="99.99"/>
+
+                <TextView
+                        android:id="@+id/balance_count_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@+id/cat_currency_tv"
+                        app:layout_constraintBottom_toBottomOf="@+id/cat_currency_tv"
+                        app:layout_constraintLeft_toRightOf="@+id/cat_currency_tv"
+                        app:layout_constraintRight_toLeftOf="@+id/time_count_tv"
+                        android:textSize="@dimen/common_sp_22"
+                        android:textColor="@color/common_text_color_333333"
+                        android:layout_marginTop="@dimen/common_margin_dp_8"
+                        android:text="99.99"/>
+
+                <TextView
+                        android:id="@+id/cat_currency_dis_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/cat_currency_tv"
+                        app:layout_constraintLeft_toLeftOf="@+id/cat_currency_tv"
+                        app:layout_constraintRight_toRightOf="@+id/cat_currency_tv"
+                        android:textSize="@dimen/common_sp_12"
+                        android:textColor="@color/common_text_color_666666"
+                        android:layout_marginTop="@dimen/common_margin_dp_6"
+                        android:text="@string/portal_my_cat_currency"/>
+
+                <TextView
+                        android:id="@+id/time_count_dis_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/time_count_tv"
+                        app:layout_constraintLeft_toLeftOf="@+id/time_count_tv"
+                        app:layout_constraintRight_toRightOf="@+id/time_count_tv"
+                        android:textSize="@dimen/common_sp_12"
+                        android:textColor="@color/common_text_color_666666"
+                        android:layout_marginTop="@dimen/common_margin_dp_6"
+                        android:text="@string/portal_my_today_read_time"/>
+
+                <TextView
+                        android:id="@+id/balance_count_dis_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@+id/cat_currency_dis_tv"
+                        app:layout_constraintBottom_toBottomOf="@+id/cat_currency_dis_tv"
+                        app:layout_constraintLeft_toLeftOf="@+id/balance_count_tv"
+                        app:layout_constraintRight_toRightOf="@+id/balance_count_tv"
+                        android:textSize="@dimen/common_sp_12"
+                        android:textColor="@color/common_text_color_666666"
+                        android:layout_marginTop="@dimen/common_margin_dp_6"
+                        android:text="@string/portal_my_balance"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/tools_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_dp_230"
+                    app:layout_constraintTop_toBottomOf="@+id/account_cl"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginTop="@dimen/common_margin_dp_10"
+                    android:background="@color/common_white">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/tools_img"
+                        android:layout_width="@dimen/common_dp_24"
+                        android:layout_height="@dimen/common_dp_24"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:layout_marginTop="@dimen/common_margin_dp_10"
+                        android:layout_marginStart="@dimen/common_margin_dp_10"
+                        android:src="@mipmap/sw_my_icon_gongju"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/common_sp_18"
+                        android:textColor="@color/common_text_color_333333"
+                        android:text="@string/portal_my_tools"
+                        app:layout_constraintTop_toTopOf="@+id/tools_img"
+                        app:layout_constraintBottom_toBottomOf="@+id/tools_img"
+                        app:layout_constraintLeft_toRightOf="@+id/tools_img"
+                        android:layout_marginStart="@dimen/common_margin_dp_10"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/tools_next_img"
+                        android:layout_width="@dimen/common_dp_16"
+                        android:layout_height="@dimen/common_dp_16"
+                        app:layout_constraintTop_toTopOf="@+id/tools_img"
+                        app:layout_constraintBottom_toBottomOf="@+id/tools_img"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_marginEnd="@dimen/common_margin_dp_10"
+                        android:src="@mipmap/sw_my_icon_me_gengduo"
+                        />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/common_sp_12"
+                        android:textColor="@color/common_text_color_333333"
+                        android:text="@string/common_text_more"
+                        app:layout_constraintTop_toTopOf="@+id/tools_img"
+                        app:layout_constraintBottom_toBottomOf="@+id/tools_img"
+                        app:layout_constraintRight_toLeftOf="@+id/tools_next_img"
+                        />
+                <View
+                        android:id="@+id/tools_line_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/common_dp_1"
+                        app:layout_constraintTop_toBottomOf="@+id/tools_img"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:background="@color/common_color_efeaea"
+                        android:layout_marginTop="@dimen/common_margin_dp_10"
+                        />
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/tools_menu_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/common_dp_0"
+                        app:layout_constraintTop_toBottomOf="@+id/tools_line_view"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/banner_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_dp_70"
+                    app:layout_constraintTop_toBottomOf="@+id/tools_cl"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginTop="@dimen/common_margin_dp_10"
+                    android:background="@mipmap/sw_my_banner"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/function_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_dp_450"
+                    app:layout_constraintTop_toBottomOf="@+id/banner_img"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginTop="@dimen/common_margin_dp_10"
+                    />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

@@ -1,6 +1,7 @@
 package cn.com.cg.router.manager.path
 
 import android.content.Context
+import cn.com.cg.cache.Lruchche
 import cn.com.cg.router.bean.RouterBean
 import cn.com.cg.router.utils.RouterXmlParser
 
@@ -58,9 +59,15 @@ class RouterPathManager {
         if (routerMap == null) {
             init(context)
         }
-        var clsPath = routerMap?.get(routerPath)?.classPaths
+        val clsPath = routerMap?.get(routerPath)?.classPaths
         try {
-            return Class.forName(clsPath!!)
+            var cls  = Lruchche.get(clsPath!!)
+            if (cls != null) {
+                return cls
+            }
+            cls = Class.forName(clsPath!!)
+            Lruchche.put(clsPath,cls)
+            return cls
         }catch (e:Exception){}
         return null
     }

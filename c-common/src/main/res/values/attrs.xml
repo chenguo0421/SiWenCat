@@ -6,4 +6,24 @@
         <attr name="civ_border_overlay" format="boolean" />
         <attr name="civ_circle_background_color" format="color" />
     </declare-styleable>
+
+    <attr name="BounceDuration" format="integer" />
+    <attr name="BouncingInterpolator" format="enum">
+        <enum name="OvershootInterpolator" value="1" />
+        <enum name="BounceInterpolator" value="2" />
+        <enum name="LinearInterpolator" value="3" />
+        <enum name="AccelerateDecelerateInterpolator" value="4" />
+    </attr>
+    <attr name="BounceType" format="enum">
+        <enum name="none" value="0" />
+        <enum name="top" value="1" />
+        <enum name="bottom" value="2" />
+        <enum name="both" value="3" />
+    </attr>
+
+    <declare-styleable name="BounceView">
+        <attr name="BounceDuration" />
+        <attr name="BouncingInterpolator" />
+        <attr name="BounceType" />
+    </declare-styleable>
 </resources>

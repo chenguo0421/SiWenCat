@@ -7,6 +7,7 @@ import cn.com.cg.base.BaseDialogFragment
 import cn.com.cg.base.BaseFragment
 import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.SharepreferenceUtils
+import cn.com.cg.router.annotation.CMethod
 import cn.com.cg.router.annotation.CRouter
 import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
@@ -63,6 +64,13 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
         index_bottom_bar_gift.setOnClickListener(TabOnClickListener(3))
         index_bottom_bar_my.setOnClickListener(TabOnClickListener(4))
     }
+
+    @CMethod(path = "/PortalActivity/changeTabByIndex")
+    fun changeTabByIndex(vararg params: Any){
+        val index = params[0] as Int
+        changeTabByIndex(index)
+    }
+
 
     private fun changeTabByIndex(index:Int){
         when(index){

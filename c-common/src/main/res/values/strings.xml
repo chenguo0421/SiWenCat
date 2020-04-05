@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">ccommon</string>
+
+
+    <string name="common_text_more">查看更多</string>
+    
+    <string name="common_type_gift">礼品</string>
+    <string name="common_type_audio">语音</string>
+    <string name="common_type_image_text">图文</string>
+    <string name="common_type_video">视频</string>
+    <string name="common_type_fiction">小说</string>
+
+    <string name="common_type_recommend">推荐</string>
+    <string name="common_type_comment">评论</string>
+    <string name="common_type_read">阅读</string>
+    <string name="common_type_release">发布</string>
+    <string name="common_type_buy">购买</string>
+
+    <string name="common_type_djyp">东京优品</string>
+    <string name="common_type_smcp">数码产品</string>
+    <string name="common_type_jjlp">家居良品</string>
 </resources>
