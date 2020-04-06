@@ -71,7 +71,7 @@ class MyFragment :MyFMContract.IView, BaseFragment<MyFMContract.IView, MyFMContr
     }
 
     private fun initToolsRecyclerViews() {
-        val manager: GridLayoutManager =
+        val manager =
             GridLayoutManager(activity!!, 4, RecyclerView.VERTICAL, false)
         tools_menu_rv.layoutManager = manager
         toolAdapter = MyToolsAdapter(activity, MyMenus.getMyToolsMenus(activity!!))

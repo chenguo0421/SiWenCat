@@ -8,7 +8,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.com.cg.ccommon.utils.DeviceUtils
-import cn.com.cg.ccommon.utils.DimenUtils
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.main.bean.MenuBean
 import com.cg.xqkj.cportal.main.bean.MyFunBean
@@ -72,20 +71,20 @@ class MyFunAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyFunAdapter.MyHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
 
-        var holder:MyFunAdapter.MyHolder? = null
+        var holder:MyHolder? = null
         when (viewType) {
             MyMenuType.GIFT.ordinal -> {
-                var view:View = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun, parent,false)
+                val view:View = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun, parent,false)
                 holder = MyHolderGift(view)
             }
             MyMenuType.COLLECT.ordinal -> {
-                var view:View = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun,parent,false)
+                val view:View = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun,parent,false)
                 holder = MyHolderCollect(view)
             }
             MyMenuType.ACTION.ordinal -> {
-                var view:View = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun, parent,false)
+                val view:View = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun, parent,false)
                 holder = MyHolderAction(view)
             }
         }
@@ -100,7 +99,7 @@ class MyFunAdapter(
         return data[position].type
     }
 
-    override fun onBindViewHolder(holder: MyFunAdapter.MyHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyHolder, position: Int) {
         holder.containerView.img.setImageResource(data[position].resource)
         holder.containerView.tv.text = data[position].name
         when (holder) {
@@ -150,9 +149,9 @@ class MyFunAdapter(
                                         borderMargin:Float,
                                         textSize: Float,
                                         textColor: Int) {
-        var margin = (DeviceUtils.getScreenWidth(context!!) - 2 * borderMargin - imgWH * contentMenu?.size!!) / (contentMenu.size - 1)
-        var adapter = contentMenu?.let { MyFunDetailAdapter(context, it,rvHeight,imgWH,topMargin,borderMargin,margin,textSize,textColor) }
-        var manager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        val margin = (DeviceUtils.getScreenWidth(context!!) - 2 * borderMargin - imgWH * contentMenu?.size!!) / (contentMenu.size - 1)
+        val adapter = MyFunDetailAdapter(context, contentMenu,rvHeight,imgWH,topMargin,borderMargin,margin,textSize,textColor)
+        val manager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         contentRv?.layoutManager = manager
         contentRv?.adapter = adapter
     }

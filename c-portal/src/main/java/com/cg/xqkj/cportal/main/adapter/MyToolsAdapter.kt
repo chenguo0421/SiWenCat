@@ -1,7 +1,6 @@
 package com.cg.xqkj.cportal.main.adapter
 
 import android.content.Context
-import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

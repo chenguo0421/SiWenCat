@@ -31,7 +31,7 @@ class MyFunDetailAdapter(
             reSetRecyclerViewParams()
         }
         private fun reSetRecyclerViewParams() {
-            var params = ConstraintLayout.LayoutParams(imgWH.toInt(), rvHeight.toInt())
+            val params = ConstraintLayout.LayoutParams(imgWH.toInt(), rvHeight.toInt())
             params.topMargin = topMargin.toInt()
             containerView.layoutParams = params
             containerView.tv.setTextColor(textColor)
@@ -40,7 +40,7 @@ class MyFunDetailAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun_detail,null)
+        val view = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun_detail,parent,false)
         return MyHolder(view)
     }
 
@@ -55,12 +55,12 @@ class MyFunDetailAdapter(
     }
 
     private fun reSetViewsParams(containerView: View, adapterPosition: Int) {
-        var imgParams = containerView.img.layoutParams as ConstraintLayout.LayoutParams
+        val imgParams = containerView.img.layoutParams as ConstraintLayout.LayoutParams
         imgParams.width = imgWH.toInt()
         imgParams.height = imgWH.toInt()
         containerView.img.layoutParams = imgParams
 
-        var params = containerView.layoutParams as ConstraintLayout.LayoutParams
+        val params = containerView.layoutParams as ConstraintLayout.LayoutParams
         params.leftMargin = if (adapterPosition == 0) firstLeftMargin.toInt() else leftMargin.toInt()
         containerView.layoutParams = params
     }
