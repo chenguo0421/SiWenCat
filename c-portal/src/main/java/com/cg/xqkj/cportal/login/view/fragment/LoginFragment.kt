@@ -210,13 +210,18 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
             SharepreferenceUtils.put(activity!!,Constants.PortalConstant.IS_REMEMBER_PSW,false)
         }
         SharepreferenceUtils.put(activity!!,Constants.PortalConstant.IS_LOGIN,true)
-        RouterManager.getInstance()
-            .with(activity!!)
-            .action("/PortalActivity/changeTabByIndex")
-            .callMethod(4)
         dismiss()
-
     }
 
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (SharepreferenceUtils.getBoolean(activity!!,Constants.PortalConstant.IS_LOGIN,false)){
+            RouterManager.getInstance()
+                .with(activity!!)
+                .action("/PortalActivity/changeTabByIndex")
+                .callMethod(4)
+        }
+    }
 
 }

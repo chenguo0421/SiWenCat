@@ -7,7 +7,7 @@ object Lruchche {
         val iterator = cacheMap?.entries?.iterator()
         var firstKey:String? = null
         if (iterator!!.hasNext()){
-            firstKey = iterator?.next()?.key
+            firstKey = iterator.next().key
         }
 
         if (firstKey != null && cacheMap?.size!! >= 20) {

@@ -22,8 +22,9 @@ import kotlinx.android.synthetic.main.portal_item_my_tools.view.tv
 
 class MyFunAdapter(
     var context:Context?,
-    var data:ArrayList<MyFunBean>
-) : RecyclerView.Adapter<MyFunAdapter.MyHolder>() {
+    var data:ArrayList<MyFunBean>,
+    var listener:MyFunDetailAdapter.OnFunDetailItemClickListener
+) : RecyclerView.Adapter<MyFunAdapter.MyHolder>(){
 
     open class MyHolder(itemview: View):RecyclerView.ViewHolder(itemview),LayoutContainer{
         override val containerView: View = itemView
@@ -112,7 +113,8 @@ class MyFunAdapter(
                     15f.dp,
                     30f.dp,
                     14f.sp,
-                    R.color.common_text_color_666666)
+                    R.color.common_text_color_666666,
+                    holder.adapterPosition)
             }
             is MyHolderCollect -> {
                 initContentRecyclerView(context,
@@ -123,7 +125,8 @@ class MyFunAdapter(
                     30f.dp,
                     19f.dp,
                     12f.sp,
-                    R.color.common_text_color_666666)
+                    R.color.common_text_color_666666,
+                    holder.adapterPosition)
             }
             is MyHolderAction -> {
                 initContentRecyclerView(context,
@@ -134,7 +137,8 @@ class MyFunAdapter(
                     10f.dp,
                     13f.dp,
                     14f.sp,
-                    R.color.common_text_color_333333)
+                    R.color.common_text_color_333333,
+                    holder.adapterPosition)
             }
         }
 
@@ -148,13 +152,17 @@ class MyFunAdapter(
                                         topMargin:Float,
                                         borderMargin:Float,
                                         textSize: Float,
-                                        textColor: Int) {
+                                        textColor: Int,
+                                        parentPosition:Int) {
         val margin = (DeviceUtils.getScreenWidth(context!!) - 2 * borderMargin - imgWH * contentMenu?.size!!) / (contentMenu.size - 1)
-        val adapter = MyFunDetailAdapter(context, contentMenu,rvHeight,imgWH,topMargin,borderMargin,margin,textSize,textColor)
+        val adapter = MyFunDetailAdapter(context, contentMenu,rvHeight,imgWH,topMargin,borderMargin,margin,textSize,textColor,parentPosition,listener)
         val manager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         contentRv?.layoutManager = manager
         contentRv?.adapter = adapter
     }
 
+    fun getItemData(parentPosition: Int): MyFunBean {
+        return data[parentPosition]
+    }
 
 }

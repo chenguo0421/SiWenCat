@@ -1,19 +1,21 @@
 package com.cg.xqkj.cportal.main.adapter
 
 import android.content.Context
+import android.os.Handler
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.main.bean.MenuBean
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.portal_item_my_fun_detail.view.*
 
 class MyFunDetailAdapter(
-    var context: Context?,
+    var context: Context,
     var data: ArrayList<MenuBean>,
     var rvHeight:Float,
     var imgWH: Float,
@@ -21,7 +23,9 @@ class MyFunDetailAdapter(
     var firstLeftMargin:Float,
     var leftMargin:Float,
     var textSize: Float,
-    var textColor: Int
+    var textColor: Int,
+    var parentPosition:Int,
+    var listener:OnFunDetailItemClickListener
 ): RecyclerView.Adapter<MyFunDetailAdapter.MyHolder>() {
 
 
@@ -52,6 +56,12 @@ class MyFunDetailAdapter(
         reSetViewsParams(holder.containerView,holder.adapterPosition)
         holder.containerView.img.setImageResource(data[position].resource)
         holder.containerView.tv.text = data[position].name
+        holder.containerView.content_cl.setOnClickListener{
+            RouterManager.getInstance().with(context).action("/AnimUtils/alphaView").callMethod(holder.containerView.img,0.5f,1f,300L)
+            Handler().postDelayed(Runnable {
+                listener.onFunDetailItemClick(parentPosition,holder.adapterPosition)
+            },300L)
+        }
     }
 
     private fun reSetViewsParams(containerView: View, adapterPosition: Int) {
@@ -63,5 +73,9 @@ class MyFunDetailAdapter(
         val params = containerView.layoutParams as ConstraintLayout.LayoutParams
         params.leftMargin = if (adapterPosition == 0) firstLeftMargin.toInt() else leftMargin.toInt()
         containerView.layoutParams = params
+    }
+
+    interface OnFunDetailItemClickListener{
+        fun onFunDetailItemClick(parentPosition: Int, position: Int)
     }
 }

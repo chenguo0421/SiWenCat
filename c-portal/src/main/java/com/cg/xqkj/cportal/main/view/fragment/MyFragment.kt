@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.com.cg.base.BaseFragment
+import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.router.annotation.CRouter
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.main.adapter.MyFunAdapter
+import com.cg.xqkj.cportal.main.adapter.MyFunDetailAdapter
 import com.cg.xqkj.cportal.main.adapter.MyToolsAdapter
 import com.cg.xqkj.cportal.main.bean.MyMenus
 import com.cg.xqkj.cportal.main.contract.MyFMContract
@@ -21,7 +23,8 @@ import kotlinx.android.synthetic.main.portal_fragment_my.*
  *  description : { 个人中心页面 }
  */
 @CRouter(path = "MyFragment")
-class MyFragment :MyFMContract.IView, BaseFragment<MyFMContract.IView, MyFMContract.IPresenter<MyFMContract.IView>>() {
+class MyFragment :MyFMContract.IView, BaseFragment<MyFMContract.IView, MyFMContract.IPresenter<MyFMContract.IView>>(),
+    MyToolsAdapter.OnToolsItemClickListener, MyFunDetailAdapter.OnFunDetailItemClickListener {
     private var funAdapter: MyFunAdapter? = null
     private var toolAdapter: MyToolsAdapter? = null
     private lateinit var bundle: Bundle
@@ -66,7 +69,7 @@ class MyFragment :MyFMContract.IView, BaseFragment<MyFMContract.IView, MyFMContr
         val manager =
             LinearLayoutManager(context)
         function_rv.layoutManager = manager
-        funAdapter = MyFunAdapter(activity, MyMenus.getFunMenus(activity!!))
+        funAdapter = MyFunAdapter(activity, MyMenus.getFunMenus(activity!!),this)
         function_rv.adapter = funAdapter
     }
 
@@ -74,8 +77,16 @@ class MyFragment :MyFMContract.IView, BaseFragment<MyFMContract.IView, MyFMContr
         val manager =
             GridLayoutManager(activity!!, 4, RecyclerView.VERTICAL, false)
         tools_menu_rv.layoutManager = manager
-        toolAdapter = MyToolsAdapter(activity, MyMenus.getMyToolsMenus(activity!!))
+        toolAdapter = MyToolsAdapter(activity!!, MyMenus.getMyToolsMenus(activity!!),this)
         tools_menu_rv.adapter = toolAdapter
+    }
+
+    override fun onToolItemClick(position: Int) {
+        ToastUtils.show("点击了：" + toolAdapter?.getItemData(position)?.name)
+    }
+
+    override fun onFunDetailItemClick(parentPosition: Int, position: Int) {
+        ToastUtils.show("点击了：" + (funAdapter?.getItemData(parentPosition)?.contentMenu?.get(position)?.name))
     }
 
 }

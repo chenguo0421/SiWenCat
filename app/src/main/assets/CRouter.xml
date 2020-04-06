@@ -7,6 +7,7 @@
 				<MethodPathItem>/AnimUtils/upToSlide</MethodPathItem>
 				<MethodPathItem>/AnimUtils/rightToLeft</MethodPathItem>
 				<MethodPathItem>/AnimUtils/leftToRight</MethodPathItem>
+				<MethodPathItem>/AnimUtils/alphaView</MethodPathItem>
 			</MethodPath>
 		</CRouter>
 		<CRouter>

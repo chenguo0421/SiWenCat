@@ -164,12 +164,12 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
 
     override fun onPhoneNumSubOK(data: ResponseRegisterBean) {
         ToastUtils.show(activity!!.getString(R.string.portal_register_phone_submit_success))
-        var registerpswFragment = RouterManager.getInstance()
+        val registerpswFragment = RouterManager.getInstance()
             .with(activity!!)
             .fragmentTag("registerpswFragment1")
             .action("RegisterpswFragment")
             .navigation() as BaseDialogFragment<*,*>?
-        var bundle = Bundle()
+        val bundle = Bundle()
         bundle.putString(Constants.PortalConstant.REGISTER_PHONE,phone_et.text.toString().trim())
         bundle.putString(Constants.PortalConstant.REGISTER_RANDOM_KEY,data.randomKey)
         registerpswFragment?.setBundleExtra(bundle)
@@ -177,7 +177,7 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
     }
 
     override fun onPhoneTokenOK(data: ResponsePhoneTokenBean) {
-        var code = data.authCode
+        val code = data.authCode
         ToastUtils.show(String.format(resources.getString(R.string.portal_register_getphonetoken_ok),code))
         auth_code_et.setText(code)
     }
