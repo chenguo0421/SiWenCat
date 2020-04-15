@@ -3,10 +3,14 @@ package com.cg.xqkj.cportal.main.view.fragment
 import android.content.Context
 import android.os.Bundle
 import cn.com.cg.base.BaseFragment
+import cn.com.cg.ccommon.utils.ToastUtils
+import cn.com.cg.ccommon.widget.banner.RecyclerViewBannerBase
 import cn.com.cg.router.annotation.CRouter
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.main.contract.HomeFMContract
 import com.cg.xqkj.cportal.main.presenter.HomeFMPresenter
+import kotlinx.android.synthetic.main.portal_fragment_home.*
+import java.util.*
 
 /**
  *  author : ChenGuo
@@ -49,6 +53,18 @@ class HomeFragment :HomeFMContract.IView, BaseFragment<HomeFMContract.IView, Hom
     }
 
     override fun initData() {
+        val list: MutableList<String> =
+            ArrayList()
+        list.add("http://img0.imgtn.bdimg.com/it/u=1352823040,1166166164&fm=27&gp=0.jpg")
+        list.add("http://img3.imgtn.bdimg.com/it/u=2293177440,3125900197&fm=27&gp=0.jpg")
+        list.add("http://img3.imgtn.bdimg.com/it/u=3967183915,4078698000&fm=27&gp=0.jpg")
+        list.add("http://img0.imgtn.bdimg.com/it/u=3184221534,2238244948&fm=27&gp=0.jpg")
+        list.add("http://img4.imgtn.bdimg.com/it/u=1794621527,1964098559&fm=27&gp=0.jpg")
+        list.add("http://img4.imgtn.bdimg.com/it/u=1243617734,335916716&fm=27&gp=0.jpg")
+        banner.initBannerImageView(list, RecyclerViewBannerBase.OnBannerItemClickListener {
+            ToastUtils.show("onclick : $it")
+        })
+
     }
 
 }

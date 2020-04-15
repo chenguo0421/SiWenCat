@@ -1,13 +1,24 @@
 package com.cg.xqkj.cportal.splash.view
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import cn.com.cg.base.BaseActivity
+import cn.com.cg.ccommon.utils.AssetsUtils
 import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.SharepreferenceUtils
+import cn.com.cg.clog.CLog
 import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.splash.contract.SplashContract
 import com.cg.xqkj.cportal.splash.presenter.SplashPresenter
+import io.reactivex.Observable
+import io.reactivex.ObservableOnSubscribe
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 /**
  *  author : ChenGuo
@@ -40,9 +51,14 @@ class SplashActivity : SplashContract.IView, BaseActivity<SplashContract.IView, 
         gotoPortalActivity()
     }
 
+    @SuppressLint("CheckResult")
     private fun gotoPortalActivity() {
-        RouterManager.getInstance().with(this).action("PortalActivity").navigation()
-        finish()
+        doAsync {
+            uiThread {
+                RouterManager.getInstance().with(this@SplashActivity).action("PortalActivity").navigation()
+                finish()
+            }
+        }
     }
 
     override fun initListener() {

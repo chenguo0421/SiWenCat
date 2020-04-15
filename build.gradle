@@ -54,4 +54,5 @@ ext{
     okhttpVersion = '3.9.1'
     okhttploggingVersion = '3.8.1'
     retrofitVersion = '2.3.0'
+    kotlinCoreVersion = '1.1.1'
 }

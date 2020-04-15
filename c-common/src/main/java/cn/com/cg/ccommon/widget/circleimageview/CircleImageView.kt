@@ -29,6 +29,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
 import cn.com.cg.ccommon.R
+import kotlin.math.pow
 
 /**
  *  author : chenguo
@@ -81,11 +82,11 @@ class CircleImageView : AppCompatImageView {
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        var a:TypedArray = context!!.obtainStyledAttributes(attrs, R.styleable.CircleImageView, defStyleAttr, 0)
+        val a:TypedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView, defStyleAttr, 0)
         mBorderWidth = a.getDimensionPixelSize(R.styleable.CircleImageView_civ_border_width, DEFAULT_BORDER_WIDTH)
-        mBorderColor = a?.getColor(R.styleable.CircleImageView_civ_border_color, DEFAULT_BORDER_COLOR)
-        mBorderOverlay = a?.getBoolean(R.styleable.CircleImageView_civ_border_overlay, DEFAULT_BORDER_OVERLAY)
-        mCircleBackgroundColor = a?.getColor(R.styleable.CircleImageView_civ_circle_background_color, DEFAULT_CIRCLE_BACKGROUND_COLOR)
+        mBorderColor = a.getColor(R.styleable.CircleImageView_civ_border_color, DEFAULT_BORDER_COLOR)
+        mBorderOverlay = a.getBoolean(R.styleable.CircleImageView_civ_border_overlay, DEFAULT_BORDER_OVERLAY)
+        mCircleBackgroundColor = a.getColor(R.styleable.CircleImageView_civ_circle_background_color, DEFAULT_CIRCLE_BACKGROUND_COLOR)
         a.recycle()
         init()
     }
@@ -93,6 +94,7 @@ class CircleImageView : AppCompatImageView {
 
 
 
+    @SuppressLint("ObsoleteSdkInt")
     private fun init() {
         super.setScaleType(SCALE_TYPE)
         mReady = true
@@ -268,18 +270,16 @@ class CircleImageView : AppCompatImageView {
     }
 
     private fun getBitmapFromDrawable(drawable:Drawable): Bitmap? {
-        if (drawable is BitmapDrawable) {
-            return drawable.bitmap
-        }
+        if (drawable is BitmapDrawable) return drawable.bitmap
 
         try {
-            var bitmap:Bitmap? = if (drawable is ColorDrawable) {
+            val bitmap:Bitmap? = if (drawable is ColorDrawable) {
                 Bitmap.createBitmap(COLORDRAWABLE_DIMENSION, COLORDRAWABLE_DIMENSION, BITMAP_CONFIG)
             } else {
                 Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, BITMAP_CONFIG)
             }
 
-            var canvas:Canvas = Canvas(bitmap!!)
+            val canvas:Canvas = Canvas(bitmap!!)
             drawable.setBounds(0, 0, canvas.width, canvas.height)
             drawable.draw(canvas)
             return bitmap
@@ -346,11 +346,11 @@ class CircleImageView : AppCompatImageView {
 
 
     private fun calculateBounds():RectF{
-        var availableWidth:Int = width - paddingLeft - paddingRight
-        var availableHeight:Int = height - paddingTop - paddingBottom
-        var sideLength:Int = Math.min(availableWidth,availableHeight)
-        var left = paddingLeft + (availableWidth - sideLength) / 2f
-        var top = paddingTop + (availableHeight - sideLength) / 2f
+        val availableWidth:Int = width - paddingLeft - paddingRight
+        val availableHeight:Int = height - paddingTop - paddingBottom
+        val sideLength:Int = Math.min(availableWidth,availableHeight)
+        val left = paddingLeft + (availableWidth - sideLength) / 2f
+        val top = paddingTop + (availableHeight - sideLength) / 2f
         return RectF(left, top, left + sideLength, top + sideLength)
 
     }
@@ -381,25 +381,20 @@ class CircleImageView : AppCompatImageView {
         if (mDisableCircularTransformation){
             return super.onTouchEvent(event)
         }
-        return inTouchableArea(event!!.x, event!!.y) && super.onTouchEvent(event)
+        return inTouchableArea(event!!.x, event.y) && super.onTouchEvent(event)
     }
 
     private fun inTouchableArea(x: Float, y: Float):Boolean {
         if (mBorderRect.isEmpty) {
             return true
         }
-        return Math.pow((x - mBorderRect.centerX()).toDouble(), 2.0) + Math.pow((y - mBorderRect.centerY()).toDouble(),
-            2.0
-        ) <= Math.pow(
-            mBorderRadius.toDouble(), 2.0
-        )
+        return (x - mBorderRect.centerX()).toDouble().pow(2.0) + (y - mBorderRect.centerY()).toDouble()
+            .pow(2.0) <= mBorderRadius.toDouble().pow(2.0)
     }
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     inner class OutlineProvider:ViewOutlineProvider() {
-
-
         override fun getOutline(view: View?, outline: Outline?) {
             val bounds = Rect()
             mBorderRect.roundOut(bounds)

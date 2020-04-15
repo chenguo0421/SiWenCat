@@ -1,10 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <TextView
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+   <EditText
+           android:id="@+id/search_et"
+           android:layout_marginTop="@dimen/common_margin_dp_10"
+           android:layout_marginStart="@dimen/common_margin_dp_10"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintRight_toLeftOf="@+id/menu_img"
+           android:paddingLeft="@dimen/common_dp_24"
+           android:layout_marginEnd="@dimen/common_margin_dp_10"
+           android:layout_width="0dp"
+           android:background="@drawable/common_bg_gray_radius_fourteen"
+            android:drawableStart="@mipmap/sw_home_icon_sousuo"
+           android:drawablePadding="@dimen/common_margin_dp_10"
+           android:hint="#李佳琪"
+           android:layout_height="@dimen/common_dp_28"/>
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/menu_img"
+            app:layout_constraintTop_toTopOf="@+id/search_et"
+            app:layout_constraintBottom_toBottomOf="@+id/search_et"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginEnd="@dimen/common_margin_dp_10"
+            android:layout_width="@dimen/common_dp_24"
+            android:layout_height="@dimen/common_dp_24"
+            android:src="@mipmap/sw_home_icon_fabu"/>
+
+
+    <cn.com.cg.ccommon.widget.banner.RecyclerViewBannerNormal
+            android:id="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Home"/>
-</LinearLayout>
+            android:layout_height="@dimen/common_dp_150"
+            android:layout_marginStart="@dimen/common_margin_dp_10"
+            android:layout_marginEnd="@dimen/common_margin_dp_10"
+            app:layout_constraintTop_toBottomOf="@+id/search_et"
+            android:layout_marginTop="@dimen/common_margin_dp_10"
+            app:orientation="horizontal"
+            app:indicatorGravity="right"
+            app:indicatorMarginRight="20dp"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_dp_70"
+
+            app:layout_constraintTop_toBottomOf="@+id/banner"
+            android:layout_marginTop="@dimen/common_margin_dp_10"
+            android:layout_marginStart="@dimen/common_margin_dp_10"
+            android:layout_marginEnd="@dimen/common_margin_dp_10"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
