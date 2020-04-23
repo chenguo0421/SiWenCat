@@ -15,7 +15,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
-            android:src="@mipmap/siwencat_red"
+            android:src="@mipmap/icon_siwencat_red"
             android:layout_marginTop="60dp"
             app:civ_border_width="2dp"
             app:civ_border_color="#FFFF0000"/>

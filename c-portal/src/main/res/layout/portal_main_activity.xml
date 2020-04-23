@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <RelativeLayout
-            android:id="@+id/index_rl_contain"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <FrameLayout
                 android:id="@+id/portal_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@+id/index_fl_bottom_bar">
-
         </FrameLayout>
+
 
 
         <FrameLayout
                 android:id="@+id/index_fl_bottom_bar"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:background="@color/portal_tab_fm_bg_color">
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/common_tab_bg_dbdbdb"
-                    android:clickable="true"
                     android:orientation="horizontal">
 
                 <!-- 商城 -->
@@ -49,11 +45,11 @@
                             android:layout_height="25dp"
                             android:layout_gravity="top|center"
                             android:scaleType="centerInside"
-                            android:src="@mipmap/store_gray" />
+                            android:src="@mipmap/icon_store_gray" />
 
                     <TextView
                             android:id="@+id/store_tv"
-                            android:layout_width="33dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom|center"
                             android:layout_marginTop="2dp"
@@ -81,7 +77,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="top|center"
                             android:scaleType="centerInside"
-                            android:src="@mipmap/gathole_gray" />
+                            android:src="@mipmap/icon_gathole_gray" />
 
                     <TextView
                             android:id="@+id/cathole_tv"
@@ -130,7 +126,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="top|center"
                             android:scaleType="centerInside"
-                            android:src="@mipmap/gift_gray" />
+                            android:src="@mipmap/icon_gift_gray" />
 
                     <TextView
                             android:id="@+id/gift_tv"
@@ -161,7 +157,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="top|center"
                             android:scaleType="centerInside"
-                            android:src="@mipmap/my_gray" />
+                            android:src="@mipmap/icon_my_gray" />
 
                     <TextView
                             android:id="@+id/my_tv"
@@ -183,10 +179,11 @@
                 android:id="@+id/index_bottom_bar_home"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_alignParentBottom="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 android:layout_centerInParent="true"
                 android:layout_marginBottom="10dp"
-                android:src="@mipmap/siwencat_red" />
+                android:src="@mipmap/icon_siwencat_red" />
 
-    </RelativeLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

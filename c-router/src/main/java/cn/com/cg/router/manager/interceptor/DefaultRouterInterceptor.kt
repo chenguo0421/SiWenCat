@@ -11,7 +11,7 @@ import cn.com.cg.router.manager.params.RouterParamsManager
 class DefaultRouterInterceptor : CRouterInterceptor {
 
     override fun onInterceptor(paramsManager: RouterParamsManager) {
-        //默认拦截器拦截跳转功能测试
+//        默认拦截器拦截跳转功能测试
 //        if("Test2Activity" == paramsManager.getAction()){
 //            paramsManager.setAction("TestFMActivity")
 //        }

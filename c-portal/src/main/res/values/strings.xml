@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">cportal</string>
 
+    <!-- 商城 -->
+    <string name="portal_store_hint">发现好货 东京优品</string>
+    <string name="portal_store_yizhanshigouqi">一站式购齐</string>
+    <string name="portal_store_jisuduihuan">极速兑换</string>
+    <string name="portal_store_zhengpinbaozhang">正品保障</string>
+    <string name="portal_store_my_maobi">我的猫币</string>
+    <string name="portal_store_maobi_buy">猫币购买</string>
+    <string name="portal_store_maobi_sale">猫币出售</string>
+    <string name="portal_store_neiku_manager">内库管理</string>
 
     <!-- 首页 -->
     <string name="portal_store">商城</string>

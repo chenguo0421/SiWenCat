@@ -3,6 +3,7 @@ package com.cg.xqkj.cportal.main.contract
 import cn.com.cg.mvp.base.BaseModel
 import cn.com.cg.mvp.base.BasePresenter
 import cn.com.cg.mvp.base.intf.BaseView
+import com.cg.xqkj.cportal.main.bean.StoreProductsBean
 
 /**
  *  author : ChenGuo
@@ -12,12 +13,13 @@ import cn.com.cg.mvp.base.intf.BaseView
 class StoreFMContract {
 
     public interface IView:BaseView{
+        fun onLoadProductListSuccess(list: ArrayList<StoreProductsBean>)
 
     }
 
 
     public abstract class IPresenter<T> : BasePresenter<T>() {
-
+        abstract fun getStoreProductsResponse()
     }
 
 

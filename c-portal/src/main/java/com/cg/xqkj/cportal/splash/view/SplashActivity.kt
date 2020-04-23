@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import cn.com.cg.base.BaseActivity
-import cn.com.cg.ccommon.utils.AssetsUtils
+
 import cn.com.cg.ccommon.utils.Constants
 import cn.com.cg.ccommon.utils.SharepreferenceUtils
 import cn.com.cg.clog.CLog
@@ -54,7 +54,10 @@ class SplashActivity : SplashContract.IView, BaseActivity<SplashContract.IView, 
     @SuppressLint("CheckResult")
     private fun gotoPortalActivity() {
         doAsync {
+
+
             uiThread {
+
                 RouterManager.getInstance().with(this@SplashActivity).action("PortalActivity").navigation()
                 finish()
             }

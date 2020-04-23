@@ -21,8 +21,11 @@
     <color name="common_cyan">#FF00FFFF</color>
     <color name="common_yellow">#FFFFFF00</color>
     <color name="common_color_f2f2f2">#F2F2F2</color>
+    <color name="common_color_88b5f3">#FF88B5F3</color>
 
 
 
     <color name="common_color_efeaea">#FFEFEAEA</color>
+    <color name="common_color_e74b4b">#FFE74B4B</color>
+    <color name="common_text_color_999999">#FF999999</color>
 </resources>

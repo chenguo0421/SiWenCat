@@ -1,10 +1,13 @@
 package cn.com.cg.ccommon.utils
-import android.app.Application
-import android.content.res.AssetManager
-import android.text.TextUtils
-import androidx.annotation.WorkerThread
-import java.io.*
-import java.lang.Exception
+import android.content.Context
+import android.util.Log
+import cn.com.cg.ccommon.crash.CrashHandler.Companion.TAG
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import org.json.JSONObject
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+import java.io.InputStream
 
 
 /**
@@ -14,129 +17,64 @@ import java.lang.Exception
  */
 object AssetsUtils {
 
-
-    //复制成功的标记值，故意写一个无意义的单词，避免重复
-    val fileName = "SiWenMao"
-
-    /**
-     * 从assets目录复制到素材中心在sd卡的目录下
-     *
-     * @param inputPath
-     * @return 是否成功处理
-     */
-    @WorkerThread
-    fun copyFromAssetsToMaterialPath(
-        application: Application,
-        inputPath: String,
-        outputPath: String,
-        maskSuccess: Boolean
-    ): Boolean {
+    fun getJsonArrayString(context: Context,fileName:String): String? {
+        var inputStream: InputStream? = null
+        var bos: ByteArrayOutputStream? = null
+        var jsonFileName = fileName
         try {
-            Thread.currentThread()
-            var inputPath = inputPath
-            if (TextUtils.isEmpty(inputPath)) {
-                return false
+            if (jsonFileName.startsWith("/")) {
+                jsonFileName = jsonFileName.substring(1)
             }
-
-            if (inputPath.endsWith(File.separator)) {
-                inputPath = inputPath.substring(0, inputPath.length - 1)
+            inputStream = context.assets.open(jsonFileName)
+            bos = ByteArrayOutputStream()
+            val bytes = ByteArray(4 * 1024)
+            var len = 0
+            while (inputStream.read(bytes).also { len = it } != -1) {
+                bos.write(bytes, 0, len)
             }
-
-            //从assets复制
-            val assetManager = application.assets
-
-            val list: Array<String>?
-            try {
-                list = assetManager.list(inputPath)
-            } catch (e: IOException) {
-                return true
-            }
-
-            if (list == null || list.isEmpty()) {
-                if (maskSuccess) {
-                    val file = File(outputPath, fileName)
-                    file.parentFile.mkdirs()
-                    file.createNewFile()
-                }
-                //如果有assets文件不存在，也当做成功，因为默认无效果也会当做素材来处理
-                return true
-            }
-
-            for (fileName in list) {
-                copyAssetsListFile(assetManager, inputPath, fileName, outputPath)
-            }
-
-            if (maskSuccess) {
-                val file = File(outputPath, fileName)
-                file.createNewFile()
-            }
-
-            return true
-        }catch (e:Exception){
+            var jsonStr = String(bos.toByteArray())
+            return JSONObject(jsonStr).getJSONArray("data").toString()
+        } catch (e: Exception) {
             e.printStackTrace()
+        } finally {
+            try {
+                inputStream?.close()
+                bos?.close()
+            } catch (e: IOException) {
+                Log.e(TAG, "getStates", e)
+            }
         }
-       return false
+        return null
     }
 
-
-        private fun copyAssetsListFile(assetManager: AssetManager, input: String, fileName: String, output: String) {
+    fun getJsonObjectString(context: Context,fileName:String): String? {
+        var inputStream: InputStream? = null
+        var bos: ByteArrayOutputStream? = null
+        var jsonFileName = fileName
+        try {
+            if (jsonFileName.startsWith("/")) {
+                jsonFileName = jsonFileName.substring(1)
+            }
+            inputStream = context.assets.open(jsonFileName)
+            bos = ByteArrayOutputStream()
+            val bytes = ByteArray(4 * 1024)
+            var len = 0
+            while (inputStream.read(bytes).also { len = it } != -1) {
+                bos.write(bytes, 0, len)
+            }
+            var jsonStr = String(bos.toByteArray())
+            return JSONObject(jsonStr).getJSONObject("data").toString()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
             try {
-                val innerList = assetManager.list(input + File.separator + fileName)
-                if (innerList.isNullOrEmpty()) {
-                    copySingleFile(assetManager, input, fileName, output)
-                } else {
-                    for (innerFile in innerList) {
-                        copyAssetsListFile(assetManager, input + File.separator + fileName, innerFile, output + File.separator + fileName)
-                    }
-                }
+                inputStream?.close()
+                bos?.close()
             } catch (e: IOException) {
-                e.printStackTrace()
+                Log.e(TAG, "getStates", e)
             }
         }
-
-
-        private fun copySingleFile(assetManager: AssetManager, input: String, fileName: String, output: String): Boolean {
-            val outFile = File(output, fileName)
-            if (!outFile.parentFile.exists()) {
-                outFile.parentFile.mkdirs()
-            }
-
-            var inputStream: InputStream? = null
-            var out: OutputStream? = null
-
-            try {
-                inputStream = assetManager.open(input + File.separator + fileName)
-                out = FileOutputStream(outFile)
-
-                val buffer = ByteArray(1024)
-                var read: Int = inputStream!!.read(buffer)
-                while (read != -1) {
-                    out.write(buffer, 0, read)
-                    read = inputStream!!.read(buffer)
-                }
-            } catch (e: IOException) {
-                return false
-            } finally {
-                if (inputStream != null) {
-                    try {
-                        inputStream.close()
-                    } catch (e: IOException) {
-
-                    }
-
-                }
-                if (out != null) {
-                    try {
-                        out.flush()
-                        out.close()
-                    } catch (e: IOException) {
-
-                    }
-
-                }
-            }
-
-            return true
-        }
+        return null
+    }
 
 }

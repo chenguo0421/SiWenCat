@@ -53,8 +53,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
     }
 
     override fun initData() {
-        homeFragment = RouterManager.getInstance().with(this).fragmentTag("homeFragment").action("HomeFragment").navigation() as BaseFragment<*, *>?
-        replaceFragment(homeFragment!!,R.id.portal_content)
+        changeTabByIndex(2)
     }
 
     override fun initListener() {
@@ -77,7 +76,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
             0 -> {
                 resetView()
                 store_tv.setTextColor(resources.getColor(R.color.common_text_color_red,resources.newTheme()))
-                index_bottom_bar_store_image.setImageResource(R.mipmap.store_red)
+                index_bottom_bar_store_image.setImageResource(R.mipmap.icon_store_red)
                 if (storeFragment == null) {
                     storeFragment = RouterManager.getInstance().with(this).fragmentTag("storeFragment1").action("StoreFragment").navigation() as BaseFragment<*, *>?
                 }
@@ -86,7 +85,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
             1 -> {
                 resetView()
                 cathole_tv.setTextColor(resources.getColor(R.color.common_text_color_red,resources.newTheme()))
-                index_bottom_bar_cathole_image.setImageResource(R.mipmap.gathole_red)
+                index_bottom_bar_cathole_image.setImageResource(R.mipmap.icon_gathole_red)
                 if (catholeFragment == null) {
                     catholeFragment = RouterManager.getInstance().with(this).fragmentTag("catholeFragment1").action("CatholeFragment").navigation() as BaseFragment<*, *>?
                 }
@@ -95,7 +94,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
             2 -> {
                 resetView()
                 home_tv.setTextColor(resources.getColor(R.color.common_text_color_red,resources.newTheme()))
-                index_bottom_bar_home.setImageResource(R.mipmap.siwencat_red)
+                index_bottom_bar_home.setImageResource(R.mipmap.icon_siwencat_red)
                 if (homeFragment == null) {
                     homeFragment = RouterManager.getInstance().with(this).fragmentTag("homeFragment1").action("HomeFragment").navigation() as BaseFragment<*, *>?
                 }
@@ -104,7 +103,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
             3 -> {
                 resetView()
                 gift_tv.setTextColor(resources.getColor(R.color.common_text_color_red,resources.newTheme()))
-                index_bottom_bar_gift_image.setImageResource(R.mipmap.gift_red)
+                index_bottom_bar_gift_image.setImageResource(R.mipmap.icon_gift_red)
                 if (giftFragment == null) {
                     giftFragment = RouterManager.getInstance().with(this).fragmentTag("giftFragment1").action("GiftFragment").navigation() as BaseFragment<*, *>?
                 }
@@ -120,7 +119,7 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
                 }
                 resetView()
                 my_tv.setTextColor(resources.getColor(R.color.common_text_color_red,resources.newTheme()))
-                index_bottom_bar_my_image.setImageResource(R.mipmap.my_red)
+                index_bottom_bar_my_image.setImageResource(R.mipmap.icon_my_red)
                 if (myFragment == null) {
                     myFragment = RouterManager.getInstance().with(this).fragmentTag("myFragment1").action("MyFragment").navigation() as BaseFragment<*, *>?
                 }
@@ -137,11 +136,11 @@ class PortalActivity : PortalContract.IView, BaseActivity<PortalContract.IView, 
     }
 
     private fun setAllDrawable2Gray(){
-        index_bottom_bar_store_image.setImageResource(R.mipmap.store_gray)
-        index_bottom_bar_cathole_image.setImageResource(R.mipmap.gathole_gray)
-        index_bottom_bar_home.setImageResource(R.mipmap.siwencat_gray)
-        index_bottom_bar_gift_image.setImageResource(R.mipmap.gift_gray)
-        index_bottom_bar_my_image.setImageResource(R.mipmap.my_gray)
+        index_bottom_bar_store_image.setImageResource(R.mipmap.icon_store_gray)
+        index_bottom_bar_cathole_image.setImageResource(R.mipmap.icon_gathole_gray)
+        index_bottom_bar_home.setImageResource(R.mipmap.icon_siwencat_gray)
+        index_bottom_bar_gift_image.setImageResource(R.mipmap.icon_gift_gray)
+        index_bottom_bar_my_image.setImageResource(R.mipmap.icon_my_gray)
     }
 
     private fun  setAllTextColorGrat(){

@@ -1,0 +1,116 @@
+{
+  "code": 200,
+  "msg": "Success",
+  "data": [
+    {
+      "type": 0,
+      "title":[
+        {
+          "rowIndex": 1,
+          "colIndex": 1,
+          "title": "新人专属",
+          "titleColor": "#FF000000",
+          "hotText": "NEW",
+          "hotTextColor": "#FFFFFFFF",
+          "hotTextBGColor": "#FFE74B4B",
+          "nextText": "点击进入兑换",
+          "nextTextColor": "#FF999999"
+        }
+      ],
+      "products": [
+        {
+          "rowIndex": 1,
+          "colIndex": 1,
+          "name": "苹果X(A1865)全新全网通4G手机 银色256GB",
+          "url": ["file:///android_asset/img/assets_store_image16.png"],
+          "price": "7999"
+        },
+        {
+          "rowIndex": 1,
+          "colIndex": 2,
+          "name": "欧诗漫美白护肤套装",
+          "url": ["file:///android_asset/img/assets_store_image10.png"],
+          "price": "159.9"
+        },
+        {
+          "rowIndex": 1,
+          "colIndex": 3,
+          "name": "生物闷烧杯",
+          "url": ["file:///android_asset/img/assets_store_image15.png"],
+          "price": "99"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title":[
+        {
+          "rowIndex": 1,
+          "colIndex": 1,
+          "title": "今日必Buy",
+          "titleColor": "#FF000000",
+          "hotText": "SALE",
+          "hotTextColor": "#FFFFFFFF",
+          "hotTextBGColor": "#FFE74B4B",
+          "nextText": "",
+          "nextTextColor": ""
+        },
+        {
+          "rowIndex": 1,
+          "colIndex": 2,
+          "title": "好物推荐",
+          "titleColor": "#FF000000",
+          "hotText": "GOOD",
+          "hotTextColor": "#FFFFFFFF",
+          "hotTextBGColor": "#FF88C5F3",
+          "nextText": "",
+          "nextTextColor": ""
+        }
+      ],
+      "products": [
+        {
+          "rowIndex": 1,
+          "colIndex": 1,
+          "productTypeName":"今日必Buy",
+          "advText": "好商品新低价",
+          "url": ["file:///android_asset/img/assets_store_image21.png","file:///android_asset/img/assets_store_image17.png"]
+        },
+        {
+          "rowIndex": 1,
+          "colIndex": 2,
+          "productTypeName":"好物推荐",
+          "advText": "搜索全球好货",
+          "url": ["file:///android_asset/img/assets_store_image7.png","file:///android_asset/img/assets_store_image3.png"]
+        },
+        {
+          "rowIndex": 2,
+          "colIndex": 1,
+          "productTypeName":"进口超市",
+          "advText": "抢两件85折",
+          "url": ["file:///android_asset/img/assets_store_image6.png"]
+        },
+        {
+          "rowIndex": 2,
+          "colIndex": 2,
+          "productTypeName":"海外直邮",
+          "advText": "大额优惠券",
+          "url": ["file:///android_asset/img/assets_store_image5.png"]
+        },
+        {
+          "rowIndex": 2,
+          "colIndex": 3,
+          "productTypeName":"家居门馆",
+          "advText": "全球生活家",
+          "url": ["file:///android_asset/img/assets_store_image2.png"]
+        },
+        {
+          "rowIndex": 2,
+          "colIndex": 4,
+          "productTypeName":"妙言社区",
+          "advText": "潮流美妆物",
+          "url": ["file:///android_asset/img/assets_store_image1.png"]
+        }
+      ]
+    }
+  ]
+}

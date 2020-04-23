@@ -1,9 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
+<!--<com.scwang.smartrefresh.layout.SmartRefreshLayout-->
+<!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:scrollbars="none"-->
+<!--        android:orientation="vertical"-->
+<!--        android:background="#fff"-->
+<!--        >-->
+
+<!--   -->
+
+<!--</com.scwang.smartrefresh.layout.SmartRefreshLayout>-->
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:focusableInTouchMode="true">
+
+<androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/header_bg_iv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_dp_188"
+        app:layout_constraintTop_toTopOf="parent"/>
+<androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/swm_tv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="@dimen/common_dp_78"
+        android:layout_height="@dimen/common_dp_30"
+        android:layout_marginStart="@dimen/common_dp_16"
+        android:layout_marginTop="@dimen/common_dp_10"
+        android:src="@mipmap/sw_store_siwenmao_text"/>
+<androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="0dp"
+        android:layout_height="@dimen/common_dp_28"
+        android:layout_marginStart="@dimen/common_margin_dp_10"
+        android:layout_marginEnd="@dimen/common_margin_dp_10"
+        app:layout_constraintTop_toTopOf="@+id/swm_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/swm_tv"
+        app:layout_constraintLeft_toRightOf="@+id/swm_tv"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/common_bg_gray_border_red_radius_fourteen"
+        android:hint="@string/portal_store_hint"
+        android:gravity="center_vertical"
+        android:drawableStart="@mipmap/sw_common_icon_search"
+        android:paddingLeft="@dimen/common_dp_78"
+        android:textSize="@dimen/common_sp_14"
+        android:textColor="@color/common_text_color_999999"
+        />
+
+<cn.com.cg.ccommon.widget.banner.RecyclerViewBannerNormal
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_dp_150"
+        app:layout_constraintTop_toBottomOf="@+id/swm_tv"
+        android:layout_marginStart="@dimen/common_margin_dp_10"
+        android:layout_marginEnd="@dimen/common_margin_dp_10"
+        android:layout_marginTop="@dimen/common_margin_dp_10"
+        app:orientation="horizontal"
+        app:indicatorGravity="center"
+        app:indicatorMarginRight="20dp"
+        />
+
+<LinearLayout
+        android:id="@+id/center_dis_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner"
+        android:layout_marginTop="@dimen/common_margin_dp_8"
+        android:orientation="horizontal">
+    <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/sw_store_icon_yizhanshigouqi"/>
+    <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_sp_14"
+            android:layout_marginStart="@dimen/common_dp_4point5"
+            android:textColor="@color/common_text_color_999999"
+            android:text="@string/portal_store_yizhanshigouqi"/>
+</LinearLayout>
+
+<androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/jisuduihuan_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toLeftOf="@+id/center_dis_ll"
+        app:layout_constraintTop_toTopOf="@+id/center_dis_ll"
+        app:layout_constraintBottom_toBottomOf="@+id/center_dis_ll"
+        android:layout_marginEnd="@dimen/common_dp_28"
+        android:text="@string/portal_store_jisuduihuan"
+        android:textSize="@dimen/common_sp_14"
+        android:textColor="@color/common_text_color_999999"/>
+<androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/center_dis_ll"
+        app:layout_constraintBottom_toBottomOf="@+id/center_dis_ll"
+        app:layout_constraintRight_toLeftOf="@+id/jisuduihuan_tv"
+        android:layout_marginEnd="@dimen/common_dp_4point5"
+        android:src="@mipmap/sw_store_icon_jisutuikuan"/>
+
+<androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/zhengpinbaozhang_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/center_dis_ll"
+        app:layout_constraintBottom_toBottomOf="@+id/center_dis_ll"
+        app:layout_constraintLeft_toRightOf="@+id/center_dis_ll"
+        android:layout_marginStart="@dimen/common_dp_28"
+        android:src="@mipmap/sw_store_icon_zhengpinbaozhang"/>
+<androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/zhengpinbaozhang_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/zhengpinbaozhang_iv"
+        app:layout_constraintTop_toTopOf="@+id/center_dis_ll"
+        app:layout_constraintBottom_toBottomOf="@+id/center_dis_ll"
+        android:layout_marginStart="@dimen/common_dp_4point5"
+        android:text="@string/portal_store_zhengpinbaozhang"
+        android:textSize="@dimen/common_sp_14"
+        android:textColor="@color/common_text_color_999999"/>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/menu_cl"
+        android:background="@drawable/common_bg_white_radius_four"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_dp_90"
+        app:layout_constraintTop_toBottomOf="@id/center_dis_ll"
+        android:layout_marginTop="@dimen/common_margin_dp_10"
+        android:layout_marginStart="@dimen/common_margin_dp_10"
+        android:layout_marginEnd="@dimen/common_margin_dp_10"
+        >
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/maobi_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:src="@mipmap/common_icon_maobi_red"
+            android:layout_marginStart="@dimen/common_margin_dp_8"
+            android:layout_marginTop="@dimen/common_margin_dp_8"
+            />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/my_maobi_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/common_text_color_333333"
+            android:textSize="@dimen/common_sp_14"
+            app:layout_constraintTop_toTopOf="@id/maobi_iv"
+            app:layout_constraintBottom_toBottomOf="@id/maobi_iv"
+            app:layout_constraintLeft_toRightOf="@id/maobi_iv"
+            android:layout_marginStart="@dimen/common_dp_2point5"
+            android:text="@string/portal_store_my_maobi"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/maobi_num_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@+id/maobi_iv"
+            app:layout_constraintRight_toRightOf="@+id/my_maobi_tv"
+            app:layout_constraintTop_toBottomOf="@+id/maobi_iv"
+            android:textSize="@dimen/common_sp_26"
+            android:text="180"
+            android:textColor="@color/common_color_e74b4b"
+            />
+    <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@+id/maobi_iv"
+            app:layout_constraintRight_toRightOf="@+id/my_maobi_tv"
+            app:layout_constraintTop_toBottomOf="@+id/maobi_num_tv"
+            android:textSize="@dimen/common_sp_12"
+            android:text="可兑10-18元"
+            android:paddingStart="@dimen/common_dp_6"
+            android:paddingEnd="@dimen/common_dp_6"
+            android:gravity="center"
+            android:textColor="@color/common_white"
+            android:background="@drawable/common_bg_blue_radius_eleven"
+            />
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/shopcar_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="@dimen/common_margin_dp_10"
+            android:layout_marginTop="@dimen/common_margin_dp_8"
+            android:src="@mipmap/sw_store_icon_shopcar"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/sale_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toLeftOf="@+id/shopcar_iv"
+            app:layout_constraintTop_toTopOf="@+id/shopcar_iv"
+            android:layout_marginEnd="@dimen/common_dp_30"
+            android:src="@mipmap/sw_store_icon_sale"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/buy_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toLeftOf="@+id/sale_iv"
+            app:layout_constraintTop_toTopOf="@+id/shopcar_iv"
+            android:layout_marginEnd="@dimen/common_dp_30"
+            android:src="@mipmap/sw_store_icon_buy"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/buy_iv"
+            app:layout_constraintLeft_toLeftOf="@id/buy_iv"
+            app:layout_constraintRight_toRightOf="@+id/buy_iv"
+            android:layout_marginTop="@dimen/common_dp_4"
+            android:text="@string/portal_store_maobi_buy"
+            android:textColor="@color/common_text_color_333333"
+            android:textSize="@dimen/common_sp_12"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/sale_iv"
+            app:layout_constraintLeft_toLeftOf="@id/sale_iv"
+            app:layout_constraintRight_toRightOf="@+id/sale_iv"
+            android:layout_marginTop="@dimen/common_dp_4"
+            android:text="@string/portal_store_maobi_sale"
+            android:textColor="@color/common_text_color_333333"
+            android:textSize="@dimen/common_sp_12"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/shopcar_iv"
+            app:layout_constraintLeft_toLeftOf="@id/shopcar_iv"
+            app:layout_constraintRight_toRightOf="@+id/shopcar_iv"
+            android:layout_marginTop="@dimen/common_dp_4"
+            android:text="@string/portal_store_neiku_manager"
+            android:textColor="@color/common_text_color_333333"
+            android:textSize="@dimen/common_sp_12"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/center_banner_iv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_dp_80"
+        app:layout_constraintTop_toBottomOf="@+id/menu_cl"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/common_margin_dp_10"
+        android:layout_marginStart="@dimen/common_margin_dp_10"
+        android:layout_marginEnd="@dimen/common_margin_dp_10"
+        />
+
+<androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/product_rv"
+        android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/common_margin_dp_10"
+        android:layout_marginEnd="@dimen/common_margin_dp_10"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/center_banner_iv"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

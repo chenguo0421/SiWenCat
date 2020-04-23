@@ -44,7 +44,7 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
 
         orientation = fragmentIOAnimation()
 
-//        setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen)
+        setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_Light_NoTitleBar_Fullscreen)
 
     }
 
@@ -92,7 +92,8 @@ abstract class BaseDialogFragment<V: BaseView,P: BasePresenter<V>> : RxDialogFra
         attribute?.gravity = setGravity()
         dialog?.window?.attributes = attribute
 
-        dialog?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+
+      //  dialog?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
     }
 
 
