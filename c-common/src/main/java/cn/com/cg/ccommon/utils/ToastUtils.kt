@@ -25,7 +25,6 @@ public class ToastUtils{
         private var toast: Toast? = null
         // 文字显示的颜色 <color name="white">#FFFFFFFF</color>
         private var messageColor = R.color.common_gray
-
         /**
          * 在Application中初始化ToastUtils.init(this)
          *

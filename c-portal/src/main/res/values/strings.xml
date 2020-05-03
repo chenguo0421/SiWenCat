@@ -10,6 +10,7 @@
     <string name="portal_store_maobi_buy">猫币购买</string>
     <string name="portal_store_maobi_sale">猫币出售</string>
     <string name="portal_store_neiku_manager">内库管理</string>
+    <string name="portal_store_title_newcome">新人专属</string>
 
     <!-- 首页 -->
     <string name="portal_store">商城</string>

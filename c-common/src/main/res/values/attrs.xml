@@ -7,6 +7,17 @@
         <attr name="civ_circle_background_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="RadioTextView">
+        <attr name="rtv_height" format="dimension" />
+        <attr name="rtv_radio" format="dimension" />
+        <attr name="rtv_start_padding" format="dimension" />
+        <attr name="rtv_end_padding" format="dimension" />
+        <attr name="rtv_background_color" format="color" />
+        <attr name="rtv_text_color" format="color"/>
+        <attr name="rtv_text_size" format="dimension"/>
+        <attr name="rtv_text" format="string"/>
+    </declare-styleable>
+
     <attr name="BounceDuration" format="integer" />
     <attr name="BouncingInterpolator" format="enum">
         <enum name="OvershootInterpolator" value="1" />

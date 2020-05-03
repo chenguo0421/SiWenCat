@@ -4,10 +4,13 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.OrientationHelper
+import androidx.recyclerview.widget.RecyclerView
 import cn.com.cg.base.BaseFragment
 import cn.com.cg.ccommon.utils.GlobalParams
 import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.ccommon.widget.banner.RecyclerViewBannerBase
+import cn.com.cg.ccommon.widget.recyclerview.NoScrollLinearLayoutManager
 import cn.com.cg.router.annotation.CRouter
 import cn.com.cg.router.manager.RouterManager
 import com.bumptech.glide.Glide
@@ -59,7 +62,9 @@ class StoreFragment :StoreFMContract.IView, BaseFragment<StoreFMContract.IView, 
 
     override fun onLoadProductListSuccess(list: ArrayList<StoreProductsBean>) {
         adapter = StoreProductAdapter(activity!!,list)
-        val manager = LinearLayoutManager(activity)
+        val manager = NoScrollLinearLayoutManager(activity!!)
+        manager.orientation = RecyclerView.VERTICAL
+        manager.setScrollEnabled(false)
         product_rv.layoutManager = manager
         product_rv.adapter = adapter
     }

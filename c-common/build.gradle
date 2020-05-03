@@ -14,7 +14,9 @@ android {
         versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        ndk{
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+        }
     }
 
     buildTypes {
@@ -22,6 +24,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    packagingOptions {
+        pickFirst '**/libc++_shared.so'
+        doNotStrip "*/armeabi/libYTCommon.so"
+        doNotStrip "*/armeabi-v7a/libYTCommon.so"
+        doNotStrip "*/x86/libYTCommon.so"
+        doNotStrip "*/arm64-v8a/libYTCommon.so"
     }
 
 }
@@ -40,6 +50,7 @@ dependencies {
     api 'com.github.pdog18:dimension-extensions:1.0'
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
     api 'com.github.bumptech.glide:glide:3.7.0'
+    api 'com.tencent.liteav:LiteAVSDK_TRTC:latest.release'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

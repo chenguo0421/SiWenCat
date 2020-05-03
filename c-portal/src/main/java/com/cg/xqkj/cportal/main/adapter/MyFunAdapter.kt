@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.portal_item_my_tools.view.tv
 class MyFunAdapter(
     var context:Context?,
     var data:ArrayList<MyFunBean>,
-    var listener:MyFunDetailAdapter.OnFunDetailItemClickListener
+    private var listener:MyFunDetailAdapter.OnFunDetailItemClickListener
 ) : RecyclerView.Adapter<MyFunAdapter.MyHolder>(){
 
     open class MyHolder(itemview: View):RecyclerView.ViewHolder(itemview),LayoutContainer{

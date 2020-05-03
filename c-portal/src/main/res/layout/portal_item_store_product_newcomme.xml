@@ -1,7 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent" android:layout_height="match_parent">
+        xmlns:radiostyle="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <TextView
+            android:id="@+id/title_lv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/common_margin_dp_10"
+            android:layout_marginStart="@dimen/common_margin_dp_10"
+            android:textSize="@dimen/common_sp_18"
+            android:textColor="@color/common_text_color_333333"
+            android:text=""
+            />
+    <cn.com.cg.ccommon.widget.textview.RadioTextView
+            android:id="@+id/hot_rtc"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_dp_18"
+            app:layout_constraintTop_toTopOf="@+id/title_lv"
+            app:layout_constraintBottom_toBottomOf="@+id/title_lv"
+            app:layout_constraintLeft_toRightOf="@+id/title_lv"
+            android:layout_marginStart="@dimen/common_margin_dp_10"
+            radiostyle:rtv_text=""
+            radiostyle:rtv_text_color="@color/common_white"
+            radiostyle:rtv_text_size="@dimen/common_sp_12"
+            radiostyle:rtv_radio="9dp"
+            radiostyle:rtv_background_color="@color/common_color_e74b4b"
+            android:paddingStart="@dimen/common_dp_6"
+            android:paddingEnd="@dimen/common_dp_6"
+            />
 
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_next"
+            android:layout_width="@dimen/common_dp_16"
+            android:layout_height="@dimen/common_dp_16"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/common_margin_dp_10"
+            android:layout_marginEnd="@dimen/common_margin_dp_10"
+            android:src="@mipmap/sw_home_icon_gengduo"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/next_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/iv_next"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_next"
+            radiostyle:layout_constraintRight_toLeftOf="@+id/iv_next"
+            android:text=""
+            android:textColor="@color/common_text_color_999999"
+            android:textSize="@dimen/common_sp_14"
+            android:layout_marginEnd="@dimen/common_margin_dp_10"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_item"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_dp_177"
+            app:layout_constraintTop_toBottomOf="@+id/title_lv"
+            android:layout_marginTop="@dimen/common_margin_dp_10"
+            />
 </androidx.constraintlayout.widget.ConstraintLayout>
