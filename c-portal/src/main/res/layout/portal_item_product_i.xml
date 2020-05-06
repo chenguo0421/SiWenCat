@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintDimensionRatio="h,190:175"
+            android:src="@mipmap/icon_launcher_siwencat"
+            />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@+id/iv_content"
+            app:layout_constraintRight_toRightOf="@+id/iv_content"
+            app:layout_constraintTop_toBottomOf="@+id/iv_content"
+            android:layout_marginStart="@dimen/common_margin_dp_6"
+            android:layout_marginEnd="@dimen/common_margin_dp_6"
+            android:layout_marginTop="@dimen/common_margin_dp_8"
+            android:maxLines="2"
+            android:textSize="@dimen/common_sp_14"
+            android:textColor="@color/common_text_color_333333"
+            android:text="摄像头"
+            />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_price_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            android:layout_marginTop="@dimen/common_dp_16"
+            android:textSize="@dimen/common_sp_10"
+            android:textColor="@color/common_color_e74b4b"
+            android:text="¥"
+            />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_price_unit"
+            app:layout_constraintLeft_toRightOf="@+id/tv_price_unit"
+            android:textSize="@dimen/common_sp_14"
+            android:textColor="@color/common_color_e74b4b"
+            android:text="99"
+            />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_num_convert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/tv_price"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_price"
+            app:layout_constraintLeft_toRightOf="@+id/tv_price"
+            android:layout_marginStart="@dimen/common_margin_dp_10"
+            android:textSize="@dimen/common_sp_10"
+            android:textColor="@color/common_text_color_999999"
+            android:text="100人兑换"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

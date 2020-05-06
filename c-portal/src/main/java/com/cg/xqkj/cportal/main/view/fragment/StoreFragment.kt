@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.com.cg.base.BaseFragment
 import cn.com.cg.ccommon.utils.GlobalParams
@@ -73,6 +74,7 @@ class StoreFragment :StoreFMContract.IView, BaseFragment<StoreFMContract.IView, 
     override fun initListener() {
         buy_iv.setOnClickListener{
             RouterManager.getInstance().with(activity!!).action("/AnimUtils/alphaView").callMethod(it,0.5f,1f,300L)
+            val height = product_rv.height
         }
         sale_iv.setOnClickListener{
             RouterManager.getInstance().with(activity!!).action("/AnimUtils/alphaView").callMethod(it,0.5f,1f,300L)

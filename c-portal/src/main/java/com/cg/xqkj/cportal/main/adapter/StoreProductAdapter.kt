@@ -5,22 +5,27 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.com.cg.ccommon.utils.DeviceUtils
 import cn.com.cg.ccommon.utils.ToastUtils
+import cn.com.cg.ccommon.widget.itemdecoration.RecycleGridDivider
+import cn.com.cg.ccommon.widget.recyclerview.NoScrollGridLayoutManager
 import cn.com.cg.router.manager.RouterManager
 import com.bumptech.glide.Glide
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.main.bean.StoreProductsBean
 import com.pdog.dimension.dp
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.portal_item_store_product_choiceness.view.*
+import kotlinx.android.synthetic.main.portal_item_store_product_choiceness.view.tv_subtitle
+import kotlinx.android.synthetic.main.portal_item_store_product_choiceness.view.tv_title
 import kotlinx.android.synthetic.main.portal_item_store_product_newcomme.view.*
 import kotlinx.android.synthetic.main.portal_item_store_product_recommendtoday.view.*
 import kotlinx.android.synthetic.main.portal_item_store_product_recommendtoday.view.iv_l1r1
 import kotlinx.android.synthetic.main.portal_item_store_product_recommendtoday.view.iv_l2r1
 import kotlinx.android.synthetic.main.portal_item_store_product_recommendtoday.view.iv_l2r2
+import kotlinx.android.synthetic.main.portal_item_store_product_recommoendboutique.view.*
 
 class StoreProductAdapter(var context: Context, var data:ArrayList<StoreProductsBean>) : RecyclerView.Adapter<StoreProductAdapter.MyHolder>(){
 
@@ -68,8 +73,11 @@ class StoreProductAdapter(var context: Context, var data:ArrayList<StoreProducts
             2 -> {
                 HolderForChoiceness(inflater.inflate(R.layout.portal_item_store_product_choiceness,parent,false))
             }
+            3 -> {
+                HolderForRecommendBoutique(inflater.inflate(R.layout.portal_item_store_product_recommoendboutique,parent,false))
+            }
             else -> {
-                HolderForNewcome(inflater.inflate(R.layout.portal_item_store_product_recommoendboutique,parent,false))
+                HolderForNewcome(inflater.inflate(R.layout.portal_item_store_product_newcomme,parent,false))
             }
         }
     }
@@ -87,13 +95,41 @@ class StoreProductAdapter(var context: Context, var data:ArrayList<StoreProducts
                 setRecommendTodayItem(holder,position)
             }
             is HolderForChoiceness ->{
+                setChoicenessItem(holder,position)
+            }
+            is HolderForRecommendBoutique -> {
                 setRecommendBoutiqueItem(holder,position)
             }
         }
 
     }
 
-    private fun setRecommendBoutiqueItem(holder: StoreProductAdapter.HolderForChoiceness, position: Int) {
+    private fun setRecommendBoutiqueItem(holder: StoreProductAdapter.HolderForRecommendBoutique, position: Int) {
+        holder.itemView.tv_title.text = data[position].title?.get(0)?.title
+        holder.itemView.tv_title.setTextColor(Color.parseColor(data[position].title?.get(0)?.titleColor))
+
+        holder.itemView.tv_subtitle.text = data[position].title?.get(0)?.nextText
+        holder.itemView.tv_subtitle.setTextColor(Color.parseColor(data[position].title?.get(0)?.nextTextColor))
+
+        val params = holder.itemView.layoutParams
+        var size = data[position].products?.size
+        if (size?.rem(2) != 0){
+            size = size?.plus(1)
+        }
+        val imgHeight = ((DeviceUtils.getScreenWidth(context) - 25.dp) / 2 ) * 190 / 175
+        val gridItemHeight = imgHeight + 80.dp
+        params.height = ((size?.div(2)?.times(gridItemHeight)!!) + (25 + 8).dp + (size.div(2).times(5.dp)))
+        holder.itemView.layoutParams = params
+
+        val gridLayoutManager= NoScrollGridLayoutManager(context,2)
+        gridLayoutManager.setScrollEnabled(false)
+        holder.itemView.rv_product.layoutManager = gridLayoutManager
+        val adapter = RecommendBoutiqueAdapter(context,data[position].products)
+        holder.itemView.rv_product.adapter = adapter
+        holder.itemView.rv_product.addItemDecoration(RecycleGridDivider(5.dp))
+    }
+
+    private fun setChoicenessItem(holder: StoreProductAdapter.HolderForChoiceness, position: Int) {
         holder.itemView.tv_title.text = data[position].title?.get(0)?.title
         holder.itemView.tv_title.setTextColor(Color.parseColor(data[position].title?.get(0)?.titleColor))
 
