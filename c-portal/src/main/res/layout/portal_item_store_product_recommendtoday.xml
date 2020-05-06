@@ -6,9 +6,10 @@
         android:background="@drawable/common_bg_white_radius_four"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:paddingBottom="@dimen/common_dp_20"
+        android:paddingTop="@dimen/common_margin_dp_12"
         >
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/lv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +49,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rtc_hot" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/lv_title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
