@@ -2,9 +2,8 @@ package com.cg.xqkj.cportal.main.view.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.widget.LinearLayout
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.OrientationHelper
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import cn.com.cg.base.BaseFragment
 import cn.com.cg.ccommon.utils.GlobalParams
@@ -20,7 +19,6 @@ import com.cg.xqkj.cportal.main.bean.StoreProductsBean
 import com.cg.xqkj.cportal.main.contract.StoreFMContract
 import com.cg.xqkj.cportal.main.presenter.StoreFMPresenter
 import kotlinx.android.synthetic.main.portal_fragment_store.*
-import kotlin.collections.ArrayList
 
 /**
  *  author : ChenGuo
@@ -67,6 +65,9 @@ class StoreFragment :StoreFMContract.IView, BaseFragment<StoreFMContract.IView, 
         manager.setScrollEnabled(false)
         product_rv.layoutManager = manager
         product_rv.adapter = adapter
+        val divider = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
+        divider.setDrawable(ContextCompat.getDrawable(activity!!, R.drawable.common_rv_divider_f2f2f2_ten)!!)
+        product_rv.addItemDecoration(divider)
     }
 
     override fun initListener() {

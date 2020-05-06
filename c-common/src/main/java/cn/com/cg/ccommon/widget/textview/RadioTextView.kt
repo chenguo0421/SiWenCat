@@ -1,11 +1,9 @@
 package cn.com.cg.ccommon.widget.textview
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.View
 import cn.com.cg.ccommon.R
 import com.pdog.dimension.dp

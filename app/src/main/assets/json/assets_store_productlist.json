@@ -9,7 +9,7 @@
           "rowIndex": 1,
           "colIndex": 1,
           "title": "新人专享",
-          "titleColor": "#FF000000",
+          "titleColor": "#FF333333",
           "hotText": "NEW",
           "hotTextColor": "#FFFFFFFF",
           "hotTextBGColor": "#FFE74B4B",
@@ -48,7 +48,7 @@
           "rowIndex": 1,
           "colIndex": 1,
           "title": "今日必Buy",
-          "titleColor": "#FF000000",
+          "titleColor": "#FF333333",
           "hotText": "SALE",
           "hotTextColor": "#FFFFFFFF",
           "hotTextBGColor": "#FFE74B4B",
@@ -59,7 +59,7 @@
           "rowIndex": 1,
           "colIndex": 2,
           "title": "好物推荐",
-          "titleColor": "#FF000000",
+          "titleColor": "#FF333333",
           "hotText": "GOOD",
           "hotTextColor": "#FFFFFFFF",
           "hotTextBGColor": "#FF88C5F3",
@@ -109,6 +109,45 @@
           "productTypeName":"妙言社区",
           "advText": "潮流美妆物",
           "url": ["file:///android_asset/img/assets_store_image1.png"]
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "title":[
+        {
+          "rowIndex": 1,
+          "colIndex": 1,
+          "title": "品牌精选",
+          "titleColor": "#FF333333",
+          "hotText": "",
+          "hotTextColor": "",
+          "hotTextBGColor": "",
+          "nextText": "优质品牌 放心之选",
+          "nextTextColor": "#FF999999"
+        }
+      ],
+      "products": [
+        {
+          "rowIndex": 1,
+          "colIndex": 1,
+          "productTypeName":"全画幅高端单反",
+          "url": ["file:///android_asset/img/assets_store_image18.png"],
+          "price": ""
+        },
+        {
+          "rowIndex": 2,
+          "colIndex": 1,
+          "productTypeName":"潮流美妆",
+          "url": ["file:///android_asset/img/assets_store_image9.png"],
+          "price": ""
+        },
+        {
+          "rowIndex": 2,
+          "colIndex": 2,
+          "productTypeName":"生活家居",
+          "url": ["file:///android_asset/img/assets_store_image8.png"],
+          "price": ""
         }
       ]
     }

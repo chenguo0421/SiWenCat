@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:scrollbars="none"
         android:orientation="vertical"
-        android:background="#fff"
+        android:background="@color/common_color_f2f2f2"
         >
 
     <ScrollView
@@ -255,7 +255,7 @@
                     android:layout_height="@dimen/common_dp_80"
                     app:layout_constraintTop_toBottomOf="@+id/menu_cl"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    android:layout_marginTop="@dimen/common_margin_dp_10"
+                    android:layout_marginTop="@dimen/common_dp_6"
                     android:layout_marginStart="@dimen/common_margin_dp_10"
                     android:layout_marginEnd="@dimen/common_margin_dp_10"
                     />
@@ -263,6 +263,7 @@
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/product_rv"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/common_dp_6"
                     android:layout_marginStart="@dimen/common_margin_dp_10"
                     android:layout_marginEnd="@dimen/common_margin_dp_10"
                     android:layout_height="match_parent"

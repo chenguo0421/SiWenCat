@@ -15,8 +15,12 @@ import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.main.bean.StoreProductsBean
 import com.pdog.dimension.dp
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.portal_item_store_product_choiceness.view.*
 import kotlinx.android.synthetic.main.portal_item_store_product_newcomme.view.*
 import kotlinx.android.synthetic.main.portal_item_store_product_recommendtoday.view.*
+import kotlinx.android.synthetic.main.portal_item_store_product_recommendtoday.view.iv_l1r1
+import kotlinx.android.synthetic.main.portal_item_store_product_recommendtoday.view.iv_l2r1
+import kotlinx.android.synthetic.main.portal_item_store_product_recommendtoday.view.iv_l2r2
 
 class StoreProductAdapter(var context: Context, var data:ArrayList<StoreProductsBean>) : RecyclerView.Adapter<StoreProductAdapter.MyHolder>(){
 
@@ -62,7 +66,7 @@ class StoreProductAdapter(var context: Context, var data:ArrayList<StoreProducts
                 HolderForRecommendToday(inflater.inflate(R.layout.portal_item_store_product_recommendtoday,parent,false))
             }
             2 -> {
-                HolderForRecommendBoutique(inflater.inflate(R.layout.portal_item_store_product_choiceness,parent,false))
+                HolderForChoiceness(inflater.inflate(R.layout.portal_item_store_product_choiceness,parent,false))
             }
             else -> {
                 HolderForNewcome(inflater.inflate(R.layout.portal_item_store_product_recommoendboutique,parent,false))
@@ -82,11 +86,38 @@ class StoreProductAdapter(var context: Context, var data:ArrayList<StoreProducts
             is HolderForRecommendToday ->{
                 setRecommendTodayItem(holder,position)
             }
-            is HolderForRecommendBoutique ->{
-
+            is HolderForChoiceness ->{
+                setRecommendBoutiqueItem(holder,position)
             }
         }
 
+    }
+
+    private fun setRecommendBoutiqueItem(holder: StoreProductAdapter.HolderForChoiceness, position: Int) {
+        holder.itemView.tv_title.text = data[position].title?.get(0)?.title
+        holder.itemView.tv_title.setTextColor(Color.parseColor(data[position].title?.get(0)?.titleColor))
+
+        holder.itemView.tv_subtitle.text = data[position].title?.get(0)?.nextText
+        holder.itemView.tv_subtitle.setTextColor(Color.parseColor(data[position].title?.get(0)?.nextTextColor))
+
+        Glide.with(context).load(data[position].products?.get(0)?.url?.get(0)).into(holder.itemView.iv_l1r1)
+        Glide.with(context).load(data[position].products?.get(1)?.url?.get(0)).into(holder.itemView.iv_l2r1)
+        Glide.with(context).load(data[position].products?.get(2)?.url?.get(0)).into(holder.itemView.iv_l2r2)
+
+        holder.itemView.iv_l1r1.setOnClickListener{
+            RouterManager.getInstance().with(context).action("/AnimUtils/alphaView").callMethod(holder.itemView.iv_l1r1,0.5f,1f,300L)
+            ToastUtils.show("点击了：" + data[position].products?.get(0)?.productTypeName)
+        }
+
+        holder.itemView.iv_l2r1.setOnClickListener{
+            RouterManager.getInstance().with(context).action("/AnimUtils/alphaView").callMethod(holder.itemView.iv_l2r1,0.5f,1f,300L)
+            ToastUtils.show("点击了：" + data[position].products?.get(1)?.productTypeName)
+        }
+
+        holder.itemView.iv_l2r2.setOnClickListener{
+            RouterManager.getInstance().with(context).action("/AnimUtils/alphaView").callMethod(holder.itemView.iv_l2r2,0.5f,1f,300L)
+            ToastUtils.show("点击了：" + data[position].products?.get(2)?.productTypeName)
+        }
     }
 
     private fun setRecommendTodayItem(holder: StoreProductAdapter.HolderForRecommendToday, position: Int) {

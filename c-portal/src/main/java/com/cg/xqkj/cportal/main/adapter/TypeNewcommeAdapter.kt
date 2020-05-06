@@ -27,7 +27,6 @@ class TypeNewcommeAdapter(var context: Context,
         override val containerView: View = itemView
         init {
             itemView.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT,ConstraintLayout.LayoutParams.WRAP_CONTENT)
-            itemView.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT,ConstraintLayout.LayoutParams.WRAP_CONTENT)
         }
     }
 
