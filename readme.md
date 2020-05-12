@@ -14,9 +14,9 @@
 
 #### 商城页面
    
-![](image/store_1.jpg)
-![](image/store_2.jpg)
-![](image/store_3.jpg)
+![](image/https://github.com/chenguo0421/SiWenCat/blob/master/image/store_1.jpg)
+![](image/https://github.com/chenguo0421/SiWenCat/blob/master/image/store_2.jpg)
+![](image/https://github.com/chenguo0421/SiWenCat/blob/master/image/store_3.jpg)
 
 
 
