@@ -9,11 +9,12 @@
   包括商城、猫屋、Home、礼品、我的五个页签及多个子功能。
 
 ### 部分界面展示
+  这里将简单展示部分页面的视觉效果，包括商城，猫屋，Home，礼品，我的五部分。
 
-  ## 商城页面：
-  ![](image/store_1.jpg)
-  ![](image/store_2.jpg)
-  ![](image/store_3.jpg)
+   ## 商城页面：
+   ![](image/store_1.jpg)
+   ![](image/store_2.jpg)
+   ![](image/store_3.jpg)
 
 
 
