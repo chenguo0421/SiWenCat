@@ -14,9 +14,9 @@
 
 #### 商城页面
    
-![readme 首页示例图1](image/store_1.jpg)
-![readme 首页示例图2](image/store_2.jpg)
-![readme 首页示例图3](image/store_3.jpg)
+![首页_1](image/store_1.jpg)
+![首页_2](image/store_2.jpg)
+![首页_3](image/store_3.jpg)
 
 
 
