@@ -1,58 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/common_color_f2f2f2"
-        android:focusableInTouchMode="true">
-   <androidx.appcompat.widget.AppCompatEditText
-           android:id="@+id/search_et"
-           android:layout_marginTop="@dimen/common_margin_dp_10"
-           android:layout_marginStart="@dimen/common_margin_dp_10"
-           app:layout_constraintTop_toTopOf="parent"
-           app:layout_constraintLeft_toLeftOf="parent"
-           app:layout_constraintRight_toLeftOf="@+id/menu_img"
-           android:paddingLeft="@dimen/common_dp_24"
-           android:layout_marginEnd="@dimen/common_margin_dp_10"
-           android:layout_width="0dp"
-           android:background="@drawable/common_bg_gray_radius_fourteen"
-            android:drawableStart="@mipmap/sw_common_icon_search"
-           android:drawablePadding="@dimen/common_margin_dp_10"
-           android:hint="#李佳琪"
-           android:gravity="center_vertical"
-           android:layout_height="@dimen/common_dp_28"/>
-    <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/menu_img"
-            app:layout_constraintTop_toTopOf="@+id/search_et"
-            app:layout_constraintBottom_toBottomOf="@+id/search_et"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginEnd="@dimen/common_margin_dp_10"
-            android:layout_width="@dimen/common_dp_24"
-            android:layout_height="@dimen/common_dp_24"
-            android:src="@mipmap/sw_home_icon_fabu"/>
+       >
 
 
-    <cn.com.cg.ccommon.widget.banner.RecyclerViewBannerNormal
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/common_dp_150"
-            android:layout_marginStart="@dimen/common_margin_dp_10"
-            android:layout_marginEnd="@dimen/common_margin_dp_10"
-            app:layout_constraintTop_toBottomOf="@+id/search_et"
-            android:layout_marginTop="@dimen/common_margin_dp_10"
-            app:orientation="horizontal"
-            app:indicatorGravity="right"
-            app:indicatorMarginRight="20dp"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/common_dp_70"
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/common_color_f2f2f2"
+                android:focusableInTouchMode="true">
 
-            app:layout_constraintTop_toBottomOf="@+id/banner"
-            android:layout_marginTop="@dimen/common_margin_dp_10"
-            android:layout_marginStart="@dimen/common_margin_dp_10"
-            android:layout_marginEnd="@dimen/common_margin_dp_10"/>
+            <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/search_et"
+                    android:layout_marginTop="@dimen/common_margin_dp_10"
+                    android:layout_marginStart="@dimen/common_margin_dp_10"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/menu_img"
+                    android:paddingLeft="@dimen/common_dp_24"
+                    android:layout_marginEnd="@dimen/common_margin_dp_10"
+                    android:layout_width="0dp"
+                    android:background="@drawable/common_bg_gray_radius_fourteen"
+                    android:drawableStart="@mipmap/sw_common_icon_search"
+                    android:drawablePadding="@dimen/common_margin_dp_10"
+                    android:hint="#李佳琪"
+                    android:gravity="center_vertical"
+                    android:layout_height="@dimen/common_dp_28"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/menu_img"
+                    app:layout_constraintTop_toTopOf="@+id/search_et"
+                    app:layout_constraintBottom_toBottomOf="@+id/search_et"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginEnd="@dimen/common_margin_dp_10"
+                    android:layout_width="@dimen/common_dp_24"
+                    android:layout_height="@dimen/common_dp_24"
+                    android:src="@mipmap/sw_home_icon_fabu"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <cn.com.cg.ccommon.widget.banner.RecyclerViewBannerNormal
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_dp_150"
+                    android:layout_marginStart="@dimen/common_margin_dp_10"
+                    android:layout_marginEnd="@dimen/common_margin_dp_10"
+                    app:layout_constraintTop_toBottomOf="@+id/search_et"
+                    android:layout_marginTop="@dimen/common_margin_dp_10"
+                    app:orientation="horizontal"
+                    app:indicatorGravity="right"
+                    app:indicatorMarginRight="20dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/center_banner_iv"
+                    android:layout_width="match_parent"
+                    app:layout_constraintDimensionRatio="w,355:80"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@+id/banner"
+                    app:layout_constraintRight_toRightOf="@+id/banner"
+                    app:layout_constraintTop_toBottomOf="@+id/banner"
+                    android:layout_marginStart="@dimen/common_dp_10"
+                    android:layout_marginEnd="@dimen/common_dp_10"
+                    android:layout_marginTop="@dimen/common_margin_dp_10"
+                    />
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/center_banner_iv"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/common_margin_dp_10"
+                    android:layout_marginStart="@dimen/common_margin_dp_10"
+                    android:layout_marginEnd="@dimen/common_margin_dp_10"
+                    android:layout_marginBottom="@dimen/common_margin_dp_10"
+                    />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>

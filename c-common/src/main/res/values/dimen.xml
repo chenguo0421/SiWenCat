@@ -4,12 +4,15 @@
     <dimen name="common_dp_1">1dp</dimen>
     <dimen name="common_dp_2point5">2.5dp</dimen>
     <dimen name="common_dp_1point5">1.5dp</dimen>
+    <dimen name="common_dp_3">3dp</dimen>
     <dimen name="common_dp_4">4dp</dimen>
     <dimen name="common_dp_4point5">4.5dp</dimen>
+    <dimen name="common_dp_5">5dp</dimen>
     <dimen name="common_dp_6">6dp</dimen>
     <dimen name="common_dp_9">9dp</dimen>
     <dimen name="common_dp_10">10dp</dimen>
     <dimen name="common_dp_11">11dp</dimen>
+    <dimen name="common_dp_13">13dp</dimen>
     <dimen name="common_dp_14">14dp</dimen>
     <dimen name="common_dp_15">15dp</dimen>
     <dimen name="common_dp_16">16dp</dimen>
@@ -31,6 +34,7 @@
     <dimen name="common_dp_142">142dp</dimen>
     <dimen name="common_dp_150">150dp</dimen>
     <dimen name="common_dp_165">165dp</dimen>
+    <dimen name="common_dp_167">167dp</dimen>
     <dimen name="common_dp_177">177dp</dimen>
     <dimen name="common_dp_188">188dp</dimen>
     <dimen name="common_dp_222">222dp</dimen>

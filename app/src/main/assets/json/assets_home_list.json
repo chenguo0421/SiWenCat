@@ -1,0 +1,117 @@
+{
+  "code": 200,
+  "msg": "Success",
+  "data": {
+    "banners":[
+      "file:///android_asset/img/assets_home_image1.png",
+      "file:///android_asset/img/assets_home_image1.png",
+      "file:///android_asset/img/assets_home_image1.png"
+    ],
+    "centerBanner": "file:///android_asset/img/assets_home_image2.png",
+    "list": [
+      {
+        "type":0,
+        "title": "最嗨一刻",
+        "list": [
+          {
+            "title": "三生三世十里桃花",
+            "image": "file:///android_asset/img/assets_home_image3.png",
+            "intro": "",
+            "readNum": 0
+          }, {
+            "title": "千穿万穿 套路不穿",
+            "image": "file:///android_asset/img/assets_home_image4.png",
+            "intro": "",
+            "readNum": 0
+          }, {
+            "title": "乱世剑神",
+            "image": "file:///android_asset/img/assets_home_image5.png",
+            "intro": "",
+            "readNum": 0
+          }
+        ]
+      },
+      {
+        "type":1,
+        "title": "最小说",
+        "list": [
+          {
+            "title": "神武剑尊",
+            "image": "file:///android_asset/img/assets_home_image6.png",
+            "intro": "弹指风云变，拔剑天地惊！天才少年因觉醒禁忌武灵，背负一世冤罪，自边城中闯出。论潜力，我有绝世玄功，我有至高秘技，一代魔王，逆轮回，登天路，断星海，斩诸神，埋葬九霄。",
+            "readNum": 100
+          }, {
+            "title": "重生女神培养",
+            "image": "file:///android_asset/img/assets_home_image7.png",
+            "intro": "杨倩兮玩笑购买一瓶“后悔药”谁知“运气大爆棚”竟然因为吃这种糖丸噎死，真的回到五岁时候。重新开始，且作为作者的亲女儿的主角如何改写过去，让家人和自己过上美好的生活。好好学习，考上一个好大学，向真正的学霸发展。",
+            "readNum": 200
+          }, {
+            "title": "极品上门女婿",
+            "image": "file:///android_asset/img/assets_home_image8.png",
+            "intro": "三年前，秦昊送外卖的时候，被豪车撞倒了，没想到反被车主逼着跪在车前忏悔，被豪车大灯照了一个晚上。秦昊的眼睛就此下了，他的悲惨人生从此开始。为了替父还债，秦昊成了上门女婿，受尽歧视鄙夷。",
+            "readNum": 300
+          }
+        ]
+      },
+      {
+        "type":2,
+        "title": "最心声",
+        "list": [
+          {
+            "title": "疫情防护",
+            "image": "file:///android_asset/img/assets_home_image9.png",
+            "intro": "最权威专家说新型冠状病毒的防护措施",
+            "readNum": 518
+          }, {
+            "title": "方雨大搜索",
+            "image": "file:///android_asset/img/assets_home_image10.png",
+            "intro": "社会新闻：十字路口红绿灯突发的故障",
+            "readNum": 908
+          }, {
+            "title": "五分钟读懂朋友圈",
+            "image": "file:///android_asset/img/assets_home_image11.png",
+            "intro": "资深媒体人，带你换个姿势刷爆朋友圈",
+            "readNum": 367
+          }, {
+            "title": "平凡与不凡",
+            "image": "file:///android_asset/img/assets_home_image12.png",
+            "intro": "为“疫”而“声”，致敬生命中的平凡与不凡",
+            "readNum": 369
+          }, {
+            "title": "治愈系钢琴曲",
+            "image": "file:///android_asset/img/assets_home_image13.png",
+            "intro": "治愈系钢琴曲，让人心神安逸",
+            "readNum": 908
+          }, {
+            "title": "历年精华相声总览",
+            "image": "file:///android_asset/img/assets_home_image14.png",
+            "intro": "总有一款合适你的声音线",
+            "readNum": 674
+          }
+        ]
+      },
+      {
+        "type":3,
+        "title": "最新动态",
+        "list": [
+          {
+            "title": "疫情数字背后的故事，是多么的艰辛和牺牲换来的保命！",
+            "image": "file:///android_asset/img/assets_home_image15.png",
+            "intro": "",
+            "readNum": 675
+          }, {
+            "title": "什么是铁饭碗？是在疫情下能照常发工资，不被辞退，有保障吗？",
+            "image": "file:///android_asset/img/assets_home_image16.png",
+            "intro": "",
+            "readNum": 450
+          }, {
+            "title": "[头条]钟南山：现在说疫情拐点，还为时过早！",
+            "image": "file:///android_asset/img/assets_home_image17.png",
+            "intro": "",
+            "readNum": 1200
+          }
+        ]
+      }
+    ]
+  }
+}

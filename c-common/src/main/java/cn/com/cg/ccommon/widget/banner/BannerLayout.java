@@ -17,6 +17,7 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 
 import androidx.core.view.GravityCompat;
@@ -35,6 +36,7 @@ public class BannerLayout extends FrameLayout {
     private int autoPlayDuration;//刷新间隔时间
 
     private boolean showIndicator;//是否显示指示器
+    private int indicatorGravity = Gravity.BOTTOM;
     private RecyclerView indicatorContainer;
     private Drawable mSelectedDrawable;
     private Drawable mUnselectedDrawable;
@@ -84,7 +86,6 @@ public class BannerLayout extends FrameLayout {
     }
 
     protected void initView(Context context, AttributeSet attrs) {
-
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BannerLayout);
         showIndicator = a.getBoolean(R.styleable.BannerLayout_showIndicator, true);
         autoPlayDuration = a.getInt(R.styleable.BannerLayout_interval, 4000);
@@ -92,6 +93,9 @@ public class BannerLayout extends FrameLayout {
         itemSpace = a.getInt(R.styleable.BannerLayout_itemSpace, 20);
         centerScale = a.getFloat(R.styleable.BannerLayout_centerScale, 1.2f);
         moveSpeed = a.getFloat(R.styleable.BannerLayout_moveSpeed, 1.0f);
+        int g = a.getInt(R.styleable.BannerLayout_indicatorGravity, 0);
+        int itemHeight = a.getDimensionPixelOffset(R.styleable.BannerLayout_itemHeight,dp2px(150));
+        int indicatorHeight = a.getDimensionPixelOffset(R.styleable.BannerLayout_indicatorHeight,dp2px(4+4+5));
         if (mSelectedDrawable == null) {
             //绘制默认选中状态图形
             GradientDrawable selectedGradientDrawable = new GradientDrawable();
@@ -110,12 +114,14 @@ public class BannerLayout extends FrameLayout {
             unSelectedGradientDrawable.setCornerRadius(dp2px(5) / 2);
             mUnselectedDrawable = new LayerDrawable(new Drawable[]{unSelectedGradientDrawable});
         }
-
         indicatorMargin = dp2px(4);
-        int marginLeft = dp2px(16);
-        int marginRight = dp2px(0);
-        int marginBottom = dp2px(11);
-        int gravity = GravityCompat.START;
+        if (g == 0) {
+            indicatorGravity =indicatorGravity | Gravity.START;
+        } else if (g == 2) {
+            indicatorGravity =indicatorGravity | Gravity.END;
+        } else {
+            indicatorGravity =indicatorGravity | Gravity.CENTER_HORIZONTAL;
+        }
         int o = a.getInt(R.styleable.BannerLayout_orientation, 0);
         int orientation = 0;
         if (o == 0) {
@@ -127,7 +133,8 @@ public class BannerLayout extends FrameLayout {
         //轮播图部分
         mRecyclerView = new RecyclerView(context);
         LayoutParams vpLayoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
+                itemHeight);
+        vpLayoutParams.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
         addView(mRecyclerView, vpLayoutParams);
         mLayoutManager = new BannerLayoutManager(getContext(), orientation);
         mLayoutManager.setItemSpace(itemSpace);
@@ -144,13 +151,20 @@ public class BannerLayout extends FrameLayout {
         indicatorAdapter = new IndicatorAdapter();
         indicatorContainer.setAdapter(indicatorAdapter);
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.gravity = Gravity.BOTTOM | gravity;
-        params.setMargins(marginLeft, 0, marginRight, marginBottom);
+                indicatorHeight);
+        params.gravity = indicatorGravity;
         addView(indicatorContainer, params);
         if (!showIndicator) {
             indicatorContainer.setVisibility(GONE);
         }
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+//        ViewGroup.LayoutParams params = getLayoutParams();
+//        params.height = mRecyclerView.getHeight() + indicatorContainer.getHeight() + dp2px(4);
+//        setLayoutParams(params);
+        super.onLayout(changed, left, top, right, bottom);
     }
 
     // 设置是否禁止滚动播放

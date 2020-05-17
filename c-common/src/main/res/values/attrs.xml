@@ -47,6 +47,11 @@
         <enum name="horizontal" value="0"/>
         <enum name="vertical" value="1"/>
     </attr>
+    <attr name="indicatorGravity" format="enum">
+        <enum name="left" value="0"/>
+        <enum name="center" value="1"/>
+        <enum name="right" value="2"/>
+    </attr>
     <attr name="autoPlaying" format="boolean"/>
     <declare-styleable name="RecyclerViewBannerBase">
         <attr name="interval"/>
@@ -59,18 +64,17 @@
         <attr name="indicatorMarginLeft" format="dimension|reference"/>
         <attr name="indicatorMarginRight" format="dimension|reference"/>
         <attr name="indicatorMarginBottom" format="dimension|reference"/>
-        <attr name="indicatorGravity" format="enum">
-            <enum name="left" value="0"/>
-            <enum name="center" value="1"/>
-            <enum name="right" value="2"/>
-        </attr>
+        <attr name="indicatorGravity"/>
     </declare-styleable>
 
     <declare-styleable name="BannerLayout">
         <attr name="interval" />
         <attr name="showIndicator" />
         <attr name="orientation" />
+        <attr name="indicatorGravity"/>
         <attr name="autoPlaying"/>
+        <attr name="indicatorHeight" format="dimension"/>
+        <attr name="itemHeight" format="dimension"/>
         <attr name="itemSpace" format="integer"/>
         <attr name="centerScale" format="float"/>
         <attr name="moveSpeed" format="float"/>

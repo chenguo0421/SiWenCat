@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_story"
+            android:layout_width="@dimen/common_dp_60"
+            android:layout_height="wrap_content"
+            app:layout_constraintDimensionRatio="w,2:3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/iv_story"
+            app:layout_constraintLeft_toRightOf="@+id/iv_story"
+            android:textSize="@dimen/common_sp_14"
+            android:layout_marginStart="@dimen/common_dp_10"
+            android:textColor="@color/common_text_color_333333"
+            android:maxLines="1"
+            />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_dis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_dp_6"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_story"
+            android:textSize="@dimen/common_sp_10"
+            android:lineSpacingMultiplier="1.4"
+            android:letterSpacing="0.1"
+            android:maxLines="4"
+            android:textColor="@color/common_text_color_666666"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

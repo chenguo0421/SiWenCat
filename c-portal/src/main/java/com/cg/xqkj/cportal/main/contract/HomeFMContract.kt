@@ -3,6 +3,7 @@ package com.cg.xqkj.cportal.main.contract
 import cn.com.cg.mvp.base.BaseModel
 import cn.com.cg.mvp.base.BasePresenter
 import cn.com.cg.mvp.base.intf.BaseView
+import com.cg.xqkj.cportal.main.bean.HomeBean
 
 /**
  *  author : ChenGuo
@@ -12,12 +13,12 @@ import cn.com.cg.mvp.base.intf.BaseView
 class HomeFMContract {
 
     public interface IView:BaseView{
-
+        abstract fun onQueryHomeDataSuccess(bean: HomeBean)
     }
 
 
     public abstract class IPresenter<T> : BasePresenter<T>() {
-
+        abstract fun queryHomeData()
     }
 
 

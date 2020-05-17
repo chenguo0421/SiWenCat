@@ -23,4 +23,8 @@ object GlobalParams {
         return AssetsUtils.getJsonArrayString(context,jsonFileName)
     }
 
+    fun getHomeDataResponse(context: Context, jsonFileName: String): String? {
+        return AssetsUtils.getJsonObjectString(context,jsonFileName)
+    }
+
 }

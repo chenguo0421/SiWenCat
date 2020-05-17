@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textSize="@dimen/common_sp_16"
+            android:textColor="@color/common_text_color_333333"
+            android:maxLines="1"
+            />
+
+    <cn.com.cg.ccommon.widget.banner.BannerLayout
+            android:id="@+id/banner"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/common_dp_167"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:itemHeight="@dimen/common_dp_150"
+            app:indicatorHeight="@dimen/common_dp_13"
+            app:indicatorGravity="center"
+            app:orientation="horizontal"
+            app:autoPlaying="true"
+            app:centerScale="1.3"
+            app:itemSpace="20"
+            app:moveSpeed="1.8"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

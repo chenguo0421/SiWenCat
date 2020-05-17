@@ -1,7 +1,14 @@
 package com.cg.xqkj.cportal.main.presenter
 
+import cn.com.cg.ccommon.utils.GlobalParams
+import cn.com.cg.clog.CLog
+import com.cg.xqkj.cportal.main.bean.HomeBean
 import com.cg.xqkj.cportal.main.contract.HomeFMContract
 import com.cg.xqkj.cportal.main.model.HomeFMModel
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 /**
  *  author : ChenGuo
@@ -14,5 +21,16 @@ class HomeFMPresenter : HomeFMContract.IPresenter<HomeFMContract.IView>() {
 
     init {
         mModel = HomeFMModel()
+    }
+
+    override fun queryHomeData() {
+        doAsync {
+            val response = GlobalParams.getHomeDataResponse(getView()?.getBaseActivity()!!,"/json/assets_home_list.json")
+            response?.let { CLog.d(it) }
+            val list = Gson().fromJson(response,HomeBean::class.java)
+            uiThread {
+                getView()?.onQueryHomeDataSuccess(list)
+            }
+        }
     }
 }
