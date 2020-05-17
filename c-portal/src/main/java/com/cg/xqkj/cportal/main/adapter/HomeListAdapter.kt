@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.com.cg.ccommon.utils.ToastUtils
 import cn.com.cg.ccommon.widget.banner.BannerLayout
@@ -14,12 +13,12 @@ import cn.com.cg.ccommon.widget.banner.CardBannerAdapter
 import cn.com.cg.ccommon.widget.itemdecoration.RecycleGridDivider
 import cn.com.cg.ccommon.widget.recyclerview.NoScrollGridLayoutManager
 import cn.com.cg.ccommon.widget.recyclerview.NoScrollLinearLayoutManager
-import cn.com.cg.router.manager.RouterManager
 import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.main.bean.HomeBean
 import com.cg.xqkj.cportal.main.bean.StoryBean
 import com.pdog.dimension.dp
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.portal_item_home_graphic.view.*
 import kotlinx.android.synthetic.main.portal_item_home_store.view.*
 import kotlinx.android.synthetic.main.portal_item_home_video.view.*
 import kotlinx.android.synthetic.main.portal_item_home_video.view.title
@@ -102,7 +101,16 @@ class HomeListAdapter(var context: Context, var data:ArrayList<HomeBean.InnerIte
     }
 
     private fun setZGraphicItem(holder: HomeListAdapter.ZGraphicHolder, position: Int) {
-
+        holder.itemView.tv_title.text = data[position].title
+        data[position].list?.let {
+            val gridLayoutManager = NoScrollLinearLayoutManager(context)
+            val adapter = HomeGraphicAdapter(context,data[position].list!!)
+            val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            divider.setDrawable(ContextCompat.getDrawable(context!!, R.drawable.common_rv_divider_f2f2f2_ten)!!)
+            holder.itemView.rv_graphic.layoutManager = gridLayoutManager
+            holder.itemView.rv_graphic.adapter = adapter
+            holder.itemView.rv_graphic.addItemDecoration(divider)
+        }
     }
 
     private fun setZAudioItem(holder: HomeListAdapter.ZAudioHolder, position: Int) {

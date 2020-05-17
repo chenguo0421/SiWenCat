@@ -14,9 +14,20 @@
 
 #### 商城页面
    
+   涉及到搜索、思文猫币管理、新人专享、今日必Buy、好物推荐、品牌精选、精品推荐等相关板块。
+   
 ![首页_1](image/store_1.jpg)
 ![首页_2](image/store_2.jpg)
 ![首页_3](image/store_3.jpg)
+
+
+#### Home页面
+
+   涉及到广告、最嗨一刻、最小说、最心声、最新动态等板块。
+   
+![Home_1](image/home_1.jpg)
+![Home_2](image/home_2.jpg)
+![Home_3](image/home_3.jpg)
 
 
 

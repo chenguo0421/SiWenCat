@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/common_dp_10"
+        android:background="@drawable/common_bg_white_radius_four">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_graphic"
+            android:layout_width="@dimen/common_dp_90"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="w,1:1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/common_dp_10"
+            android:layout_marginStart="@dimen/common_dp_10"
+            />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/iv_graphic"
+            android:layout_marginTop="@dimen/common_dp_5"
+            app:layout_constraintLeft_toRightOf="@+id/iv_graphic"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginEnd="@dimen/common_dp_10"
+            android:textSize="@dimen/common_sp_14"
+            android:layout_marginStart="@dimen/common_dp_10"
+            android:textColor="@color/common_text_color_333333"
+            android:maxLines="2"
+            android:lineSpacingMultiplier="1.4"
+            android:letterSpacing="0.1"
+            />
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_readCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_graphic"
+            android:layout_marginBottom="@dimen/common_dp_10"
+            app:layout_constraintLeft_toRightOf="@+id/iv_graphic"
+            app:layout_constraintDimensionRatio="h,1:1"
+            android:layout_marginStart="@dimen/common_dp_10"
+            android:src="@mipmap/sw_home_icon_yueduliang"
+            />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_readCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/iv_readCount"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_readCount"
+            app:layout_constraintLeft_toRightOf="@+id/iv_readCount"
+            android:textSize="@dimen/common_sp_10"
+            android:maxLines="1"
+            android:textColor="@color/common_text_color_999999"
+            android:layout_marginStart="@dimen/common_dp_5"
+            android:text="675"
+            />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
