@@ -14,6 +14,7 @@
     <color name="common_tab_bg_dbdbdb">#33DBDBDB</color>
 
     <color name="common_transparent">#00000000</color>
+    <color name="common_transparent_30">#33000000</color>
     <color name="common_red">#FFFF0000</color>
     <color name="common_red_transparent">#44ff0000</color>
     <color name="common_gray">#FF707070</color>

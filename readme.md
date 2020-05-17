@@ -28,7 +28,6 @@
 ![Home_1](image/home_1.jpg)
 ![Home_2](image/home_2.jpg)
 ![Home_3](image/home_3.jpg)
-![Home_4](image/home_4.jpg)
 
 
 

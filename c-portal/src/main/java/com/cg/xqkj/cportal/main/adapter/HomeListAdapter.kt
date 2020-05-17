@@ -142,7 +142,7 @@ class HomeListAdapter(var context: Context, var data:ArrayList<HomeBean.InnerIte
     private fun setZVideoItem(holder: HomeListAdapter.ZVideoHolder, position: Int) {
         holder.itemView.title.text =  data[position].title
         val videoImgList = reBuildVideoImgList(data[position].list)
-        val adapter = CardBannerAdapter(context,videoImgList)
+        val adapter = CardBannerAdapter(context,videoImgList,R.layout.portal_item_card_video)
         adapter.setOnBannerItemClickListener(BannerLayout.OnBannerItemClickListener {
             ToastUtils.show("点击了：" + data[position].list?.get(it)?.title)
         })

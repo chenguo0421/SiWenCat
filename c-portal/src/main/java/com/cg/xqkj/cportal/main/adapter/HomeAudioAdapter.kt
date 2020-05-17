@@ -35,6 +35,7 @@ class HomeAudioAdapter (
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         Glide.with(context).load(data[position].image).into(holder.itemView.iv_audio)
+        holder.itemView.tv_readCount.text = data[position].readNum.toString()
         holder.itemView.tv_title.text = data[position].title
         holder.itemView.tv_dis.text = data[position].intro
     }

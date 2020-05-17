@@ -21,7 +21,8 @@ import kotlinx.android.synthetic.main.common_card_item_image.view.*
  */
 class CardBannerAdapter(
     var context: Context,
-    var data:ArrayList<String>
+    var data:ArrayList<String>,
+    var resource:Int
 ) : RecyclerView.Adapter<CardBannerAdapter.MyHolder>(){
 
     private var onBannerItemClickListener: BannerLayout.OnBannerItemClickListener? = null
@@ -35,11 +36,17 @@ class CardBannerAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        return MyHolder(
-            LayoutInflater.from(
-                parent.context
-            ).inflate(R.layout.common_card_item_image, parent, false)
-        )
+        return if (resource == 0 ){
+            MyHolder(
+                LayoutInflater.from(
+                    parent.context
+                ).inflate(R.layout.common_card_item_image, parent, false))
+        }else{
+            MyHolder(
+                LayoutInflater.from(
+                    parent.context
+                ).inflate(resource, parent, false))
+        }
     }
 
     override fun getItemCount(): Int {
