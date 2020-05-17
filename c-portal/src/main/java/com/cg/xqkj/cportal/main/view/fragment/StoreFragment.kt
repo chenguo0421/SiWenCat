@@ -100,6 +100,7 @@ class StoreFragment :StoreFMContract.IView, BaseFragment<StoreFMContract.IView, 
     }
 
     private fun initTopBanner() {
+        Glide.with(context).load("file:///android_asset/img/assets_store_image12.png").into(header_bg_iv)
         banner.initBannerImageView(GlobalParams.getStoreBannerUrlList(), RecyclerViewBannerBase.OnBannerItemClickListener {
             ToastUtils.show("onclick : $it")
         })

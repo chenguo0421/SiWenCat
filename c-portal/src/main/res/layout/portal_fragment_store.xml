@@ -21,9 +21,13 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/header_bg_iv"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/common_dp_188"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/banner"
+                    />
             <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/swm_tv"
                     app:layout_constraintTop_toTopOf="parent"
