@@ -14,7 +14,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="@dimen/common_margin_dp_12"
             android:layout_marginStart="@dimen/common_margin_dp_10"
-            android:textSize="@dimen/common_sp_18"
+            android:textSize="@dimen/common_sp_16"
             android:textColor="@color/common_text_color_333333"
             android:text=""
             />

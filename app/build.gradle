@@ -46,7 +46,7 @@ dependencies {
 
 task scanProjectByPython(type: Exec) {
     workingDir './'
-    commandLine "python","../pythondemo.py","D:\\workspace\\business_workspace\\siwencat\\client\\SiWenCat"
+    commandLine "python","../pythondemo.py","F:\\Project\\BusinessProject\\siwen\\android\\github_code\\SiWenCat"
 }
 
 afterEvaluate {

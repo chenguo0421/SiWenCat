@@ -21,11 +21,12 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/header_bg_iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:scaleType="fitXY"
                     app:layout_constraintBottom_toBottomOf="@+id/banner"
                     />
             <androidx.appcompat.widget.AppCompatImageView
@@ -182,10 +183,10 @@
                         app:layout_constraintLeft_toLeftOf="@+id/maobi_iv"
                         app:layout_constraintRight_toRightOf="@+id/my_maobi_tv"
                         app:layout_constraintTop_toBottomOf="@+id/maobi_num_tv"
-                        android:textSize="@dimen/common_sp_12"
+                        android:textSize="@dimen/common_sp_10"
                         android:text="可兑10-18元"
-                        android:paddingStart="@dimen/common_dp_6"
-                        android:paddingEnd="@dimen/common_dp_6"
+                        android:paddingStart="@dimen/common_dp_10"
+                        android:paddingEnd="@dimen/common_dp_10"
                         android:gravity="center"
                         android:textColor="@color/common_white"
                         android:background="@drawable/common_bg_blue_radius_eleven"
@@ -193,18 +194,19 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/shopcar_iv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/common_dp_40"
+                        android:layout_height="@dimen/common_dp_40"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginEnd="@dimen/common_margin_dp_10"
-                        android:layout_marginTop="@dimen/common_margin_dp_8"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_nk"
+                        android:layout_marginEnd="@dimen/common_dp_20"
+                        app:layout_constraintVertical_chainStyle="packed"
                         android:src="@mipmap/sw_store_icon_shopcar"/>
 
                 <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/sale_iv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/common_dp_40"
+                        android:layout_height="@dimen/common_dp_40"
                         app:layout_constraintRight_toLeftOf="@+id/shopcar_iv"
                         app:layout_constraintTop_toTopOf="@+id/shopcar_iv"
                         android:layout_marginEnd="@dimen/common_dp_30"
@@ -212,11 +214,12 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/buy_iv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/common_dp_40"
+                        android:layout_height="@dimen/common_dp_40"
                         app:layout_constraintRight_toLeftOf="@+id/sale_iv"
                         app:layout_constraintTop_toTopOf="@+id/shopcar_iv"
                         android:layout_marginEnd="@dimen/common_dp_30"
+                        android:scaleType="centerInside"
                         android:src="@mipmap/sw_store_icon_buy"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -242,9 +245,11 @@
                         android:textSize="@dimen/common_sp_12"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_nk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@+id/shopcar_iv"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="@id/shopcar_iv"
                         app:layout_constraintRight_toRightOf="@+id/shopcar_iv"
                         android:layout_marginTop="@dimen/common_dp_4"

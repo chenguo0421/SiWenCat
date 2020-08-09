@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.scwang.smartrefresh.layout.SmartRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<com.scwang.smart.refresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:orientation="vertical"
-        android:background="@color/common_color_f2f2f2"
-        >
+        android:layout_height="match_parent">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -70,8 +67,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/account_cl"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/common_dp_142"
+                    android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="parent"
+                    android:paddingBottom="@dimen/common_dp_10"
                     android:background="@color/common_white"
                     app:layout_constraintTop_toBottomOf="@+id/head_cl">
                 <androidx.appcompat.widget.AppCompatImageView
@@ -84,8 +82,8 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/people_head_portait_img"
-                        android:layout_width="@dimen/common_dp_60"
-                        android:layout_height="@dimen/common_dp_60"
+                        android:layout_width="@dimen/common_dp_48"
+                        android:layout_height="@dimen/common_dp_48"
                         app:layout_constraintTop_toBottomOf="@id/title_line"
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:layout_marginStart="@dimen/common_margin_dp_10"
@@ -98,7 +96,7 @@
                         app:layout_constraintTop_toTopOf="@+id/people_head_portait_img"
                         app:layout_constraintBottom_toBottomOf="@+id/people_head_portait_img"
                         app:layout_constraintLeft_toRightOf="@+id/people_head_portait_img"
-                        android:textSize="@dimen/common_sp_18"
+                        android:textSize="@dimen/common_sp_16"
                         android:textColor="@color/common_text_color_333333"
                         android:layout_marginStart="@dimen/common_margin_dp_10"
                         android:text="东方玄清"/>
@@ -109,7 +107,7 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@+id/people_head_portait_img"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        android:textSize="@dimen/common_sp_22"
+                        android:textSize="@dimen/common_sp_18"
                         android:textColor="@color/common_text_color_333333"
                         android:layout_marginStart="@dimen/common_margin_dp_32"
                         android:layout_marginTop="@dimen/common_margin_dp_8"
@@ -121,7 +119,7 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@+id/people_head_portait_img"
                         app:layout_constraintRight_toRightOf="parent"
-                        android:textSize="@dimen/common_sp_22"
+                        android:textSize="@dimen/common_sp_18"
                         android:textColor="@color/common_text_color_333333"
                         android:layout_marginEnd="@dimen/common_margin_dp_32"
                         android:layout_marginTop="@dimen/common_margin_dp_8"
@@ -135,7 +133,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/cat_currency_tv"
                         app:layout_constraintLeft_toRightOf="@+id/cat_currency_tv"
                         app:layout_constraintRight_toLeftOf="@+id/time_count_tv"
-                        android:textSize="@dimen/common_sp_22"
+                        android:textSize="@dimen/common_sp_18"
                         android:textColor="@color/common_text_color_333333"
                         android:layout_marginTop="@dimen/common_margin_dp_8"
                         android:text="99.99"/>
@@ -183,16 +181,17 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/tools_cl"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/common_dp_230"
+                    android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/account_cl"
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:layout_marginTop="@dimen/common_margin_dp_10"
+                    android:paddingBottom="@dimen/common_dp_10"
                     android:background="@color/common_white">
 
                 <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/tools_img"
-                        android:layout_width="@dimen/common_dp_24"
-                        android:layout_height="@dimen/common_dp_24"
+                        android:layout_width="@dimen/common_dp_20"
+                        android:layout_height="@dimen/common_dp_20"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:layout_marginTop="@dimen/common_margin_dp_10"
@@ -201,7 +200,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/common_sp_18"
+                        android:textSize="@dimen/common_sp_14"
                         android:textColor="@color/common_text_color_333333"
                         android:text="@string/portal_my_tools"
                         app:layout_constraintTop_toTopOf="@+id/tools_img"
@@ -233,7 +232,7 @@
                 <View
                         android:id="@+id/tools_line_view"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/common_dp_1"
+                        android:layout_height="@dimen/common_line_height"
                         app:layout_constraintTop_toBottomOf="@+id/tools_img"
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:background="@color/common_color_efeaea"
@@ -243,9 +242,9 @@
                 <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/tools_menu_rv"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/common_dp_0"
+                        android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@+id/tools_line_view"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                       />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -263,7 +262,7 @@
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/function_rv"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/common_dp_450"
+                    android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/banner_img"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -273,6 +272,10 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
-</com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+

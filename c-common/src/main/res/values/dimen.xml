@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="common_dp_0">0dp</dimen>
+    <dimen name="common_line_height">0.4dp</dimen>
     <dimen name="common_dp_1">1dp</dimen>
     <dimen name="common_dp_2point5">2.5dp</dimen>
     <dimen name="common_dp_1point5">1.5dp</dimen>
@@ -22,6 +23,7 @@
     <dimen name="common_dp_24">24dp</dimen>
     <dimen name="common_dp_30">30dp</dimen>
     <dimen name="common_dp_34">34dp</dimen>
+    <dimen name="common_dp_40">40dp</dimen>
     <dimen name="common_dp_48">48dp</dimen>
     <dimen name="common_dp_50">50dp</dimen>
     <dimen name="common_dp_60">60dp</dimen>

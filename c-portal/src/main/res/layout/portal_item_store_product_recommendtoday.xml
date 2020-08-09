@@ -17,7 +17,7 @@
             android:layout_marginTop="4dp"
             android:text="今日必Buy"
             android:textColor="@color/common_text_color_333333"
-            android:textSize="@dimen/common_sp_18"
+            android:textSize="@dimen/common_sp_16"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +31,7 @@
             android:layout_marginStart="@dimen/common_margin_dp_10"
             app:rtv_text="SALE"
             app:rtv_text_color="@color/common_white"
-            app:rtv_text_size="@dimen/common_sp_12"
+            app:rtv_text_size="@dimen/common_sp_10"
             app:rtv_radio="9dp"
             app:rtv_background_color="@color/common_color_e74b4b"
             android:paddingStart="@dimen/common_dp_6"
@@ -56,7 +56,7 @@
             android:layout_marginLeft="20dp"
             android:text="好物推荐"
             android:textColor="@color/common_text_color_333333"
-            android:textSize="@dimen/common_sp_18"
+            android:textSize="@dimen/common_sp_16"
             app:layout_constraintBottom_toBottomOf="@+id/rtc_hot1"
             app:layout_constraintLeft_toRightOf="@+id/iv_next"
             app:layout_constraintTop_toTopOf="@+id/rtc_hot1"
@@ -76,7 +76,7 @@
             app:rtv_radio="9dp"
             app:rtv_text="GOOD"
             app:rtv_text_color="@color/common_white"
-            app:rtv_text_size="@dimen/common_sp_12" />
+            app:rtv_text_size="@dimen/common_sp_10" />
 
     <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_next1"
@@ -165,7 +165,7 @@
             android:id="@+id/tv_title_l2r1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/common_sp_16"
+            android:textSize="@dimen/common_sp_14"
             android:textColor="@color/common_text_color_333333"
             app:layout_constraintLeft_toLeftOf="@+id/lv_title"
             app:layout_constraintTop_toBottomOf="@+id/iv_l1r1"
@@ -178,7 +178,7 @@
             android:id="@+id/tv_title_l2r2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/common_sp_16"
+            android:textSize="@dimen/common_sp_14"
             android:textColor="@color/common_text_color_333333"
             app:layout_constraintTop_toTopOf="@+id/tv_title_l2r1"
             app:layout_constraintBottom_toBottomOf="@+id/tv_title_l2r1"
@@ -191,7 +191,7 @@
             android:id="@+id/tv_title_l2r3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/common_sp_16"
+            android:textSize="@dimen/common_sp_14"
             android:textColor="@color/common_text_color_333333"
             app:layout_constraintTop_toTopOf="@+id/tv_title_l2r1"
             app:layout_constraintBottom_toBottomOf="@+id/tv_title_l2r1"
@@ -204,7 +204,7 @@
             android:id="@+id/tv_title_l2r4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/common_sp_16"
+            android:textSize="@dimen/common_sp_14"
             android:textColor="@color/common_text_color_333333"
             app:layout_constraintTop_toTopOf="@+id/tv_title_l2r1"
             app:layout_constraintBottom_toBottomOf="@+id/tv_title_l2r1"

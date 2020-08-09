@@ -17,13 +17,6 @@ import kotlinx.android.synthetic.main.portal_item_my_fun_detail.view.*
 class MyFunDetailAdapter(
     var context: Context,
     var data: ArrayList<MenuBean>,
-    var rvHeight:Float,
-    var imgWH: Float,
-    var topMargin:Float,
-    var firstLeftMargin:Float,
-    var leftMargin:Float,
-    var textSize: Float,
-    var textColor: Int,
     var parentPosition:Int,
     var listener:OnFunDetailItemClickListener
 ): RecyclerView.Adapter<MyFunDetailAdapter.MyHolder>() {
@@ -31,20 +24,10 @@ class MyFunDetailAdapter(
 
     inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) ,LayoutContainer{
         override var containerView:View = itemView
-        init {
-            reSetRecyclerViewParams()
-        }
-        private fun reSetRecyclerViewParams() {
-            val params = ConstraintLayout.LayoutParams(imgWH.toInt(), rvHeight.toInt())
-            params.topMargin = topMargin.toInt()
-            containerView.layoutParams = params
-            containerView.tv.setTextColor(textColor)
-            containerView.tv.setTextSize(TypedValue.COMPLEX_UNIT_PX,textSize)
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun_detail,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun_detail,null)
         return MyHolder(view)
     }
 
@@ -53,7 +36,6 @@ class MyFunDetailAdapter(
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        reSetViewsParams(holder.containerView,holder.adapterPosition)
         holder.containerView.img.setImageResource(data[position].resource)
         holder.containerView.tv.text = data[position].name
         holder.containerView.content_cl.setOnClickListener{
@@ -63,18 +45,6 @@ class MyFunDetailAdapter(
             },300L)
         }
     }
-
-    private fun reSetViewsParams(containerView: View, adapterPosition: Int) {
-        val imgParams = containerView.img.layoutParams as ConstraintLayout.LayoutParams
-        imgParams.width = imgWH.toInt()
-        imgParams.height = imgWH.toInt()
-        containerView.img.layoutParams = imgParams
-
-        val params = containerView.layoutParams as ConstraintLayout.LayoutParams
-        params.leftMargin = if (adapterPosition == 0) firstLeftMargin.toInt() else leftMargin.toInt()
-        containerView.layoutParams = params
-    }
-
     interface OnFunDetailItemClickListener{
         fun onFunDetailItemClick(parentPosition: Int, position: Int)
     }

@@ -12,7 +12,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:textColor="@color/common_text_color_333333"
-            android:textSize="@dimen/common_sp_18"
+            android:textSize="@dimen/common_sp_16"
             android:layout_marginTop="@dimen/common_dp_4"
             android:text=""/>
     <androidx.appcompat.widget.AppCompatTextView

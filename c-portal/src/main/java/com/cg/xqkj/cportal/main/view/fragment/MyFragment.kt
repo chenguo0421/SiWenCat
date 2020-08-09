@@ -15,7 +15,12 @@ import com.cg.xqkj.cportal.main.adapter.MyToolsAdapter
 import com.cg.xqkj.cportal.main.bean.MyMenus
 import com.cg.xqkj.cportal.main.contract.MyFMContract
 import com.cg.xqkj.cportal.main.presenter.MyFMPresenter
+import com.scwang.smart.refresh.footer.ClassicsFooter
+import com.scwang.smart.refresh.header.ClassicsHeader
+import com.scwang.smart.refresh.layout.api.RefreshLayout
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener
 import kotlinx.android.synthetic.main.portal_fragment_my.*
+
 
 /**
  *  author : ChenGuo
@@ -63,6 +68,14 @@ class MyFragment :MyFMContract.IView, BaseFragment<MyFMContract.IView, MyFMContr
     override fun initData() {
         initToolsRecyclerViews()
         initFunRecyclerViews()
+        refreshLayout.setRefreshHeader(ClassicsHeader(getBaseActivity()))
+        refreshLayout.setRefreshFooter(ClassicsFooter(getBaseActivity()))
+        refreshLayout.setOnRefreshListener { refreshlayout ->
+            refreshlayout.finishRefresh(2000 /*,false*/) //传入false表示刷新失败
+        }
+        refreshLayout.setOnLoadMoreListener { refreshlayout ->
+            refreshlayout.finishLoadMore(2000 /*,false*/) //传入false表示加载失败
+        }
     }
 
     private fun initFunRecyclerViews() {

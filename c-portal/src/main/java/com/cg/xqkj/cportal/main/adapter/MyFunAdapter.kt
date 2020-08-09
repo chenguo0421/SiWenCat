@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.com.cg.ccommon.utils.DeviceUtils
@@ -28,19 +29,14 @@ class MyFunAdapter(
 
     open class MyHolder(itemview: View):RecyclerView.ViewHolder(itemview),LayoutContainer{
         override val containerView: View = itemView
+        public var bottom_line_view:View = itemview.bottom_line_view
+
     }
 
     inner class MyHolderGift(private var itemview: View):MyHolder(itemview),LayoutContainer{
         private var contentRv:RecyclerView? = null
         init {
             contentRv = itemview.content_rv
-            reSetRecyclerViewParams()
-        }
-
-        private fun reSetRecyclerViewParams() {
-            itemview.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT,
-                165f.dp.toInt()
-            )
         }
     }
 
@@ -48,13 +44,6 @@ class MyFunAdapter(
         private var contentRv:RecyclerView? = null
         init {
             contentRv = interview.content_rv
-            reSetRecyclerViewParams()
-        }
-
-        private fun reSetRecyclerViewParams() {
-            interview.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT,
-                135f.dp.toInt()
-            )
         }
     }
 
@@ -62,13 +51,6 @@ class MyFunAdapter(
         private var contentRv:RecyclerView? = null
         init {
             contentRv = interview.content_rv
-            reSetRecyclerViewParams()
-        }
-
-        private fun reSetRecyclerViewParams() {
-            interview.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT,
-                130f.dp.toInt()
-            )
         }
     }
 
@@ -77,15 +59,15 @@ class MyFunAdapter(
         var holder:MyHolder? = null
         when (viewType) {
             MyMenuType.GIFT.ordinal -> {
-                val view:View = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun, parent,false)
+                val view:View = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun, null)
                 holder = MyHolderGift(view)
             }
             MyMenuType.COLLECT.ordinal -> {
-                val view:View = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun,parent,false)
+                val view:View = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun,null)
                 holder = MyHolderCollect(view)
             }
             MyMenuType.ACTION.ordinal -> {
-                val view:View = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun, parent,false)
+                val view:View = LayoutInflater.from(context).inflate(R.layout.portal_item_my_fun, null)
                 holder = MyHolderAction(view)
             }
         }
@@ -108,55 +90,41 @@ class MyFunAdapter(
                 initContentRecyclerView(context,
                     holder.containerView.content_rv,
                     data[position].contentMenu,
-                    130f.dp,
-                    80f.dp,
-                    15f.dp,
-                    30f.dp,
-                    14f.sp,
-                    R.color.common_text_color_666666,
+                    3,
                     holder.adapterPosition)
             }
             is MyHolderCollect -> {
                 initContentRecyclerView(context,
                     holder.containerView.content_rv,
                     data[position].contentMenu,
-                    100f.dp,
-                    45f.dp,
-                    30f.dp,
-                    19f.dp,
-                    12f.sp,
-                    R.color.common_text_color_666666,
+                    5,
                     holder.adapterPosition)
             }
             is MyHolderAction -> {
                 initContentRecyclerView(context,
                     holder.containerView.content_rv,
                     data[position].contentMenu,
-                    95f.dp,
-                    50f.dp,
-                    10f.dp,
-                    13f.dp,
-                    14f.sp,
-                    R.color.common_text_color_333333,
+                    5,
                     holder.adapterPosition)
             }
         }
+
+        if (position == data.size - 1) {
+            holder.bottom_line_view.visibility = View.INVISIBLE
+        }else{
+            holder.bottom_line_view.visibility = View.VISIBLE
+        }
+
 
     }
 
     private fun initContentRecyclerView(context: Context?,
                                         contentRv: RecyclerView?,
                                         contentMenu: ArrayList<MenuBean>?,
-                                        rvHeight:Float,
-                                        imgWH: Float,
-                                        topMargin:Float,
-                                        borderMargin:Float,
-                                        textSize: Float,
-                                        textColor: Int,
+                                        spanCount:Int,
                                         parentPosition:Int) {
-        val margin = (DeviceUtils.getScreenWidth(context!!) - 2 * borderMargin - imgWH * contentMenu?.size!!) / (contentMenu.size - 1)
-        val adapter = MyFunDetailAdapter(context, contentMenu,rvHeight,imgWH,topMargin,borderMargin,margin,textSize,textColor,parentPosition,listener)
-        val manager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        val adapter = MyFunDetailAdapter(context!!, contentMenu!!,parentPosition,listener)
+        val manager = GridLayoutManager(context,spanCount,GridLayoutManager.VERTICAL,false)
         contentRv?.layoutManager = manager
         contentRv?.adapter = adapter
     }
