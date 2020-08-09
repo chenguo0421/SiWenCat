@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.com.cg.ccommon.utils.DeviceUtils
@@ -118,7 +117,9 @@ class StoreProductAdapter(var context: Context, var data:ArrayList<StoreProducts
         }
         val imgHeight = ((DeviceUtils.getScreenWidth(context) - 25.dp) / 2 ) * 190 / 175
         val gridItemHeight = imgHeight + 80.dp
-        params.height = ((size?.div(2)?.times(gridItemHeight)!!) + (25 + 8).dp + (size.div(2).times(5.dp)))
+        params.height = ((size?.div(2)?.times(gridItemHeight)!!) + (25 + 8).dp + (size.div(2)
+            .times(5.dp))) + 5.dp
+
         holder.itemView.layoutParams = params
 
         val gridLayoutManager= NoScrollGridLayoutManager(context,2)

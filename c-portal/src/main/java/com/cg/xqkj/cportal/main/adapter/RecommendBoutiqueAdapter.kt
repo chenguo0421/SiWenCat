@@ -4,8 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.com.cg.ccommon.utils.DeviceUtils
 import com.bumptech.glide.Glide
@@ -29,7 +27,7 @@ class RecommendBoutiqueAdapter(var context: Context,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        return MyHolder(LayoutInflater.from(context).inflate(R.layout.portal_item_product_i,parent,false))
+        return MyHolder(LayoutInflater.from(context).inflate(R.layout.portal_item_product_i,null))
     }
 
     override fun getItemCount(): Int {

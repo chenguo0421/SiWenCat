@@ -39,9 +39,9 @@
             android:id="@+id/iv_next"
             android:layout_width="@dimen/common_dp_16"
             android:layout_height="@dimen/common_dp_16"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/title_lv"
+            app:layout_constraintBottom_toBottomOf="@+id/title_lv"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="@dimen/common_margin_dp_10"
             android:layout_marginEnd="@dimen/common_margin_dp_10"
             android:src="@mipmap/sw_home_icon_gengduo"/>
 
@@ -54,7 +54,7 @@
             app:layout_constraintRight_toLeftOf="@+id/iv_next"
             android:text=""
             android:textColor="@color/common_text_color_999999"
-            android:textSize="@dimen/common_sp_14"
+            android:textSize="@dimen/common_sp_12"
             android:layout_marginEnd="@dimen/common_margin_dp_10"/>
 
     <androidx.recyclerview.widget.RecyclerView

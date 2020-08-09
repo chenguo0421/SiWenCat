@@ -3,6 +3,7 @@ package com.cg.xqkj.cportal.main.contract
 import cn.com.cg.mvp.base.BaseModel
 import cn.com.cg.mvp.base.BasePresenter
 import cn.com.cg.mvp.base.intf.BaseView
+import com.cg.xqkj.cportal.main.bean.GiftDJYPBean
 
 /**
  *  author : ChenGuo
@@ -12,11 +13,13 @@ import cn.com.cg.mvp.base.intf.BaseView
 class GiftFMContract {
 
     public interface IView:BaseView{
+        abstract fun onLoadGiftDJYPDataSuccess(list: GiftDJYPBean?)
 
     }
 
 
     public abstract class IPresenter<T> : BasePresenter<T>() {
+        abstract fun getGiftDJYPData()
 
     }
 

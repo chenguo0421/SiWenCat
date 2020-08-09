@@ -14,7 +14,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="4dp"
             android:text="今日必Buy"
             android:textColor="@color/common_text_color_333333"
             android:textSize="@dimen/common_sp_16"
@@ -43,11 +42,11 @@
             android:layout_width="@dimen/common_dp_16"
             android:layout_height="@dimen/common_dp_16"
             android:src="@mipmap/sw_home_icon_gengduo"
-            app:layout_constraintBottom_toBottomOf="@+id/rtc_hot"
+            app:layout_constraintBottom_toBottomOf="@+id/lv_title"
             app:layout_constraintHorizontal_bias="0.46"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rtc_hot" />
+            app:layout_constraintTop_toTopOf="@+id/lv_title" />
 
     <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/lv_title1"
@@ -57,9 +56,9 @@
             android:text="好物推荐"
             android:textColor="@color/common_text_color_333333"
             android:textSize="@dimen/common_sp_16"
-            app:layout_constraintBottom_toBottomOf="@+id/rtc_hot1"
+            app:layout_constraintBottom_toBottomOf="@+id/lv_title"
             app:layout_constraintLeft_toRightOf="@+id/iv_next"
-            app:layout_constraintTop_toTopOf="@+id/rtc_hot1"
+            app:layout_constraintTop_toTopOf="@+id/lv_title"
             app:layout_constraintVertical_bias="1.0" />
 
     <cn.com.cg.ccommon.widget.textview.RadioTextView
@@ -69,9 +68,9 @@
             android:layout_marginStart="@dimen/common_margin_dp_10"
             android:paddingStart="@dimen/common_dp_6"
             android:paddingEnd="@dimen/common_dp_6"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_next1"
+            app:layout_constraintBottom_toBottomOf="@+id/lv_title"
             app:layout_constraintLeft_toRightOf="@+id/lv_title1"
-            app:layout_constraintTop_toTopOf="@+id/iv_next1"
+            app:layout_constraintTop_toTopOf="@+id/lv_title"
             app:rtv_background_color="@color/common_color_88b5f3"
             app:rtv_radio="9dp"
             app:rtv_text="GOOD"
@@ -82,8 +81,8 @@
             android:id="@+id/iv_next1"
             android:layout_width="@dimen/common_dp_16"
             android:layout_height="@dimen/common_dp_16"
-            app:layout_constraintTop_toTopOf="@+id/iv_next"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_next"
+            app:layout_constraintTop_toTopOf="@+id/lv_title"
+            app:layout_constraintBottom_toBottomOf="@+id/lv_title"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginEnd="@dimen/common_margin_dp_10"
             android:src="@mipmap/sw_home_icon_gengduo"/>

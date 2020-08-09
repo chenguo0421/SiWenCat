@@ -13,8 +13,6 @@ import com.cg.xqkj.cportal.R
 import com.cg.xqkj.cportal.main.bean.StoreProductsBean
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.portal_item_product.view.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 
 class TypeNewcommeAdapter(var context: Context,
                           var data:ArrayList<StoreProductsBean.Product>?,

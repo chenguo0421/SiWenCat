@@ -1,0 +1,65 @@
+{
+  "code": 200,
+  "msg": "Success",
+  "data": {
+    "banners":[
+      "file:///android_asset/img/assets_gift_image2.png",
+      "file:///android_asset/img/assets_gift_image2.png",
+      "file:///android_asset/img/assets_gift_image2.png"
+    ],
+    "menus": [
+      {
+        "type": 1,
+        "title": "",
+        "hotText": "品牌正品",
+        "hotTextColor": "#FFFFFFFF",
+        "hotTextBGColor": "#FFE74B4B",
+        "url": ["file:///android_asset/img/assets_gift_image3.png","file:///android_asset/img/assets_gift_image4.png"]
+      },
+      {
+        "type": 0,
+        "title": "每日好店",
+        "hotText": "武汉开城Go>",
+        "hotTextColor": "#FFE74B4B",
+        "hotTextBGColor": "#FFFFFF",
+        "url": ["file:///android_asset/img/assets_gift_image5.png","file:///android_asset/img/assets_gift_image6.png"]
+      },
+      {
+        "type": 0,
+        "title": "聚划算",
+        "hotText": "品牌折扣 | 抢大额券",
+        "hotTextColor": "#FFE74B4B",
+        "hotTextBGColor": "#FFFFFF",
+        "url": ["file:///android_asset/img/assets_gift_image7.png","file:///android_asset/img/assets_gift_image8.png"]
+      },
+      {
+        "type": 0,
+        "title": "发现好货",
+        "hotText": "美好新生活",
+        "hotTextColor": "#FFE74B4B",
+        "hotTextBGColor": "#FFFFFF",
+        "url": ["file:///android_asset/img/assets_gift_image9.png","file:///android_asset/img/assets_gift_image10.png"]
+      },
+      {
+        "type": 0,
+        "title": "新品首发",
+        "hotText": "开云闪购日>",
+        "hotTextColor": "#FFE74B4B",
+        "hotTextBGColor": "#FFFFFF",
+        "url": ["file:///android_asset/img/assets_gift_image11.png","file:///android_asset/img/assets_gift_image12.png"]
+      },
+      {
+        "type": 0,
+        "title": "天天特卖",
+        "hotText": "9.9包邮",
+        "hotTextColor": "#FFE74B4B",
+        "hotTextBGColor": "#FFFFFF",
+        "url": ["file:///android_asset/img/assets_gift_image13.png","file:///android_asset/img/assets_gift_image14.png"]
+      }
+    ],
+    "centerBanner": "file:///android_asset/img/assets_gift_image15.png",
+    "list": [
+
+    ]
+  }
+}
