@@ -156,7 +156,7 @@ class RegisterFragment :RegisterFMContract.IView, BaseDialogFragment<RegisterFMC
 
     fun changeRegisterTVBackground(){
         if (!isPhoneEmpty!! && !isAuthCodeEmpty!!) {
-            register_tv.setBackgroundResource(R.drawable.circle_border_red)
+            register_tv.setBackgroundResource(R.drawable.circle_bg_red)
         }else{
             register_tv.setBackgroundResource(R.drawable.circle_border_red_transparent)
         }

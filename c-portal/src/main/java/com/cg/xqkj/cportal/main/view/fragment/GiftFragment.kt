@@ -2,16 +2,25 @@ package com.cg.xqkj.cportal.main.view.fragment
 
 import android.content.Context
 import android.os.Bundle
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import cn.com.cg.base.BaseFragment
 import cn.com.cg.ccommon.utils.GlobalParams
 import cn.com.cg.ccommon.utils.ToastUtils
+import cn.com.cg.ccommon.widget.recyclerview.NoScrollLinearLayoutManager
 import cn.com.cg.router.annotation.CRouter
 import com.bumptech.glide.Glide
 import com.cg.xqkj.cportal.R
+import com.cg.xqkj.cportal.main.adapter.GiftDJYPAdapter
+import com.cg.xqkj.cportal.main.adapter.HomeListAdapter
 import com.cg.xqkj.cportal.main.bean.GiftDJYPBean
 import com.cg.xqkj.cportal.main.contract.GiftFMContract
 import com.cg.xqkj.cportal.main.presenter.GiftFMPresenter
 import kotlinx.android.synthetic.main.portal_fragment_gift.*
+import kotlinx.android.synthetic.main.portal_fragment_gift.banner
+import kotlinx.android.synthetic.main.portal_fragment_home.*
 
 /**
  *  author : ChenGuo
@@ -20,6 +29,7 @@ import kotlinx.android.synthetic.main.portal_fragment_gift.*
  */
 @CRouter(path = "GiftFragment")
 class GiftFragment :GiftFMContract.IView, BaseFragment<GiftFMContract.IView, GiftFMContract.IPresenter<GiftFMContract.IView>>() {
+    private lateinit var giftMenuAdapter: GiftDJYPAdapter
     private lateinit var bundle: Bundle
     private lateinit var mPresenter: GiftFMContract.IPresenter<GiftFMContract.IView>
 
@@ -34,8 +44,13 @@ class GiftFragment :GiftFMContract.IView, BaseFragment<GiftFMContract.IView, Gif
         }
     }
 
-    override fun onLoadGiftDJYPDataSuccess(list: GiftDJYPBean?) {
-
+    override fun onLoadGiftDJYPDataSuccess(bean: GiftDJYPBean?) {
+        bean?.menus?.let {
+            giftMenuAdapter = GiftDJYPAdapter(getBaseActivity(),bean.menus!!)
+            var manager = GridLayoutManager(getBaseActivity(),2,GridLayoutManager.HORIZONTAL,false)
+            rv_productType.layoutManager = manager
+            rv_productType.adapter = giftMenuAdapter
+        }
     }
 
     override fun getBaseActivity(): Context {

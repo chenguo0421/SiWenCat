@@ -194,7 +194,7 @@ class LoginFragment :LoginFMContract.IView, BaseDialogFragment<LoginFMContract.I
 
     private fun changeLoginTVBackground() {
         if (!isUserNameEmpty!! && !isPSWEmpty!!) {
-            login_tv.setBackgroundResource(R.drawable.circle_border_red)
+            login_tv.setBackgroundResource(R.drawable.circle_bg_red)
         }else{
             login_tv.setBackgroundResource(R.drawable.circle_border_red_transparent)
         }

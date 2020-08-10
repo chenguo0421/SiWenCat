@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_typeName"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/common_dp_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_typeDis"
+            android:layout_marginStart="@dimen/common_dp_10"
+            android:layout_marginTop="@dimen/common_dp_10"
+            android:scaleType="centerInside"
+            />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_typeDis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/iv_typeName"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_typeName"
+            app:layout_constraintStart_toEndOf="@+id/iv_typeName"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="品牌正品"
+            android:gravity="center"
+            android:background="@drawable/circle_bg_red_2"
+            android:layout_marginEnd="@dimen/common_dp_10"
+            android:layout_marginStart="@dimen/common_dp_10"
+            />
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/common_dp_70"
+            app:layout_constraintStart_toStartOf="@+id/iv_typeName"
+            app:layout_constraintTop_toBottomOf="@+id/iv_typeName"
+            app:layout_constraintEnd_toEndOf="@+id/iv_typeName"
+            android:scaleType="centerInside"
+            android:layout_marginTop="@dimen/common_dp_10"
+            />
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/common_dp_70"
+            app:layout_constraintStart_toStartOf="@+id/tv_typeDis"
+            app:layout_constraintEnd_toEndOf="@+id/tv_typeDis"
+            app:layout_constraintTop_toTopOf="@+id/iv_item1"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_item1"
+            android:scaleType="centerInside"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

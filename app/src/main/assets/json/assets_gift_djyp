@@ -10,7 +10,7 @@
     "menus": [
       {
         "type": 1,
-        "title": "",
+        "title": "file:///android_asset/img/assets_gift_image22.png",
         "hotText": "品牌正品",
         "hotTextColor": "#FFFFFFFF",
         "hotTextBGColor": "#FFE74B4B",

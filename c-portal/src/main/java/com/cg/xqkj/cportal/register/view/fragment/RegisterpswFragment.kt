@@ -123,7 +123,7 @@ class RegisterpswFragment :RegisterpswFMContract.IView, BaseDialogFragment<Regis
 
     private fun changeSubmitTVBackground() {
         if (!isPSWEmpty && !isConfirmPSWEmpty) {
-            submit_tv.setBackgroundResource(R.drawable.circle_border_red)
+            submit_tv.setBackgroundResource(R.drawable.circle_bg_red)
         }else{
             submit_tv.setBackgroundResource(R.drawable.circle_border_red_transparent)
         }

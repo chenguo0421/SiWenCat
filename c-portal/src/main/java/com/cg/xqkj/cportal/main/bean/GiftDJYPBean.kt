@@ -10,8 +10,10 @@ class GiftDJYPBean {
     var centerBanner:String? = null
     var menus:ArrayList<InnerItem>? = null
 
+
+
     class InnerItem{
-        var type : Int? = 0 // 0  or  1,
+        var type : Int = 0 // 0  or  1,
         var title : String? = null // "东京优品",
         var hotText : String? = null // "品牌正品",
         var hotTextColor : String? = null // "#FFFFFFFF",
