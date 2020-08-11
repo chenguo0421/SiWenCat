@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_typeName"
-            android:layout_width="0dp"
+            android:layout_width="90dp"
             android:layout_height="@dimen/common_dp_24"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +19,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_typeDis"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="@+id/iv_typeName"
             app:layout_constraintBottom_toBottomOf="@+id/iv_typeName"
@@ -27,9 +27,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:text="品牌正品"
             android:gravity="center"
+            android:textSize="@dimen/common_sp_10"
             android:background="@drawable/circle_bg_red_2"
             android:layout_marginEnd="@dimen/common_dp_10"
             android:layout_marginStart="@dimen/common_dp_10"
+            android:paddingStart="@dimen/common_dp_4"
+            android:paddingEnd="@dimen/common_dp_4"
+            android:textColor="@color/common_white"
             />
 
     <androidx.appcompat.widget.AppCompatImageView

@@ -47,9 +47,13 @@ class GiftFragment :GiftFMContract.IView, BaseFragment<GiftFMContract.IView, Gif
     override fun onLoadGiftDJYPDataSuccess(bean: GiftDJYPBean?) {
         bean?.menus?.let {
             giftMenuAdapter = GiftDJYPAdapter(getBaseActivity(),bean.menus!!)
-            var manager = GridLayoutManager(getBaseActivity(),2,GridLayoutManager.HORIZONTAL,false)
+            var manager = GridLayoutManager(getBaseActivity(),2,GridLayoutManager.VERTICAL,false)
             rv_productType.layoutManager = manager
             rv_productType.adapter = giftMenuAdapter
+        }
+
+        bean?.centerBanner?.let {
+            Glide.with(context).load(bean.centerBanner!!).into( iv_centerBanner)
         }
     }
 
@@ -74,13 +78,9 @@ class GiftFragment :GiftFMContract.IView, BaseFragment<GiftFMContract.IView, Gif
 
     override fun initData() {
         initTopBanner()
-        initProductType()
         mPresenter.getGiftDJYPData()
     }
 
-    private fun initProductType() {
-        
-    }
 
     private fun initTopBanner() {
         Glide.with(context).load("file:///android_asset/img/assets_gift_image1.png").into(iv_header_bg)
