@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cl_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_sp_14"
+            android:textColor="@color/common_text_color_666666"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/common_dp_10"
+            android:text="东京优品"
+            />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_typeDis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_sp_10"
+            android:textColor="@color/common_text_color_666666"
+            app:layout_constraintTop_toBottomOf="@+id/tv_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="为您力荐"
+            />
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_select"
+            android:layout_width="50dp"
+            android:layout_height="@dimen/common_dp_1"
+            app:layout_constraintStart_toStartOf="@+id/tv_type"
+            app:layout_constraintEnd_toEndOf="@+id/tv_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_typeDis"
+            android:layout_marginTop="@dimen/common_dp_10"
+            android:background="@drawable/circle_bg_red_4"
+            />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

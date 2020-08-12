@@ -65,9 +65,6 @@ class StoreFragment :StoreFMContract.IView, BaseFragment<StoreFMContract.IView, 
         manager.setScrollEnabled(false)
         product_rv.layoutManager = manager
         product_rv.adapter = adapter
-        val divider = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
-        divider.setDrawable(ContextCompat.getDrawable(activity!!, R.drawable.common_rv_divider_f2f2f2_ten)!!)
-        product_rv.addItemDecoration(divider)
     }
 
     override fun initListener() {
@@ -84,6 +81,9 @@ class StoreFragment :StoreFMContract.IView, BaseFragment<StoreFMContract.IView, 
     }
 
     override fun initData() {
+        val divider = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
+        divider.setDrawable(ContextCompat.getDrawable(activity!!, R.drawable.common_rv_divider_f2f2f2_ten)!!)
+        product_rv.addItemDecoration(divider)
         initTopBanner()
         initCenterBanner()
         initProductList()

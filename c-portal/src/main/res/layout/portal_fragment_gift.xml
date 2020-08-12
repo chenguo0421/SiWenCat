@@ -75,15 +75,22 @@
             android:layout_marginStart="@dimen/common_dp_10"
             android:layout_marginEnd="@dimen/common_dp_10"/>
 
-
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_giftType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/iv_centerBanner"
-            android:background="@drawable/common_bg_white_radius_four"
+            android:layout_margin="@dimen/common_dp_10"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_giftItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/rv_giftType"
             android:layout_margin="@dimen/common_dp_10"
             android:paddingBottom="@dimen/common_dp_10"/>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
